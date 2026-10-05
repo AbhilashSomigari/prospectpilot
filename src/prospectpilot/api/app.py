@@ -7,7 +7,7 @@ from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 from typing import Annotated, Any
 
-from fastapi import BackgroundTasks, Depends, FastAPI, Header, HTTPException, Response
+from fastapi import BackgroundTasks, Depends, FastAPI, Header, HTTPException, Request, Response
 from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
 from pydantic import BaseModel, Field
 from sqlalchemy import func, select
@@ -29,13 +29,22 @@ from prospectpilot.memory.tables import (
     Run,
 )
 from prospectpilot.models import ICP
-from prospectpilot.obs import metrics as _metrics  # noqa: F401  (registers collectors)
-from prospectpilot.obs.tracing import setup_tracing, shutdown_tracing
+from prospectpilot.obs import metrics as _metrics
+from prospectpilot.obs.tracing import (
+    current_trace_id,
+    set_attrs,
+    setup_tracing,
+    shutdown_tracing,
+    span,
+)
 
 
 @asynccontextmanager
 async def lifespan(_: FastAPI) -> AsyncIterator[None]:
     setup_tracing("prospectpilot-api")
+    from prospectpilot.llm.client import get_llm
+
+    _metrics.init_label_sets(get_settings().llm_provider, get_llm().models())
     yield
     shutdown_tracing()
     await db.dispose()
@@ -48,6 +57,24 @@ app = FastAPI(
     "replies marked simulated=true are SIMULATED.",
     lifespan=lifespan,
 )
+
+
+@app.middleware("http")
+async def trace_requests(request: Request, call_next: Any) -> Response:
+    """One server span per request; the trace id is echoed back for correlation."""
+    if request.url.path == "/metrics":
+        response: Response = await call_next(request)
+        return response
+    route = request.url.path
+    with span(
+        f"http {request.method}", **{"http.method": request.method, "http.target": route}
+    ) as s:
+        response = await call_next(request)
+        set_attrs(s, **{"http.status_code": response.status_code})
+        trace_id = current_trace_id()
+        if trace_id:
+            response.headers["X-Trace-Id"] = trace_id
+        return response
 
 
 async def require_key(authorization: Annotated[str | None, Header()] = None) -> None:

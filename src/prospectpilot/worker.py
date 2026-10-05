@@ -8,7 +8,7 @@ import time
 
 from prospectpilot.config import get_settings
 from prospectpilot.obs.metrics import start_metrics_server
-from prospectpilot.obs.tracing import setup_tracing
+from prospectpilot.obs.tracing import setup_logging, setup_tracing
 
 log = logging.getLogger("prospectpilot.worker")
 
@@ -56,10 +56,14 @@ async def tick() -> bool:
 
 
 async def run_worker(poll_interval_s: float = 2.0) -> None:
-    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s")
+    setup_logging()
     settings = get_settings()
     setup_tracing("prospectpilot-worker")
     start_metrics_server(settings.worker_metrics_port)
+    from prospectpilot.llm.client import get_llm
+    from prospectpilot.obs.metrics import init_label_sets
+
+    init_label_sets(settings.llm_provider, get_llm().models())
     from prospectpilot.graph.runner import setup_checkpointer
 
     await setup_checkpointer()

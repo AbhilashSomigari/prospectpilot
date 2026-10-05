@@ -12,6 +12,8 @@ from pathlib import Path
 
 import httpx
 import pytest
+from opentelemetry.sdk.trace.export import SimpleSpanProcessor
+from opentelemetry.sdk.trace.export.in_memory_span_exporter import InMemorySpanExporter
 from sqlalchemy import select
 
 from prospectpilot.config import REPO_ROOT, get_settings
@@ -21,6 +23,7 @@ from prospectpilot.memory import campaigns as cmp
 from prospectpilot.memory.db import session_scope
 from prospectpilot.memory.tables import Draft, FactRow, OutboxMessage, Prospect, Reply, Run
 from prospectpilot.models import FACT_MARKER_RE, ICP, Critique
+from prospectpilot.obs.tracing import setup_tracing
 
 pytestmark = pytest.mark.integration
 
@@ -50,6 +53,8 @@ async def test_three_fixture_companies_end_to_end(leads_csv: Path) -> None:
     except httpx.HTTPError:
         pytest.skip("mailpit not reachable (run `make up`)")
     await setup_checkpointer()
+    spans = InMemorySpanExporter()
+    setup_tracing(extra_processors=[SimpleSpanProcessor(spans)])
     icp = ICP.model_validate(
         {
             "name": "e2e",
@@ -126,6 +131,25 @@ async def test_three_fixture_companies_end_to_end(leads_csv: Path) -> None:
             assert reply is not None and reply.simulated is True
         rewritten = await s.scalar(select(Draft).where(Draft.run_id == run_id, Draft.round > 0))
         assert rewritten is not None  # the mock writer's first-draft mistakes forced a rewrite
+
+    names = {sp.name for sp in spans.get_finished_spans()}
+    for node in (
+        "prospector",
+        "enricher",
+        "verifier",
+        "writer",
+        "critic",
+        "outbox",
+        "reply_simulator",
+    ):
+        assert f"graph.node.{node}" in names
+    assert {"llm.extract", "llm.writer", "llm.critic", "tool.http_fetch", "tool.smtp_send"} <= names
+    trace_ids = {
+        format(sp.context.trace_id, "032x")
+        for sp in spans.get_finished_spans()
+        if sp.name.startswith("graph.node.")
+    }
+    assert trace_ids == {r.trace_id}  # one trace for the whole run
 
     async with httpx.AsyncClient(timeout=5) as client:
         inbox = (await client.get(f"{_mailpit()}/api/v1/messages")).json()

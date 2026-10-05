@@ -51,3 +51,47 @@ IMPROVE_METRIC = Gauge(
 
 def start_metrics_server(port: int) -> None:
     start_http_server(port)
+
+
+NODES = (
+    "prospector",
+    "enricher",
+    "verifier",
+    "writer",
+    "critic",
+    "outbox",
+    "reply_simulator",
+    "finalize",
+)
+PURPOSES = ("extract", "writer", "critic", "optimizer", "failure_analysis", "reply_sim")
+LEAD_OUTCOMES = ("sim_reply", "sim_objection", "sim_no_reply", "contacted", "scheduled",
+                 "draft_failed", "unverified", "insufficient_facts", "no_facts")  # fmt: skip
+
+
+def init_label_sets(provider: str, models: dict[str, str]) -> None:
+    """Create known series at 0 so rate()/increase() see the first increment of a run.
+
+    Prometheus client libs create labelled series lazily; a series that first appears with a
+    non-zero value has no baseline sample, so one-shot runs would be invisible to rate().
+    """
+    for node in NODES:
+        NODE_DURATION.labels(node)
+    for outcome in LEAD_OUTCOMES:
+        LEADS.labels(outcome)
+    for status in ("sent", "failed", "cancelled"):
+        EMAILS.labels(status)
+    for rnd in ("0", "1", "2"):
+        for verdict in ("pass", "fail"):
+            CRITIC_VERDICTS.labels(rnd, verdict)
+    for status in ("succeeded", "failed"):
+        RUNS.labels(status)
+    for tool in ("http_fetch", "dns_mx", "smtp_send"):
+        TOOL_LATENCY.labels(tool)
+    for purpose in PURPOSES:
+        model = models["large"] if purpose in ("writer", "optimizer") else models["small"]
+        LLM_LATENCY.labels(provider, model, purpose)
+        LLM_COST.labels(provider, model, purpose)
+        LLM_CALLS.labels(provider, model, purpose, "ok")
+    for model in set(models.values()):
+        for direction in ("input", "output"):
+            LLM_TOKENS.labels(provider, model, direction)

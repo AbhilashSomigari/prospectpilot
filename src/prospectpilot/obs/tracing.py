@@ -125,3 +125,25 @@ def traced(
         return wrapper
 
     return deco
+
+
+class TraceIdLogFilter:
+    """Adds `trace_id` to log records so log lines can be joined with Jaeger traces."""
+
+    def filter(self, record: object) -> bool:
+        record.trace_id = current_trace_id() or "-"  # type: ignore[attr-defined]
+        return True
+
+
+LOG_FORMAT = "%(asctime)s %(levelname)s %(name)s trace=%(trace_id)s %(message)s"
+
+
+def setup_logging(level: int = 20) -> None:
+    import logging
+
+    handler = logging.StreamHandler()
+    handler.setFormatter(logging.Formatter(LOG_FORMAT))
+    handler.addFilter(TraceIdLogFilter())
+    root = logging.getLogger()
+    root.handlers[:] = [handler]
+    root.setLevel(level)
