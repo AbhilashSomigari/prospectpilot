@@ -5,6 +5,9 @@ PP := $(UV) run prospectpilot
 COMPOSE := docker compose
 # provider for eval/improve on the host: mock | ollama | anthropic | openai
 PROVIDER ?= ollama
+# uv marks .venv hidden on macOS and Python >=3.12.13 skips hidden .pth files, which breaks the
+# editable install; putting src on PYTHONPATH makes every target immune to that.
+export PYTHONPATH := $(CURDIR)/src
 
 .PHONY: help install hooks up down logs ps migrate demo test test-int lint fmt typecheck check eval eval-smoke improve results tf-validate clean
 

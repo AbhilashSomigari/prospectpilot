@@ -1,0 +1,26 @@
+{
+ "id": 900001,
+ "title": "Ask HN: Who is hiring? (October 2026)",
+ "children": [
+  {
+   "id": 900101,
+   "text": "Lumina Data | Senior Data Engineer | REMOTE (US) | Full-time<p>We build a warehouse-native analytics platform on Snowflake and dbt. Apply: <a href=\"https:&#x2F;&#x2F;luminadata.io&#x2F;careers\" rel=\"nofollow\">https:&#x2F;&#x2F;luminadata.io&#x2F;careers</a> or email priya@luminadata.io",
+   "children": []
+  },
+  {
+   "id": 900102,
+   "text": "Just a comment without any company link, sorry!",
+   "children": []
+  },
+  {
+   "id": 900103,
+   "text": "Northwind Robotics (YC W24) | Backend Engineer (Python, Kubernetes) | Berlin, DE | ONSITE<p>Warehouse robots. <a href=\"https:&#x2F;&#x2F;boards.greenhouse.io&#x2F;northwind\">Greenhouse</a> - more at northwind-robotics.com",
+   "children": []
+  },
+  {
+   "id": 900104,
+   "text": "Quillstack | Product Designer | Remote (EU) <p>Docs for developer teams. <a href=\"https:&#x2F;&#x2F;www.quillstack.dev\">quillstack.dev</a>",
+   "children": []
+  }
+ ]
+}

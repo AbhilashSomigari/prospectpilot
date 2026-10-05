@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Pre-commit: ruff (lint + format check) and unit tests. Install with `make hooks`.
 set -euo pipefail
+export PYTHONPATH="$(git rev-parse --show-toplevel)/src"
 echo "pre-commit: ruff"
 uv run ruff check .
 uv run ruff format --check .

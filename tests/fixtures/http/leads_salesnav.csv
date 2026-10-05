@@ -1,0 +1,5 @@
+First Name,Last Name,Title,Company,Company Website,Location,Industry,Company Headcount
+Maya,Chen,VP Engineering,Acme Analytics,https://www.acme-analytics.io,"Austin, Texas",Data Infrastructure,11-50
+Sam,Okafor,CTO,Acme Analytics,acme-analytics.io,"Austin, Texas",Data Infrastructure,11-50
+Lee,Park,Head of Data,Bigcorp,bigcorp.example,"New York, NY",Retail,"10,001+"
+,,,No Website Inc,,,,

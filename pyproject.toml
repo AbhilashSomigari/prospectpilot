@@ -67,7 +67,7 @@ src = ["src", "tests"]
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "B", "UP", "SIM", "ASYNC", "RUF"]
-ignore = ["RUF001", "RUF002", "RUF003", "B008"]
+ignore = ["RUF001", "RUF002", "RUF003", "B008", "SIM102", "SIM108"]
 
 [tool.mypy]
 python_version = "3.11"
@@ -82,6 +82,7 @@ ignore_missing_imports = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["src", "."]
 asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "function"
 addopts = "-q -m 'not integration'"
