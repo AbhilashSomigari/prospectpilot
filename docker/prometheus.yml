@@ -1,0 +1,15 @@
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: prospectpilot-api
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["api:8000"]
+  - job_name: prospectpilot-worker
+    static_configs:
+      - targets: ["worker:9101"]
+  # CLI runs on the host (e.g. `make improve`) expose metrics here while running
+  - job_name: prospectpilot-host-cli
+    static_configs:
+      - targets: ["host.docker.internal:9102"]

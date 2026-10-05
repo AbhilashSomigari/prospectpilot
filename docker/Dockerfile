@@ -1,0 +1,30 @@
+FROM python:3.12-slim AS base
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    UV_COMPILE_BYTECODE=1 \
+    UV_LINK_MODE=copy \
+    UV_PROJECT_ENVIRONMENT=/opt/venv \
+    PATH="/opt/venv/bin:$PATH"
+
+# git is needed to install the EvalForge dependency straight from GitHub
+RUN apt-get update && apt-get install -y --no-install-recommends git ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+COPY --from=ghcr.io/astral-sh/uv:0.11 /uv /usr/local/bin/uv
+
+WORKDIR /app
+COPY pyproject.toml uv.lock README.md ./
+RUN uv sync --frozen --no-dev --no-install-project
+
+COPY src ./src
+COPY migrations ./migrations
+COPY alembic.ini ./
+COPY evals ./evals
+COPY examples ./examples
+RUN uv sync --frozen --no-dev
+
+RUN useradd --create-home --uid 10001 app && mkdir -p /app/.cache && chown -R app /app/.cache
+USER app
+
+EXPOSE 8000
+CMD ["prospectpilot", "serve", "--host", "0.0.0.0", "--port", "8000"]

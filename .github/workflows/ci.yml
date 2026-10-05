@@ -1,0 +1,103 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    name: lint · typecheck · unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+          enable-cache: true
+      - run: uv sync --frozen
+      - name: ruff
+        run: |
+          uv run ruff check .
+          uv run ruff format --check .
+      - name: mypy (strict on src/)
+        run: uv run mypy
+      - name: unit tests
+        run: uv run pytest
+
+  integration:
+    name: integration + e2e (mock LLM)
+    runs-on: ubuntu-latest
+    needs: checks
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_USER: prospectpilot
+          POSTGRES_PASSWORD: prospectpilot
+          POSTGRES_DB: prospectpilot
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U prospectpilot" --health-interval 3s
+          --health-timeout 3s --health-retries 20
+      mailpit:
+        image: axllent/mailpit:v1.21
+        ports: ["1025:1025", "8025:8025"]
+    env:
+      DATABASE_URL: postgresql+psycopg://prospectpilot:prospectpilot@localhost:5432/prospectpilot
+      LLM_PROVIDER: mock
+      OTEL_ENABLED: "false"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+          enable-cache: true
+      - run: uv sync --frozen
+      - run: uv run prospectpilot db upgrade
+      - run: uv run pytest -m integration
+
+  eval-smoke:
+    name: eval smoke (EvalForge, mock LLM)
+    runs-on: ubuntu-latest
+    needs: checks
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_USER: prospectpilot
+          POSTGRES_PASSWORD: prospectpilot
+          POSTGRES_DB: prospectpilot
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U prospectpilot" --health-interval 3s
+          --health-timeout 3s --health-retries 20
+    env:
+      DATABASE_URL: postgresql+psycopg://prospectpilot:prospectpilot@localhost:5432/prospectpilot
+      OTEL_ENABLED: "false"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+          enable-cache: true
+      - run: uv sync --frozen
+      - run: uv run prospectpilot db upgrade
+      - run: make eval-smoke
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: eval-smoke-run
+          path: evals/runs/scratch/
+
+  terraform:
+    name: terraform validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - run: make tf-validate

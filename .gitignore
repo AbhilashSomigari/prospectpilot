@@ -1,0 +1,36 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# local-only agent notes (kept out of git by design)
+CLAUDE.md
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# runtime caches / artifacts
+.cache/
+evals/runs/scratch/
+*.log
+
+# terraform
+infra/terraform/.terraform/
+infra/terraform/*.tfstate
+infra/terraform/*.tfstate.*
+infra/terraform/.terraform.lock.hcl
+infra/terraform/*.tfplan
+infra/terraform/terraform.tfvars
+
+# os / editors
+.DS_Store
+.idea/
+.vscode/

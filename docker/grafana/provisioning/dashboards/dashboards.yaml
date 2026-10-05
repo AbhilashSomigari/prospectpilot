@@ -1,0 +1,7 @@
+apiVersion: 1
+providers:
+  - name: prospectpilot
+    folder: ProspectPilot
+    type: file
+    options:
+      path: /var/lib/grafana/dashboards

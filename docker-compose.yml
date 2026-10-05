@@ -1,0 +1,109 @@
+name: prospectpilot
+
+x-app: &app
+  build:
+    context: .
+    dockerfile: docker/Dockerfile
+  image: prospectpilot:local
+  env_file:
+    - path: .env
+      required: false
+  environment: &app-env
+    DATABASE_URL: postgresql+psycopg://prospectpilot:prospectpilot@postgres:5432/prospectpilot
+    LLM_PROVIDER: ${LLM_PROVIDER:-mock}
+    EMBEDDING_PROVIDER: ${EMBEDDING_PROVIDER:-hash}
+    OLLAMA_BASE_URL: ${OLLAMA_BASE_URL_DOCKER:-http://host.docker.internal:11434}
+    SMTP_HOST: mailpit
+    SMTP_PORT: "1025"
+    MAILPIT_API_URL: http://mailpit:8025
+    OTEL_ENABLED: "true"
+    OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4318
+    HTTP_CACHE_DIR: /app/.cache/http
+  extra_hosts:
+    - "host.docker.internal:host-gateway"
+  depends_on:
+    postgres:
+      condition: service_healthy
+    mailpit:
+      condition: service_started
+    otel-collector:
+      condition: service_started
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: prospectpilot
+      POSTGRES_PASSWORD: prospectpilot
+      POSTGRES_DB: prospectpilot
+    ports: ["${PG_PORT:-5432}:5432"]
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/00-init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U prospectpilot -d prospectpilot"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  mailpit:
+    image: axllent/mailpit:v1.21
+    ports: ["${SMTP_PORT_HOST:-1025}:1025", "${MAILPIT_UI_PORT:-8025}:8025"]
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.62.0
+    environment:
+      COLLECTOR_OTLP_ENABLED: "true"
+    ports: ["${JAEGER_UI_PORT:-16686}:16686"]
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.111.0
+    command: ["--config=/etc/otelcol/config.yaml"]
+    volumes:
+      - ./docker/otel-collector.yaml:/etc/otelcol/config.yaml:ro
+    ports: ["4317:4317", "4318:4318"]
+    depends_on: [jaeger]
+
+  prometheus:
+    image: prom/prometheus:v2.55.0
+    volumes:
+      - ./docker/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports: ["${PROMETHEUS_PORT:-9090}:9090"]
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  grafana:
+    image: grafana/grafana:11.3.0
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
+      GF_AUTH_DISABLE_LOGIN_FORM: "true"
+      GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH: /var/lib/grafana/dashboards/prospectpilot.json
+    volumes:
+      - ./docker/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./docker/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    ports: ["${GRAFANA_PORT:-3000}:3000"]
+    depends_on: [prometheus, postgres]
+
+  api:
+    <<: *app
+    command: ["sh", "-c", "prospectpilot db upgrade && prospectpilot serve --host 0.0.0.0 --port 8000"]
+    ports: ["${API_PORT:-8000}:8000"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/healthz')"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+
+  worker:
+    <<: *app
+    command: ["prospectpilot", "worker"]
+    environment:
+      <<: *app-env
+      WORKER_METRICS_PORT: "9101"
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  pgdata:
