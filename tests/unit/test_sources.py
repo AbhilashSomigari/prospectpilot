@@ -72,14 +72,22 @@ def test_csv_import_groups_people_by_domain() -> None:
 
 def test_merge_dedupes_by_domain() -> None:
     a = CompanyCandidate(
-        name="Acme", domain="https://www.acme.io/x", source="hn", source_url="u1",
-        signals=["hiring"], people=[PersonCandidate(full_name="A")],
-    )  # fmt: skip
+        name="Acme",
+        domain="https://www.acme.io/x",
+        source="hn",
+        source_url="u1",
+        signals=["hiring"],
+        people=[PersonCandidate(full_name="A")],
+    )
     b = CompanyCandidate(
-        name="Acme Inc", domain="acme.io", source="github", source_url="u2",
-        description="longer description", signals=["oss"],
+        name="Acme Inc",
+        domain="acme.io",
+        source="github",
+        source_url="u2",
+        description="longer description",
+        signals=["oss"],
         people=[PersonCandidate(full_name="A"), PersonCandidate(full_name="B")],
-    )  # fmt: skip
+    )
     merged = merge([a, b])
     assert len(merged) == 1
     m = merged[0]
@@ -91,9 +99,13 @@ def test_merge_dedupes_by_domain() -> None:
 def test_icp_scoring() -> None:
     icp = _icp(industry_keywords=["analytics"], tech_stack=["dbt"], locations=["Remote"])
     good = CompanyCandidate(
-        name="X", domain="x.io", source="hn", source_url="u",
-        description="analytics on dbt", locations=["REMOTE (US)"],
-    )  # fmt: skip
+        name="X",
+        domain="x.io",
+        source="hn",
+        source_url="u",
+        description="analytics on dbt",
+        locations=["REMOTE (US)"],
+    )
     bad = CompanyCandidate(name="Y", domain="y.io", source="hn", source_url="u")
     assert icp_score(icp, good) == 4.0
     assert icp_score(icp, bad) == 0.0
@@ -104,9 +116,11 @@ async def test_prospector_filters_team_size_and_limits(tmp_path: Path) -> None:
     mount_site(respx.mock, "acme-analytics.io")
     icp = _icp(
         team_size={"min": 10, "max": 500},
-        sources={"csv_path": str(FIX / "leads_salesnav.csv"),
-                 "websites": ["https://acme-analytics.io"]},
-    )  # fmt: skip
+        sources={
+            "csv_path": str(FIX / "leads_salesnav.csv"),
+            "websites": ["https://acme-analytics.io"],
+        },
+    )
     f = PoliteFetcher(make_settings(tmp_path))
     out = await gather(icp, f)
     assert [c.domain for c in out] == ["acme-analytics.io"]  # bigcorp too large, deduped

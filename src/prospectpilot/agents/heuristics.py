@@ -14,11 +14,41 @@ from prospectpilot.models import ExtractedFact, ExtractedFacts
 from prospectpilot.sources.pages import Page
 
 TECH_TERMS = (
-    "Python", "Go", "Rust", "TypeScript", "React", "Node.js", "Kubernetes", "Terraform", "AWS",
-    "GCP", "Azure", "Postgres", "PostgreSQL", "Snowflake", "dbt", "Kafka", "Spark", "Airflow",
-    "Django", "FastAPI", "Rails", "Elixir", "Java", "Kotlin", "Swift", "GraphQL", "Redis",
-    "ClickHouse", "PyTorch", "LangChain", "LangGraph", "OpenTelemetry", "Docker", "Next.js",
-)  # fmt: skip
+    "Python",
+    "Go",
+    "Rust",
+    "TypeScript",
+    "React",
+    "Node.js",
+    "Kubernetes",
+    "Terraform",
+    "AWS",
+    "GCP",
+    "Azure",
+    "Postgres",
+    "PostgreSQL",
+    "Snowflake",
+    "dbt",
+    "Kafka",
+    "Spark",
+    "Airflow",
+    "Django",
+    "FastAPI",
+    "Rails",
+    "Elixir",
+    "Java",
+    "Kotlin",
+    "Swift",
+    "GraphQL",
+    "Redis",
+    "ClickHouse",
+    "PyTorch",
+    "LangChain",
+    "LangGraph",
+    "OpenTelemetry",
+    "Docker",
+    "Next.js",
+)
 _ROLE_RE = re.compile(
     r"^(?:Senior |Staff |Lead |Principal |Junior )?[A-Z][\w/&+ -]{2,50}"
     r"(Engineer|Developer|Designer|Manager|Scientist|Representative|Executive|Lead|Analyst|"
@@ -114,9 +144,16 @@ def heuristic_facts(company: str, pages: list[Page], max_facts: int = 10) -> Ext
             published = _parse_date(" ".join(page.times) + " " + page.text[:400])
             title = page.headings[0] if page.headings else page.title
             if title and published:
-                summary = _first_sentence(page.text.replace(title, "", 1))
-                add("news", f"{company} published '{title}' on {published.isoformat()}: "
-                    f"{summary}", page.url, published)  # fmt: skip
+                body = page.text.replace(title, "", 1)
+                for t in page.times:
+                    body = body.replace(t, "", 1)
+                summary = _first_sentence(body)
+                add(
+                    "news",
+                    f"{company} published '{title}' on {published.isoformat()}: {summary}",
+                    page.url,
+                    published,
+                )
         elif kind == "careers":
             roles = [h for h in page.headings if _ROLE_RE.match(h)]
             for role in roles[:3]:

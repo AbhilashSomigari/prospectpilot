@@ -116,14 +116,18 @@ async def verify_contact(inp: VerifyInput, resolver: MXResolver) -> Verification
     confidence = base
     if mx.null_mx:
         return VerificationResult(
-            email=email, confidence=0.0, status="undeliverable",
+            email=email,
+            confidence=0.0,
+            status="undeliverable",
             reasons=[*reasons, "domain publishes a null MX (accepts no mail)"],
-        )  # fmt: skip
+        )
     if not mx.accepts_mail:
         return VerificationResult(
-            email=email, confidence=0.0, status="undeliverable",
+            email=email,
+            confidence=0.0,
+            status="undeliverable",
             reasons=[*reasons, f"no mail exchanger for {email_domain} ({mx.error})"],
-        )  # fmt: skip
+        )
     if mx.implicit:
         confidence -= IMPLICIT_MX_PENALTY
         reasons.append("no MX record; mail would go to the A record (implicit MX)")

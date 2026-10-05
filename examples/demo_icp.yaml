@@ -1,0 +1,19 @@
+# Demo campaign over the fictional fixture companies (offline: recorded sites + static DNS).
+name: Demo — data-heavy B2B teams
+industry_keywords: [data, analytics, platform]
+team_size: {min: 10, max: 500}
+target_titles: [CTO, VP Engineering, Head of Data, Head of Product, Head of Security, Founder, VP Sales]
+max_companies: 8
+sources:
+  csv_path: examples/demo_leads.csv
+offer:
+  product: Tracewell
+  value_props:
+    - alert engineering teams to failing data pipelines before dashboards break
+    - cut on-call noise by grouping related alerts
+  call_to_action: Open to a 15-minute call next week?
+sender:
+  name: Alex Rivera
+  title: Account Executive
+  company: Tracewell
+simulate_replies: true

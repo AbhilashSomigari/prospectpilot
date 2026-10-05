@@ -78,6 +78,9 @@ class Settings(BaseSettings):
     http_timeout_s: float = 15.0
     github_token: SecretStr | None = None
 
+    # api
+    api_key: SecretStr | None = None  # when set, endpoints require "Authorization: Bearer <key>"
+
     # sending
     smtp_host: str = "localhost"
     smtp_port: int = 1025
@@ -85,6 +88,10 @@ class Settings(BaseSettings):
     mail_from: str = "ProspectPilot Demo <sdr@prospectpilot.test>"
     allow_real_send: bool = False
     followup_days: list[int] = Field(default_factory=lambda: [3, 7])
+
+    # pipeline
+    min_email_confidence: float = 0.6  # below this a lead is not drafted or contacted
+    max_people_per_company: int = 2
 
     # writer / critic
     email_max_words: int = 120

@@ -49,11 +49,21 @@ def test_validate_facts_drops_wrong_url_and_unsupported_text() -> None:
     page = Page(url="https://x.io/about", text="X has a team of 45 people in Austin.")
     extracted = ExtractedFacts(
         facts=[
-            ExtractedFact(kind="team_size", text="X has a team of 45 people.", source_url="https://x.io/about/"),
-            ExtractedFact(kind="funding", text="X raised a $50M Series C from Sequoia.", source_url="https://x.io/about"),
-            ExtractedFact(kind="other", text="X has a team of 45 people.", source_url="https://x.io/elsewhere"),
+            ExtractedFact(
+                kind="team_size",
+                text="X has a team of 45 people.",
+                source_url="https://x.io/about/",
+            ),
+            ExtractedFact(
+                kind="funding",
+                text="X raised a $50M Series C from Sequoia.",
+                source_url="https://x.io/about",
+            ),
+            ExtractedFact(
+                kind="other", text="X has a team of 45 people.", source_url="https://x.io/elsewhere"
+            ),
         ]
-    )  # fmt: skip
+    )
     kept = validate_facts(extracted, [page])
     assert [k.text for k in kept] == ["X has a team of 45 people."]
     assert kept[0].source_url == "https://x.io/about"

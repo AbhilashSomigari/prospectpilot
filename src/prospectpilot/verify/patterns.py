@@ -8,6 +8,8 @@ from collections import Counter
 from collections.abc import Callable
 from dataclasses import dataclass
 
+from prospectpilot.verify.lists import is_role
+
 # Heuristic prior over B2B address formats, used ONLY when a domain has no known addresses to
 # learn from. These are hand-set ranking weights, not measured statistics; they just make the
 # ordering of guesses sensible (first.last before last.first) and keep unproven guesses low.
@@ -90,8 +92,8 @@ def infer_domain_pattern(known: list[tuple[str, str]]) -> DomainPattern | None:
     usable = 0
     for full_name, email in known:
         name = split_name(full_name)
-        if name is None or "@" not in email:
-            continue
+        if name is None or "@" not in email or is_role(email.split("@", 1)[0]):
+            continue  # shared inboxes (info@, sales@) say nothing about personal formats
         hits = match_patterns(email.split("@", 1)[0], name)
         if hits:
             usable += 1

@@ -51,9 +51,13 @@ class DNSResolver:
             metrics.TOOL_CALLS.labels("dns_mx", "ok" if res.error is None else "error").inc()
             metrics.TOOL_LATENCY.labels("dns_mx").observe(time.perf_counter() - started)
             set_attrs(
-                s, **{"pp.mx_hosts": ",".join(res.hosts), "pp.implicit": res.implicit,
-                      "pp.error": res.error}
-            )  # fmt: skip
+                s,
+                **{
+                    "pp.mx_hosts": ",".join(res.hosts),
+                    "pp.implicit": res.implicit,
+                    "pp.error": res.error,
+                },
+            )
         self._cache[domain] = res
         return res
 

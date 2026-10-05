@@ -86,8 +86,11 @@ def test_local_parts_cover_common_formats() -> None:
 
 
 def test_infer_domain_pattern_by_votes() -> None:
-    known = [("Sam Okafor", "sokafor@acme.io"), ("Lee Park", "lpark@acme.io"),
-             ("Ana Lima", "ana.lima@acme.io")]  # fmt: skip
+    known = [
+        ("Sam Okafor", "sokafor@acme.io"),
+        ("Lee Park", "lpark@acme.io"),
+        ("Ana Lima", "ana.lima@acme.io"),
+    ]
     dp = infer_domain_pattern(known)
     assert dp is not None and dp.pattern == "flast" and dp.evidence == 2 and dp.total_known == 3
     assert infer_domain_pattern([("Nobody", "x@acme.io")]) is None
@@ -110,11 +113,17 @@ async def test_inferred_pattern_scales_with_evidence() -> None:
         RESOLVER,
     )
     three = await verify_contact(
-        VerifyInput("acme.io", "Maya Chen", known_addresses=[
-            ("Sam Okafor", "sokafor@acme.io"), ("Lee Park", "lpark@acme.io"),
-            ("Ana Lima", "alima@acme.io")]),
+        VerifyInput(
+            "acme.io",
+            "Maya Chen",
+            known_addresses=[
+                ("Sam Okafor", "sokafor@acme.io"),
+                ("Lee Park", "lpark@acme.io"),
+                ("Ana Lima", "alima@acme.io"),
+            ],
+        ),
         RESOLVER,
-    )  # fmt: skip
+    )
     assert one.email == three.email == "mchen@acme.io"
     assert 0.7 <= one.confidence < three.confidence <= 0.95
     assert one.candidates[0].email == "mchen@acme.io"

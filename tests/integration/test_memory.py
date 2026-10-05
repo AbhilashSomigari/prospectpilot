@@ -17,11 +17,18 @@ pytestmark = pytest.mark.integration
 async def test_store_facts_dedupes_and_supports_similarity() -> None:
     emb = HashEmbedder(768)
     facts = [
-        ExtractedFact(kind="news", text="Acme launched Pipelines 2.0 with column lineage.",
-                      source_url="https://acme.io/blog/p2", published_at=date(2026, 8, 12)),
-        ExtractedFact(kind="open_role", text="Acme is hiring a Senior Platform Engineer.",
-                      source_url="https://acme.io/careers"),
-    ]  # fmt: skip
+        ExtractedFact(
+            kind="news",
+            text="Acme launched Pipelines 2.0 with column lineage.",
+            source_url="https://acme.io/blog/p2",
+            published_at=date(2026, 8, 12),
+        ),
+        ExtractedFact(
+            kind="open_role",
+            text="Acme is hiring a Senior Platform Engineer.",
+            source_url="https://acme.io/careers",
+        ),
+    ]
     async with session_scope() as s:
         company = await repo.upsert_company(
             s, CompanyCandidate(name="Acme", domain="acme.io", source="csv", source_url="csv:x")
@@ -38,7 +45,13 @@ async def test_store_facts_dedupes_and_supports_similarity() -> None:
         assert nearest is not None and nearest.kind == "open_role"
 
         same = await repo.upsert_company(
-            s, CompanyCandidate(name="Acme Inc", domain="www.acme.io", source="hn",
-                                source_url="hn", signals=["hiring"])
-        )  # fmt: skip
+            s,
+            CompanyCandidate(
+                name="Acme Inc",
+                domain="www.acme.io",
+                source="hn",
+                source_url="hn",
+                signals=["hiring"],
+            ),
+        )
         assert same.id == company.id and same.signals == ["hiring"]

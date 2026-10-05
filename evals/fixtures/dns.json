@@ -1,0 +1,189 @@
+{
+ "arcadiabiotechsystems.test": [
+  "mx1.arcadiabiotechsystems.test",
+  "mx2.arcadiabiotechsystems.test"
+ ],
+ "atlasfieldworks.test": [
+  "mx1.atlasfieldworks.test",
+  "mx2.atlasfieldworks.test"
+ ],
+ "aurorapethealth.test": [
+  "mx1.aurorapethealth.test",
+  "mx2.aurorapethealth.test"
+ ],
+ "beaconfleet.test": [
+  "mx1.beaconfleet.test",
+  "mx2.beaconfleet.test"
+ ],
+ "bluebirdnonprofitcloud.test": [
+  "mx1.bluebirdnonprofitcloud.test",
+  "mx2.bluebirdnonprofitcloud.test"
+ ],
+ "brightdesk.test": [
+  "mx1.brightdesk.test",
+  "mx2.brightdesk.test"
+ ],
+ "cindergaming.test": [
+  "mx1.cindergaming.test",
+  "mx2.cindergaming.test"
+ ],
+ "cobaltfreight.test": [
+  "mx1.cobaltfreight.test",
+  "mx2.cobaltfreight.test"
+ ],
+ "copperleafbanking.test": [
+  "mx1.copperleafbanking.test",
+  "mx2.copperleafbanking.test"
+ ],
+ "corvidlabs.test": [
+  "mx1.corvidlabs.test",
+  "mx2.corvidlabs.test"
+ ],
+ "driftwoodmedia.test": [
+  "mx1.driftwoodmedia.test",
+  "mx2.driftwoodmedia.test"
+ ],
+ "evergreenpropertytech.test": [
+  "mx1.evergreenpropertytech.test",
+  "mx2.evergreenpropertytech.test"
+ ],
+ "fernwayanalytics.test": [
+  "mx1.fernwayanalytics.test",
+  "mx2.fernwayanalytics.test"
+ ],
+ "foundryhiring.test": [
+  "mx1.foundryhiring.test",
+  "mx2.foundryhiring.test"
+ ],
+ "granitemanufacturingcloud.test": [
+  "mx1.granitemanufacturingcloud.test",
+  "mx2.granitemanufacturingcloud.test"
+ ],
+ "gridlinetelecom.test": [
+  "mx1.gridlinetelecom.test",
+  "mx2.gridlinetelecom.test"
+ ],
+ "halcyontravel.test": [
+  "mx1.halcyontravel.test",
+  "mx2.halcyontravel.test"
+ ],
+ "harborlinehealth.test": [
+  "mx1.harborlinehealth.test",
+  "mx2.harborlinehealth.test"
+ ],
+ "helixsupply.test": [
+  "mx1.helixsupply.test",
+  "mx2.helixsupply.test"
+ ],
+ "ironcladfabrication.test": [
+  "."
+ ],
+ "kestrelenergy.test": [
+  "mx1.kestrelenergy.test",
+  "mx2.kestrelenergy.test"
+ ],
+ "keystoneedops.test": [
+  "mx1.keystoneedops.test",
+  "mx2.keystoneedops.test"
+ ],
+ "lanternsupport.test": [
+  "mx1.lanternsupport.test",
+  "mx2.lanternsupport.test"
+ ],
+ "latticegridsoftware.test": [
+  "mx1.latticegridsoftware.test",
+  "mx2.latticegridsoftware.test"
+ ],
+ "lumenledger.test": [
+  "mx1.lumenledger.test",
+  "mx2.lumenledger.test"
+ ],
+ "marigoldbenefits.test": [
+  "mx1.marigoldbenefits.test",
+  "mx2.marigoldbenefits.test"
+ ],
+ "meridianclinicalai.test": [
+  "mx1.meridianclinicalai.test",
+  "mx2.meridianclinicalai.test"
+ ],
+ "mosaicretailai.test": [
+  "mx1.mosaicretailai.test",
+  "mx2.mosaicretailai.test"
+ ],
+ "nimbusops.test": [
+  "mx1.nimbusops.test",
+  "mx2.nimbusops.test"
+ ],
+ "northwindrobotics.test": [
+  "mx1.northwindrobotics.test",
+  "mx2.northwindrobotics.test"
+ ],
+ "orchardlearning.test": [
+  "mx1.orchardlearning.test",
+  "mx2.orchardlearning.test"
+ ],
+ "pebbleroboticskitchen.test": [
+  "mx1.pebbleroboticskitchen.test",
+  "mx2.pebbleroboticskitchen.test"
+ ],
+ "pinecrestpayments.test": [
+  "mx1.pinecrestpayments.test",
+  "mx2.pinecrestpayments.test"
+ ],
+ "polariscompliance.test": [
+  "mx1.polariscompliance.test",
+  "mx2.polariscompliance.test"
+ ],
+ "quantumleaplogistics.test": [
+  "mx1.quantumleaplogistics.test",
+  "mx2.quantumleaplogistics.test"
+ ],
+ "quillstack.test": [
+  "mx1.quillstack.test",
+  "mx2.quillstack.test"
+ ],
+ "ridgeviewclinics.test": [
+  "mx1.ridgeviewclinics.test",
+  "mx2.ridgeviewclinics.test"
+ ],
+ "sablewoodlegal.test": [
+  "mx1.sablewoodlegal.test",
+  "mx2.sablewoodlegal.test"
+ ],
+ "saffronfoodsmarketplace.test": [
+  "mx1.saffronfoodsmarketplace.test",
+  "mx2.saffronfoodsmarketplace.test"
+ ],
+ "silverlineobservability.test": [
+  "mx1.silverlineobservability.test",
+  "mx2.silverlineobservability.test"
+ ],
+ "stonebridgeinsurance.test": [
+  "mx1.stonebridgeinsurance.test",
+  "mx2.stonebridgeinsurance.test"
+ ],
+ "summitdataco.test": [
+  "mx1.summitdataco.test",
+  "mx2.summitdataco.test"
+ ],
+ "tallyhouse.test": [
+  "mx1.tallyhouse.test",
+  "mx2.tallyhouse.test"
+ ],
+ "tidepoolsecurity.test": [
+  "mx1.tidepoolsecurity.test",
+  "mx2.tidepoolsecurity.test"
+ ],
+ "velluminsights.test": [
+  "mx1.velluminsights.test",
+  "mx2.velluminsights.test"
+ ],
+ "verdantagritech.test": [
+  "mx1.verdantagritech.test",
+  "mx2.verdantagritech.test"
+ ],
+ "willowwealth.test": [
+  "mx1.willowwealth.test",
+  "mx2.willowwealth.test"
+ ]
+}

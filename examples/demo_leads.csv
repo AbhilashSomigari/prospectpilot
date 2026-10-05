@@ -1,0 +1,19 @@
+First Name,Last Name,Title,Company,Company Website,Location,Industry,Company Headcount,Email
+Priya,Raman,VP Engineering,Lumen Ledger,https://lumenledger.test,"New York, NY",fintech,60,
+Jordan,Hale,Account Manager,Lumen Ledger,https://lumenledger.test,"New York, NY",fintech,60,jordan.hale@lumenledger.test
+Tomas,Lindqvist,CTO,Northwind Robotics,https://northwindrobotics.test,"Columbus, OH",robotics,140,
+Jordan,Hale,Account Manager,Northwind Robotics,https://northwindrobotics.test,"Columbus, OH",robotics,140,jhale@northwindrobotics.test
+Sam,Rivera,Account Manager,Northwind Robotics,https://northwindrobotics.test,"Columbus, OH",robotics,140,srivera@northwindrobotics.test
+Amara,Okafor,Founder & CEO,Quillstack,https://quillstack.test,Remote,devtools,22,
+Jordan,Hale,Account Manager,Quillstack,https://quillstack.test,Remote,devtools,22,jordan@quillstack.test
+Daniel,Mbeki,Head of Data,Harborline Health,https://harborlinehealth.test,"Boston, MA",healthtech,85,
+Elena,Petrova,VP Sales,Cobalt Freight,https://cobaltfreight.test,"Chicago, IL",logistics,110,
+Jordan,Hale,Account Manager,Cobalt Freight,https://cobaltfreight.test,"Chicago, IL",logistics,110,jhale@cobaltfreight.test
+Marcus,Chen,Head of Product,Fernway Analytics,https://fernwayanalytics.test,"San Francisco, CA",data,35,
+Jordan,Hale,Account Manager,Fernway Analytics,https://fernwayanalytics.test,"San Francisco, CA",data,35,jordan@fernwayanalytics.test
+Sam,Rivera,Account Manager,Fernway Analytics,https://fernwayanalytics.test,"San Francisco, CA",data,35,sam@fernwayanalytics.test
+Yuki,Tanaka,Head of Security,Tidepool Security,https://tidepoolsecurity.test,"Seattle, WA",security,48,
+Jordan,Hale,Account Manager,Tidepool Security,https://tidepoolsecurity.test,"Seattle, WA",security,48,jordanhale@tidepoolsecurity.test
+Jordan,Hale,Account Manager,Brightdesk,https://brightdesk.test,"Austin, TX",hrtech,70,jordan.hale@brightdesk.test
+Sam,Rivera,Account Manager,Brightdesk,https://brightdesk.test,"Austin, TX",hrtech,70,sam.rivera@brightdesk.test
+Info,Desk,General Inbox,Lumen Ledger,https://lumenledger.test,"New York, NY",fintech,60,info@lumenledger.test

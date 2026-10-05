@@ -1,0 +1,1312 @@
+{
+ "offers": {
+  "eng": {
+   "product": "Tracewell",
+   "value_props": [
+    "alert engineering teams to failing data pipelines before dashboards break",
+    "cut on-call noise by grouping related alerts"
+   ],
+   "call_to_action": "Open to a 15-minute call next week?"
+  },
+  "revenue": {
+   "product": "Ledgerly",
+   "value_props": [
+    "turn CRM and billing data into board-ready revenue reports automatically",
+    "give sales leaders a forecast they can trust"
+   ],
+   "call_to_action": "Worth a quick call to see if it fits?"
+  },
+  "people": {
+   "product": "Hirewise",
+   "value_props": [
+    "give hiring teams structured interview kits for every open role",
+    "shorten time-to-hire without lowering the bar"
+   ],
+   "call_to_action": "Would a 20-minute walkthrough be useful?"
+  }
+ },
+ "companies": [
+  {
+   "name": "Lumen Ledger",
+   "domain": "lumenledger.test",
+   "industry": "fintech",
+   "tagline": "Lumen Ledger automates month-end close for mid-market finance teams.",
+   "launch": {
+    "title": "Lumen Ledger launches AI reconciliation",
+    "date": "2026-08-19",
+    "detail": "The new reconciliation agent matches bank lines to invoices and flags exceptions for review."
+   },
+   "team_size": 60,
+   "funding": "raised a $14M Series A in April 2026",
+   "stack": [
+    "Python",
+    "Postgres",
+    "AWS"
+   ],
+   "roles": [
+    "Senior Backend Engineer",
+    "Implementation Manager"
+   ],
+   "persona": {
+    "name": "Priya Raman",
+    "title": "VP Engineering"
+   },
+   "location": "New York, NY",
+   "offer": "eng"
+  },
+  {
+   "name": "Northwind Robotics",
+   "domain": "northwindrobotics.test",
+   "industry": "robotics",
+   "tagline": "Northwind Robotics builds autonomous picking robots for third-party logistics warehouses.",
+   "launch": {
+    "title": "Northwind opens a second assembly line in Ohio",
+    "date": "2026-06-02",
+    "detail": "The Ohio line doubles production capacity for the N3 picking robot."
+   },
+   "team_size": 140,
+   "funding": null,
+   "stack": [
+    "Rust",
+    "Python",
+    "ROS",
+    "Kubernetes"
+   ],
+   "roles": [
+    "Robotics Software Engineer",
+    "Field Service Technician"
+   ],
+   "persona": {
+    "name": "Tomas Lindqvist",
+    "title": "CTO"
+   },
+   "location": "Columbus, OH",
+   "offer": "eng"
+  },
+  {
+   "name": "Quillstack",
+   "domain": "quillstack.test",
+   "industry": "devtools",
+   "tagline": "Quillstack turns API specs into always-current developer documentation.",
+   "launch": {
+    "title": "Quillstack ships versioned docs previews",
+    "date": "2026-09-10",
+    "detail": "Every pull request now gets a preview of the docs it changes, with broken-link checks."
+   },
+   "team_size": 22,
+   "funding": "raised a $4M seed round in 2025",
+   "stack": [
+    "TypeScript",
+    "Next.js",
+    "Go"
+   ],
+   "roles": [
+    "Founding Frontend Engineer"
+   ],
+   "persona": {
+    "name": "Amara Okafor",
+    "title": "Founder & CEO"
+   },
+   "location": "Remote",
+   "offer": "revenue"
+  },
+  {
+   "name": "Harborline Health",
+   "domain": "harborlinehealth.test",
+   "industry": "healthtech",
+   "tagline": "Harborline Health coordinates post-discharge care between hospitals and home-care agencies.",
+   "launch": {
+    "title": "Harborline partners with three regional hospital networks",
+    "date": "2026-07-15",
+    "detail": "The partnerships connect discharge planners to 40 home-care agencies."
+   },
+   "team_size": 85,
+   "funding": null,
+   "stack": [
+    "Python",
+    "Django",
+    "Postgres",
+    "Azure"
+   ],
+   "roles": [
+    "Product Manager, Care Coordination",
+    "Senior Data Engineer"
+   ],
+   "persona": {
+    "name": "Daniel Mbeki",
+    "title": "Head of Data"
+   },
+   "location": "Boston, MA",
+   "offer": "eng"
+  },
+  {
+   "name": "Cobalt Freight",
+   "domain": "cobaltfreight.test",
+   "industry": "logistics",
+   "tagline": "Cobalt Freight is a digital freight brokerage for refrigerated trucking.",
+   "launch": {
+    "title": "Cobalt Freight launches live temperature tracking",
+    "date": "2026-05-21",
+    "detail": "Shippers can now see live trailer temperatures and get alerts on excursions."
+   },
+   "team_size": 110,
+   "funding": "raised a $30M Series B in January 2026",
+   "stack": [
+    "Java",
+    "Kafka",
+    "Snowflake",
+    "AWS"
+   ],
+   "roles": [
+    "Data Platform Engineer",
+    "Account Executive"
+   ],
+   "persona": {
+    "name": "Elena Petrova",
+    "title": "VP Sales"
+   },
+   "location": "Chicago, IL",
+   "offer": "revenue"
+  },
+  {
+   "name": "Fernway Analytics",
+   "domain": "fernwayanalytics.test",
+   "industry": "data",
+   "tagline": "Fernway Analytics gives product teams self-serve funnel analysis on top of their warehouse.",
+   "launch": {
+    "title": "Fernway adds warehouse-native experiments",
+    "date": "2026-08-28",
+    "detail": "Teams can now analyze A/B tests directly on Snowflake and BigQuery without exporting data."
+   },
+   "team_size": 35,
+   "funding": null,
+   "stack": [
+    "Python",
+    "dbt",
+    "Snowflake",
+    "React"
+   ],
+   "roles": [
+    "Analytics Engineer",
+    "Solutions Engineer"
+   ],
+   "persona": {
+    "name": "Marcus Chen",
+    "title": "Head of Product"
+   },
+   "location": "San Francisco, CA",
+   "offer": "eng"
+  },
+  {
+   "name": "Tidepool Security",
+   "domain": "tidepoolsecurity.test",
+   "industry": "security",
+   "tagline": "Tidepool Security detects risky OAuth grants across a company's SaaS apps.",
+   "launch": {
+    "title": "Tidepool publishes its 2026 SaaS exposure report",
+    "date": "2026-09-03",
+    "detail": "The report analyzes OAuth scopes granted across customer workspaces and lists the most over-permissioned apps."
+   },
+   "team_size": 48,
+   "funding": "raised a $9M Series A in 2025",
+   "stack": [
+    "Go",
+    "Postgres",
+    "GCP",
+    "Terraform"
+   ],
+   "roles": [
+    "Detection Engineer",
+    "Security Researcher"
+   ],
+   "persona": {
+    "name": "Yuki Tanaka",
+    "title": "Head of Security"
+   },
+   "location": "Seattle, WA",
+   "offer": "eng"
+  },
+  {
+   "name": "Brightdesk",
+   "domain": "brightdesk.test",
+   "industry": "hrtech",
+   "tagline": "Brightdesk helps hourly-workforce employers fill open shifts in minutes.",
+   "launch": {
+    "title": "Brightdesk launches shift swapping for retail teams",
+    "date": "2026-04-14",
+    "detail": "Workers can trade shifts in the app with manager approval rules enforced automatically."
+   },
+   "team_size": 70,
+   "funding": null,
+   "stack": [
+    "Kotlin",
+    "Swift",
+    "Node.js",
+    "Postgres"
+   ],
+   "roles": [
+    "Senior iOS Engineer",
+    "Customer Success Manager"
+   ],
+   "persona": null,
+   "location": "Austin, TX",
+   "offer": "people"
+  },
+  {
+   "name": "Orchard Learning",
+   "domain": "orchardlearning.test",
+   "industry": "edtech",
+   "tagline": "Orchard Learning runs tutoring programs for school districts with live progress dashboards.",
+   "launch": {
+    "title": "Orchard expands to 12 new districts",
+    "date": "2026-08-05",
+    "detail": "The expansion adds high-dosage math tutoring for middle schools."
+   },
+   "team_size": 95,
+   "funding": null,
+   "stack": [
+    "Ruby on Rails",
+    "React",
+    "Postgres"
+   ],
+   "roles": [
+    "Engineering Manager",
+    "District Partnerships Lead"
+   ],
+   "persona": {
+    "name": "Grace Adeyemi",
+    "title": "COO"
+   },
+   "location": "Atlanta, GA",
+   "offer": "revenue"
+  },
+  {
+   "name": "Kestrel Energy",
+   "domain": "kestrelenergy.test",
+   "industry": "climate",
+   "tagline": "Kestrel Energy forecasts solar output for grid operators using satellite imagery.",
+   "launch": {
+    "title": "Kestrel releases 15-minute solar forecasts",
+    "date": "2026-07-29",
+    "detail": "The new forecast product predicts output at 15-minute resolution up to 48 hours ahead."
+   },
+   "team_size": 28,
+   "funding": "raised a $6M seed round in 2026",
+   "stack": [
+    "Python",
+    "PyTorch",
+    "Airflow",
+    "AWS"
+   ],
+   "roles": [
+    "Machine Learning Engineer"
+   ],
+   "persona": {
+    "name": "Sofia Alvarez",
+    "title": "CTO"
+   },
+   "location": "Denver, CO",
+   "offer": "eng"
+  },
+  {
+   "name": "Pinecrest Payments",
+   "domain": "pinecrestpayments.test",
+   "industry": "fintech",
+   "tagline": "Pinecrest Payments offers embedded invoicing and payments for vertical SaaS platforms.",
+   "launch": null,
+   "team_size": 55,
+   "funding": null,
+   "stack": [
+    "Go",
+    "Kafka",
+    "Postgres"
+   ],
+   "roles": [
+    "Payments Engineer",
+    "Partner Manager"
+   ],
+   "persona": {
+    "name": "Owen Fitzgerald",
+    "title": "VP Partnerships"
+   },
+   "location": "Remote",
+   "offer": "revenue"
+  },
+  {
+   "name": "Mosaic Retail AI",
+   "domain": "mosaicretailai.test",
+   "industry": "retail",
+   "tagline": "Mosaic Retail AI predicts store-level demand so grocers can cut waste.",
+   "launch": {
+    "title": "Mosaic cuts fresh-produce waste by 18% in pilot",
+    "date": "2026-06-18",
+    "detail": "In a 20-store pilot, a regional grocer cut fresh-produce waste by 18% using Mosaic forecasts."
+   },
+   "team_size": 42,
+   "funding": null,
+   "stack": [
+    "Python",
+    "Spark",
+    "Databricks"
+   ],
+   "roles": [
+    "Data Scientist",
+    "Retail Solutions Consultant"
+   ],
+   "persona": {
+    "name": "Hannah Kowalski",
+    "title": "Head of Data Science"
+   },
+   "location": "Minneapolis, MN",
+   "offer": "eng"
+  },
+  {
+   "name": "Sablewood Legal",
+   "domain": "sablewoodlegal.test",
+   "industry": "legaltech",
+   "tagline": "Sablewood Legal speeds up contract review for in-house legal teams.",
+   "launch": {
+    "title": "Sablewood adds clause benchmarking",
+    "date": "2023-11-02",
+    "detail": "Legal teams can compare a contract's clauses against market-standard positions."
+   },
+   "team_size": 30,
+   "funding": null,
+   "stack": [
+    "Python",
+    "FastAPI",
+    "React"
+   ],
+   "roles": [
+    "Full-Stack Engineer"
+   ],
+   "persona": {
+    "name": "Ravi Iyer",
+    "title": "Founder"
+   },
+   "location": "London, UK",
+   "offer": "revenue"
+  },
+  {
+   "name": "Gridline Telecom",
+   "domain": "gridlinetelecom.test",
+   "industry": "telecom",
+   "tagline": "Gridline Telecom provides private 5G networks for ports and factories.",
+   "launch": {
+    "title": "Gridline deploys private 5G at the Port of Tacoma",
+    "date": "2026-03-30",
+    "detail": "The deployment connects cranes and trucks across 300 acres of terminal."
+   },
+   "team_size": 210,
+   "funding": "raised a $45M Series C in 2025",
+   "stack": [
+    "C++",
+    "Go",
+    "Kubernetes"
+   ],
+   "roles": [
+    "Network Software Engineer",
+    "Solutions Architect"
+   ],
+   "persona": {
+    "name": "Laura Becker",
+    "title": "VP Engineering"
+   },
+   "location": "Tacoma, WA",
+   "offer": "eng"
+  },
+  {
+   "name": "Vellum Insights",
+   "domain": "velluminsights.test",
+   "industry": "martech",
+   "tagline": "Vellum Insights measures B2B brand awareness from ad and search signals.",
+   "launch": {
+    "title": "Vellum launches share-of-search benchmarks",
+    "date": "2026-09-15",
+    "detail": "Marketers can benchmark their share of search against up to 10 competitors."
+   },
+   "team_size": 18,
+   "funding": null,
+   "stack": [
+    "Python",
+    "ClickHouse",
+    "Vue"
+   ],
+   "roles": [
+    "Data Engineer"
+   ],
+   "persona": {
+    "name": "Chloe Martin",
+    "title": "VP Marketing"
+   },
+   "location": "Remote",
+   "offer": "revenue"
+  },
+  {
+   "name": "Atlas Fieldworks",
+   "domain": "atlasfieldworks.test",
+   "industry": "construction",
+   "tagline": "Atlas Fieldworks digitizes daily reports and safety checklists for construction crews.",
+   "launch": {
+    "title": "Atlas adds offline mode for job sites",
+    "date": "2026-05-08",
+    "detail": "Crews can complete reports without connectivity and sync when back online."
+   },
+   "team_size": 64,
+   "funding": null,
+   "stack": [
+    "React Native",
+    "Node.js",
+    "MongoDB"
+   ],
+   "roles": [
+    "Mobile Engineer",
+    "Implementation Specialist"
+   ],
+   "persona": {
+    "name": "Jorge Ramirez",
+    "title": "Head of Customer Success"
+   },
+   "location": "Phoenix, AZ",
+   "offer": "revenue"
+  },
+  {
+   "name": "Corvid Labs",
+   "domain": "corvidlabs.test",
+   "industry": "ai",
+   "tagline": "Corvid Labs builds evaluation tooling for teams shipping LLM features.",
+   "launch": {
+    "title": "Corvid releases open-source eval runner",
+    "date": "2026-09-22",
+    "detail": "The runner executes YAML test suites against prompts and models in CI."
+   },
+   "team_size": 12,
+   "funding": "raised a $3M pre-seed round in 2026",
+   "stack": [
+    "Python",
+    "TypeScript",
+    "Postgres"
+   ],
+   "roles": [
+    "Founding Engineer"
+   ],
+   "persona": {
+    "name": "Nina Volkova",
+    "title": "Founder & CEO"
+   },
+   "location": "Berlin, DE",
+   "offer": "revenue"
+  },
+  {
+   "name": "Ridgeview Clinics",
+   "domain": "ridgeviewclinics.test",
+   "industry": "healthcare",
+   "tagline": "Ridgeview Clinics operates 25 urgent-care clinics across Colorado.",
+   "launch": {
+    "title": "Ridgeview opens a clinic in Fort Collins",
+    "date": "2026-08-12",
+    "detail": "The Fort Collins clinic is the network's 25th location."
+   },
+   "team_size": 900,
+   "funding": null,
+   "stack": [],
+   "roles": [
+    "Clinic Operations Manager",
+    "IT Systems Analyst"
+   ],
+   "persona": {
+    "name": "Mark Henderson",
+    "title": "Director of IT"
+   },
+   "location": "Denver, CO",
+   "offer": "eng"
+  },
+  {
+   "name": "Halcyon Travel",
+   "domain": "halcyontravel.test",
+   "industry": "travel",
+   "tagline": "Halcyon Travel manages corporate travel for companies with distributed teams.",
+   "launch": {
+    "title": "Halcyon launches carbon budgets for trips",
+    "date": "2026-06-25",
+    "detail": "Finance teams can set carbon budgets per team and see the footprint of each booking."
+   },
+   "team_size": 75,
+   "funding": null,
+   "stack": [
+    "Python",
+    "Django",
+    "React",
+    "AWS"
+   ],
+   "roles": [
+    "Senior Backend Engineer",
+    "Travel Operations Lead"
+   ],
+   "persona": {
+    "name": "Isabel Moreau",
+    "title": "VP Operations"
+   },
+   "location": "Remote",
+   "offer": "revenue"
+  },
+  {
+   "name": "Stonebridge Insurance",
+   "domain": "stonebridgeinsurance.test",
+   "industry": "insurtech",
+   "tagline": "Stonebridge Insurance underwrites cyber insurance for small businesses using automated scans.",
+   "launch": {
+    "title": "Stonebridge raises Series B to expand to Canada",
+    "date": "2026-02-11",
+    "detail": "The round will fund the Canadian launch and new underwriting models."
+   },
+   "team_size": 120,
+   "funding": "raised a $38M Series B in February 2026",
+   "stack": [
+    "Python",
+    "Go",
+    "Snowflake"
+   ],
+   "roles": [
+    "Underwriting Data Scientist",
+    "Broker Partnerships Manager"
+   ],
+   "persona": {
+    "name": "Kenji Watanabe",
+    "title": "Chief Underwriting Officer"
+   },
+   "location": "Toronto, ON",
+   "offer": "eng"
+  },
+  {
+   "name": "Pebble Robotics Kitchen",
+   "domain": "pebbleroboticskitchen.test",
+   "industry": "foodtech",
+   "tagline": "Pebble Robotics Kitchen automates bowl assembly lines for fast-casual restaurants.",
+   "launch": {
+    "title": "Pebble installs its 50th kitchen robot",
+    "date": "2026-07-07",
+    "detail": "The milestone install happened at a salad chain in Los Angeles."
+   },
+   "team_size": 80,
+   "funding": null,
+   "stack": [
+    "C++",
+    "Python",
+    "ROS"
+   ],
+   "roles": [
+    "Controls Engineer",
+    "Field Deployment Lead"
+   ],
+   "persona": {
+    "name": "Ahmed Hassan",
+    "title": "VP Engineering"
+   },
+   "location": "Los Angeles, CA",
+   "offer": "eng"
+  },
+  {
+   "name": "Lattice Grid Software",
+   "domain": "latticegridsoftware.test",
+   "industry": "devtools",
+   "tagline": "Lattice Grid Software offers feature flags with built-in experiment analysis.",
+   "launch": {
+    "title": "Lattice ships flag cleanup suggestions",
+    "date": "2026-08-21",
+    "detail": "The tool finds stale flags in the codebase and opens pull requests to remove them."
+   },
+   "team_size": 40,
+   "funding": "raised a $10M Series A in 2025",
+   "stack": [
+    "Go",
+    "TypeScript",
+    "Postgres",
+    "Kubernetes"
+   ],
+   "roles": [
+    "Senior Platform Engineer",
+    "Developer Advocate"
+   ],
+   "persona": {
+    "name": "Ben Carter",
+    "title": "Engineering Manager"
+   },
+   "location": "Remote",
+   "offer": "eng"
+  },
+  {
+   "name": "Marigold Benefits",
+   "domain": "marigoldbenefits.test",
+   "industry": "hrtech",
+   "tagline": "Marigold Benefits administers benefits for companies with 50 to 500 employees.",
+   "launch": null,
+   "team_size": 90,
+   "funding": null,
+   "stack": [
+    "Ruby on Rails",
+    "Postgres"
+   ],
+   "roles": [
+    "Senior Rails Engineer",
+    "Benefits Operations Specialist"
+   ],
+   "persona": {
+    "name": "Fatima Noor",
+    "title": "Head of People"
+   },
+   "location": "Nashville, TN",
+   "offer": "people"
+  },
+  {
+   "name": "Summit Data Co",
+   "domain": "summitdataco.test",
+   "industry": "data",
+   "tagline": "Summit Data Co cleans and deduplicates CRM data for revenue operations teams.",
+   "launch": {
+    "title": "Summit adds HubSpot two-way sync",
+    "date": "2026-09-01",
+    "detail": "Fixes made in Summit now write back to HubSpot automatically."
+   },
+   "team_size": 26,
+   "funding": null,
+   "stack": [
+    "Python",
+    "Airflow",
+    "Postgres"
+   ],
+   "roles": [
+    "Backend Engineer",
+    "RevOps Consultant"
+   ],
+   "persona": {
+    "name": "Liam O'Connor",
+    "title": "Director of RevOps"
+   },
+   "location": "Dublin, IE",
+   "offer": "eng"
+  },
+  {
+   "name": "Arcadia Biotech Systems",
+   "domain": "arcadiabiotechsystems.test",
+   "industry": "biotech",
+   "tagline": "Arcadia Biotech Systems schedules and tracks lab instrument runs for biotech R&D teams.",
+   "launch": {
+    "title": "Arcadia integrates with 30 lab instruments",
+    "date": "2026-05-27",
+    "detail": "Labs can queue runs on plate readers, sequencers and liquid handlers from one schedule."
+   },
+   "team_size": 33,
+   "funding": null,
+   "stack": [
+    "Python",
+    "Vue",
+    "Postgres"
+   ],
+   "roles": [
+    "Lab Integrations Engineer"
+   ],
+   "persona": {
+    "name": "Dr. Mei Lin",
+    "title": "Head of Lab Operations"
+   },
+   "location": "San Diego, CA",
+   "offer": "eng"
+  },
+  {
+   "name": "Tallyhouse",
+   "domain": "tallyhouse.test",
+   "industry": "fintech",
+   "tagline": "Tallyhouse automates sales-tax filing for e-commerce brands.",
+   "launch": {
+    "title": "Tallyhouse adds automatic filing in 20 more states",
+    "date": "2026-07-02",
+    "detail": "Brands can now file automatically in 45 states."
+   },
+   "team_size": 44,
+   "funding": "raised a $7M Series A in 2025",
+   "stack": [
+    "TypeScript",
+    "Node.js",
+    "Postgres"
+   ],
+   "roles": [
+    "Tax Engineer",
+    "Customer Support Lead"
+   ],
+   "persona": {
+    "name": "Rachel Green",
+    "title": "CFO"
+   },
+   "location": "Remote",
+   "offer": "revenue"
+  },
+  {
+   "name": "Beacon Fleet",
+   "domain": "beaconfleet.test",
+   "industry": "logistics",
+   "tagline": "Beacon Fleet provides EV charging management for delivery fleets.",
+   "launch": {
+    "title": "Beacon launches smart charging schedules",
+    "date": "2026-08-30",
+    "detail": "Schedules shift charging to off-peak hours based on next-day routes."
+   },
+   "team_size": 58,
+   "funding": null,
+   "stack": [
+    "Python",
+    "Kafka",
+    "TimescaleDB",
+    "AWS"
+   ],
+   "roles": [
+    "IoT Engineer",
+    "Fleet Solutions Engineer"
+   ],
+   "persona": {
+    "name": "Victor Nguyen",
+    "title": "CTO"
+   },
+   "location": "Oakland, CA",
+   "offer": "eng"
+  },
+  {
+   "name": "Lantern Support",
+   "domain": "lanternsupport.test",
+   "industry": "saas",
+   "tagline": "Lantern Support is a help desk for SaaS companies that routes tickets with AI triage.",
+   "launch": {
+    "title": "Lantern adds AI reply drafts",
+    "date": "2026-09-18",
+    "detail": "Agents get suggested replies grounded in the company's help center."
+   },
+   "team_size": 38,
+   "funding": null,
+   "stack": [
+    "Python",
+    "React",
+    "Postgres"
+   ],
+   "roles": [
+    "ML Engineer",
+    "Support Operations Specialist"
+   ],
+   "persona": {
+    "name": "Olivia Brooks",
+    "title": "VP Customer Experience"
+   },
+   "location": "Remote",
+   "offer": "revenue"
+  },
+  {
+   "name": "Granite Manufacturing Cloud",
+   "domain": "granitemanufacturingcloud.test",
+   "industry": "manufacturing",
+   "tagline": "Granite Manufacturing Cloud tracks machine uptime and OEE for small factories.",
+   "launch": {
+    "title": "Granite reaches 1,000 connected machines",
+    "date": "2026-04-22",
+    "detail": "Customers now stream data from over 1,000 machines across 60 plants."
+   },
+   "team_size": 50,
+   "funding": null,
+   "stack": [
+    "Go",
+    "InfluxDB",
+    "React"
+   ],
+   "roles": [
+    "Embedded Software Engineer",
+    "Customer Success Engineer"
+   ],
+   "persona": {
+    "name": "Peter Novak",
+    "title": "Head of Engineering"
+   },
+   "location": "Detroit, MI",
+   "offer": "eng"
+  },
+  {
+   "name": "Willow Wealth",
+   "domain": "willowwealth.test",
+   "industry": "fintech",
+   "tagline": "Willow Wealth offers automated tax-loss harvesting for independent advisors.",
+   "launch": null,
+   "team_size": 25,
+   "funding": "raised a $5M seed round in 2025",
+   "stack": [
+    "Python",
+    "Postgres",
+    "AWS"
+   ],
+   "roles": [],
+   "persona": {
+    "name": "Sarah Kim",
+    "title": "Founder & CEO"
+   },
+   "location": "Remote",
+   "offer": "revenue"
+  },
+  {
+   "name": "Nimbus Ops",
+   "domain": "nimbusops.test",
+   "industry": "devtools",
+   "tagline": "Nimbus Ops gives platform teams a self-serve portal for cloud environments.",
+   "launch": {
+    "title": "Nimbus adds cost guardrails to environment templates",
+    "date": "2026-07-24",
+    "detail": "Templates can now cap monthly spend and auto-expire idle environments."
+   },
+   "team_size": 31,
+   "funding": null,
+   "stack": [
+    "Go",
+    "Terraform",
+    "Kubernetes",
+    "React"
+   ],
+   "roles": [
+    "Platform Engineer"
+   ],
+   "persona": {
+    "name": "Ethan Wright",
+    "title": "Head of Platform"
+   },
+   "location": "Remote",
+   "offer": "eng"
+  },
+  {
+   "name": "Saffron Foods Marketplace",
+   "domain": "saffronfoodsmarketplace.test",
+   "industry": "marketplace",
+   "tagline": "Saffron Foods Marketplace connects independent restaurants with local farms.",
+   "launch": {
+    "title": "Saffron expands to Portland and Seattle",
+    "date": "2026-06-10",
+    "detail": "Restaurants in both cities can now order directly from 120 nearby farms."
+   },
+   "team_size": 46,
+   "funding": null,
+   "stack": [
+    "Elixir",
+    "Phoenix",
+    "Postgres"
+   ],
+   "roles": [
+    "Backend Engineer",
+    "City Launch Manager"
+   ],
+   "persona": {
+    "name": "Diego Fernandez",
+    "title": "Head of Growth"
+   },
+   "location": "Portland, OR",
+   "offer": "revenue"
+  },
+  {
+   "name": "Evergreen Property Tech",
+   "domain": "evergreenpropertytech.test",
+   "industry": "proptech",
+   "tagline": "Evergreen Property Tech automates maintenance requests for multifamily operators.",
+   "launch": {
+    "title": "Evergreen launches vendor scheduling",
+    "date": "2026-03-18",
+    "detail": "Maintenance teams can book vendors directly from a work order."
+   },
+   "team_size": 67,
+   "funding": null,
+   "stack": [
+    "TypeScript",
+    "NestJS",
+    "Postgres"
+   ],
+   "roles": [
+    "Senior Full-Stack Engineer",
+    "Customer Onboarding Manager"
+   ],
+   "persona": {
+    "name": "Hassan Ali",
+    "title": "VP Product"
+   },
+   "location": "Dallas, TX",
+   "offer": "eng"
+  },
+  {
+   "name": "Polaris Compliance",
+   "domain": "polariscompliance.test",
+   "industry": "regtech",
+   "tagline": "Polaris Compliance automates SOC 2 and ISO 27001 evidence collection.",
+   "launch": {
+    "title": "Polaris adds continuous control monitoring",
+    "date": "2026-09-08",
+    "detail": "Controls are now re-tested daily with alerts when evidence goes stale."
+   },
+   "team_size": 52,
+   "funding": "raised a $12M Series A in 2026",
+   "stack": [
+    "Python",
+    "Go",
+    "AWS"
+   ],
+   "roles": [
+    "Security Engineer",
+    "Compliance Success Manager"
+   ],
+   "persona": {
+    "name": "Anna Schmidt",
+    "title": "Head of Compliance"
+   },
+   "location": "Remote",
+   "offer": "people"
+  },
+  {
+   "name": "Cinder Gaming",
+   "domain": "cindergaming.test",
+   "industry": "gaming",
+   "tagline": "Cinder Gaming makes live-ops tooling for mobile game studios.",
+   "launch": {
+    "title": "Cinder launches player segmentation",
+    "date": "2025-12-04",
+    "detail": "Studios can target in-game offers to player segments defined by behavior."
+   },
+   "team_size": 27,
+   "funding": null,
+   "stack": [
+    "C#",
+    "Go",
+    "ClickHouse"
+   ],
+   "roles": [
+    "Backend Engineer",
+    "Developer Relations Lead"
+   ],
+   "persona": {
+    "name": "Lucas Silva",
+    "title": "CTO"
+   },
+   "location": "Montreal, QC",
+   "offer": "eng"
+  },
+  {
+   "name": "Meridian Clinical AI",
+   "domain": "meridianclinicalai.test",
+   "industry": "healthtech",
+   "tagline": "Meridian Clinical AI drafts clinical notes from doctor-patient conversations.",
+   "launch": {
+    "title": "Meridian publishes accuracy study with two health systems",
+    "date": "2026-08-08",
+    "detail": "The study compared AI-drafted notes with physician-written notes across 2,400 visits."
+   },
+   "team_size": 61,
+   "funding": "raised a $20M Series A in 2026",
+   "stack": [
+    "Python",
+    "PyTorch",
+    "Azure"
+   ],
+   "roles": [
+    "Clinical NLP Engineer",
+    "Implementation Manager"
+   ],
+   "persona": {
+    "name": "Dr. Aisha Bello",
+    "title": "Chief Medical Officer"
+   },
+   "location": "Philadelphia, PA",
+   "offer": "revenue"
+  },
+  {
+   "name": "Foundry Hiring",
+   "domain": "foundryhiring.test",
+   "industry": "hrtech",
+   "tagline": "Foundry Hiring runs structured technical interviews for engineering teams.",
+   "launch": {
+    "title": "Foundry adds live pair-programming interviews",
+    "date": "2026-09-12",
+    "detail": "Interviewers can run a shared coding session with rubric-based scoring."
+   },
+   "team_size": 34,
+   "funding": null,
+   "stack": [
+    "TypeScript",
+    "React",
+    "Go"
+   ],
+   "roles": [
+    "Senior Frontend Engineer",
+    "Talent Partner"
+   ],
+   "persona": {
+    "name": "Chris Johnson",
+    "title": "Head of Talent"
+   },
+   "location": "Remote",
+   "offer": "people"
+  },
+  {
+   "name": "Driftwood Media",
+   "domain": "driftwoodmedia.test",
+   "industry": "media",
+   "tagline": "Driftwood Media produces branded podcasts for B2B companies.",
+   "launch": {
+    "title": "Driftwood launches podcast analytics dashboard",
+    "date": "2026-05-15",
+    "detail": "Clients can see listener retention and downloads by episode."
+   },
+   "team_size": 20,
+   "funding": null,
+   "stack": [],
+   "roles": [
+    "Audio Producer",
+    "Account Manager"
+   ],
+   "persona": {
+    "name": "Emma Davis",
+    "title": "Founder"
+   },
+   "location": "Remote",
+   "offer": "revenue"
+  },
+  {
+   "name": "Quantum Leap Logistics",
+   "domain": "quantumleaplogistics.test",
+   "industry": "logistics",
+   "tagline": "Quantum Leap Logistics optimizes last-mile delivery routes for grocery chains.",
+   "launch": {
+    "title": "Quantum Leap cuts delivery miles 12% for a grocery chain",
+    "date": "2026-07-19",
+    "detail": "A 90-day rollout reduced total delivery miles by 12% across 30 stores."
+   },
+   "team_size": 73,
+   "funding": null,
+   "stack": [
+    "Python",
+    "OR-Tools",
+    "Kubernetes"
+   ],
+   "roles": [
+    "Optimization Engineer",
+    "Solutions Consultant"
+   ],
+   "persona": {
+    "name": "Raj Patel",
+    "title": "VP Engineering"
+   },
+   "location": "Remote",
+   "offer": "eng"
+  },
+  {
+   "name": "Bluebird Nonprofit Cloud",
+   "domain": "bluebirdnonprofitcloud.test",
+   "industry": "nonprofit",
+   "tagline": "Bluebird Nonprofit Cloud is a donor CRM built for small nonprofits.",
+   "launch": {
+    "title": "Bluebird adds recurring-gift reminders",
+    "date": "2026-08-16",
+    "detail": "Nonprofits can send automated reminders before a recurring gift renews."
+   },
+   "team_size": 15,
+   "funding": null,
+   "stack": [
+    "PHP",
+    "Laravel",
+    "MySQL"
+   ],
+   "roles": [
+    "Full-Stack Developer"
+   ],
+   "persona": {
+    "name": "Megan Clarke",
+    "title": "Executive Director"
+   },
+   "location": "Remote",
+   "offer": "eng"
+  },
+  {
+   "name": "Ironclad Fabrication",
+   "domain": "ironcladfabrication.test",
+   "industry": "manufacturing",
+   "tagline": "Ironclad Fabrication makes custom steel components for commercial construction.",
+   "launch": null,
+   "team_size": 180,
+   "funding": null,
+   "stack": [],
+   "roles": [
+    "Welder",
+    "Estimator"
+   ],
+   "persona": {
+    "name": "Frank Russo",
+    "title": "Operations Manager"
+   },
+   "location": "Pittsburgh, PA",
+   "offer": "revenue"
+  },
+  {
+   "name": "Silverline Observability",
+   "domain": "silverlineobservability.test",
+   "industry": "devtools",
+   "tagline": "Silverline Observability offers low-cost log search on object storage.",
+   "launch": {
+    "title": "Silverline cuts log storage costs with tiering",
+    "date": "2026-09-20",
+    "detail": "Older logs move to cheaper storage tiers automatically while staying searchable."
+   },
+   "team_size": 29,
+   "funding": "raised a $8M seed round in 2026",
+   "stack": [
+    "Rust",
+    "Go",
+    "S3",
+    "Kubernetes"
+   ],
+   "roles": [
+    "Senior Rust Engineer",
+    "Solutions Engineer"
+   ],
+   "persona": {
+    "name": "Ivan Petrov",
+    "title": "Head of Engineering"
+   },
+   "location": "Remote",
+   "offer": "eng"
+  },
+  {
+   "name": "Copperleaf Banking",
+   "domain": "copperleafbanking.test",
+   "industry": "fintech",
+   "tagline": "Copperleaf Banking provides banking-as-a-service for credit unions.",
+   "launch": {
+    "title": "Copperleaf signs its tenth credit union",
+    "date": "2026-06-30",
+    "detail": "The new partner credit union will launch digital accounts in 2027."
+   },
+   "team_size": 130,
+   "funding": null,
+   "stack": [
+    "Java",
+    "Kotlin",
+    "Postgres"
+   ],
+   "roles": [
+    "Core Banking Engineer",
+    "Partner Success Manager"
+   ],
+   "persona": {
+    "name": "Thomas Weber",
+    "title": "CTO"
+   },
+   "location": "Charlotte, NC",
+   "offer": "eng"
+  },
+  {
+   "name": "Aurora Pet Health",
+   "domain": "aurorapethealth.test",
+   "industry": "healthtech",
+   "tagline": "Aurora Pet Health runs telehealth visits for veterinary clinics.",
+   "launch": {
+    "title": "Aurora launches after-hours vet triage",
+    "date": "2026-04-03",
+    "detail": "Pet owners can reach a licensed vet by video between 6pm and 8am."
+   },
+   "team_size": 47,
+   "funding": null,
+   "stack": [
+    "TypeScript",
+    "React Native",
+    "Postgres"
+   ],
+   "roles": [
+    "Mobile Engineer",
+    "Clinic Partnerships Manager"
+   ],
+   "persona": {
+    "name": "Jessica Lee",
+    "title": "Head of Partnerships"
+   },
+   "location": "Remote",
+   "offer": "revenue"
+  },
+  {
+   "name": "Keystone Ed Ops",
+   "domain": "keystoneedops.test",
+   "industry": "edtech",
+   "tagline": "Keystone Ed Ops automates class scheduling for universities.",
+   "launch": {
+    "title": "Keystone wins contract with a 40,000-student university",
+    "date": "2026-02-25",
+    "detail": "The university will use Keystone to schedule 9,000 course sections per term."
+   },
+   "team_size": 39,
+   "funding": null,
+   "stack": [
+    "Python",
+    "Postgres",
+    "React"
+   ],
+   "roles": [
+    "Optimization Engineer",
+    "Implementation Lead"
+   ],
+   "persona": {
+    "name": "Alan Turner",
+    "title": "VP Product"
+   },
+   "location": "Remote",
+   "offer": "eng"
+  },
+  {
+   "name": "Helix Supply",
+   "domain": "helixsupply.test",
+   "industry": "retail",
+   "tagline": "Helix Supply manages purchase orders and supplier onboarding for retail chains.",
+   "launch": {
+    "title": "Helix adds EDI onboarding in one day",
+    "date": "2026-07-11",
+    "detail": "New suppliers can be connected over EDI within one business day."
+   },
+   "team_size": 57,
+   "funding": null,
+   "stack": [
+    "Java",
+    "Spring",
+    "Postgres"
+   ],
+   "roles": [
+    "Integration Engineer",
+    "Supplier Onboarding Specialist"
+   ],
+   "persona": null,
+   "location": "Remote",
+   "offer": "people"
+  },
+  {
+   "name": "Verdant Agritech",
+   "domain": "verdantagritech.test",
+   "industry": "agtech",
+   "tagline": "Verdant Agritech monitors soil moisture for orchards with low-power sensors.",
+   "launch": {
+    "title": "Verdant launches irrigation recommendations",
+    "date": "2026-06-06",
+    "detail": "Growers get daily irrigation recommendations per orchard block."
+   },
+   "team_size": 24,
+   "funding": null,
+   "stack": [
+    "C",
+    "Python",
+    "AWS IoT"
+   ],
+   "roles": [
+    "Firmware Engineer",
+    "Agronomy Lead"
+   ],
+   "persona": {
+    "name": "Carlos Mendes",
+    "title": "CEO"
+   },
+   "location": "Fresno, CA",
+   "offer": "revenue"
+  }
+ ]
+}
