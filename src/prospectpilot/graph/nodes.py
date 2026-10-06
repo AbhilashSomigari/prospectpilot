@@ -184,7 +184,8 @@ def build_nodes(deps: PipelineDeps) -> dict[str, NodeFn]:
                 # reuse facts only if they are recent AND came from the same extractor, so a
                 # real-model run never silently reuses facts extracted by another model
                 fresh = (
-                    company.enriched_at is not None
+                    not deps.reenrich
+                    and company.enriched_at is not None
                     and datetime.now(UTC) - company.enriched_at < timedelta(days=7)
                     and (company.extra or {}).get("enriched_by") == extractor
                 )

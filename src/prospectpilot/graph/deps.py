@@ -23,6 +23,7 @@ class PipelineDeps:
     resolver: MXResolver
     mailer: Mailer | None
     concurrency: int = 4
+    reenrich: bool = False  # ignore the fact cache (comparable latency across runs)
 
     async def aclose(self) -> None:
         await self.fetcher.aclose()
@@ -61,4 +62,5 @@ def build_deps(
         resolver=resolver,
         mailer=mailer,
         concurrency=int(options.get("concurrency", 4)),
+        reenrich=bool(options.get("reenrich", False)),
     )

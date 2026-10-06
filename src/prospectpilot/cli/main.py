@@ -399,6 +399,7 @@ def demo(
     icp_file: Path = REPO_ROOT / "examples" / "demo_icp.yaml",
     inline: Annotated[bool, typer.Option(help="run in this process instead of the worker")] = False,
     fast_forward: Annotated[bool, typer.Option(help="also send the follow-ups now")] = True,
+    reenrich: Annotated[bool, typer.Option(help="re-extract facts even if cached")] = False,
 ) -> None:
     """Full campaign on the fictional fixture companies: offline, no API keys needed."""
     from prospectpilot.agents.mailer import Mailer
@@ -414,7 +415,8 @@ def demo(
     async def go() -> tuple[Run, int]:
         async with session_scope() as s:
             campaign_id = (await cmp.create_campaign(s, icp)).id
-        run_id = await _execute(campaign_id, DEMO_OPTIONS, inline=inline, i_understand=False)
+        options = {**DEMO_OPTIONS, "reenrich": reenrich}
+        run_id = await _execute(campaign_id, options, inline=inline, i_understand=False)
         followups = 0
         if fast_forward:
             later = datetime.now(UTC) + timedelta(days=max(settings.followup_days) + 1)
