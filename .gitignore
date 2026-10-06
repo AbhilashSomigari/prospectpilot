@@ -34,3 +34,6 @@ infra/terraform/terraform.tfvars
 .DS_Store
 .idea/
 .vscode/
+
+# local Claude Code config/skills (kept out of the public repo)
+.claude/
