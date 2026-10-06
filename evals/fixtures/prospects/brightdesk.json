@@ -1,0 +1,82 @@
+{
+ "id": "brightdesk",
+ "company": {
+  "name": "Brightdesk",
+  "domain": "brightdesk.test",
+  "description": "Brightdesk helps hourly-workforce employers fill open shifts in minutes.",
+  "industry": "hrtech"
+ },
+ "person": null,
+ "offer": {
+  "product": "Hirewise",
+  "value_props": [
+   "give hiring teams structured interview kits for every open role",
+   "shorten time-to-hire without lowering the bar"
+  ],
+  "call_to_action": "Would a 20-minute walkthrough be useful?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Hirewise"
+ },
+ "facts": [
+  {
+   "id": 801,
+   "kind": "product",
+   "text": "Brightdesk helps hourly-workforce employers fill open shifts in minutes.",
+   "source_url": "https://brightdesk.test/",
+   "published_at": null
+  },
+  {
+   "id": 802,
+   "kind": "team_size",
+   "text": "Today we are a team of 70 people.",
+   "source_url": "https://brightdesk.test/about",
+   "published_at": null
+  },
+  {
+   "id": 803,
+   "kind": "tech_stack",
+   "text": "Our stack includes Kotlin, Swift, Node.js, Postgres.",
+   "source_url": "https://brightdesk.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 804,
+   "kind": "open_role",
+   "text": "Senior iOS Engineer",
+   "source_url": "https://brightdesk.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 805,
+   "kind": "open_role",
+   "text": "Customer Success Manager",
+   "source_url": "https://brightdesk.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 806,
+   "kind": "news",
+   "text": "Brightdesk launches shift swapping for retail teams 2026-04-14",
+   "source_url": "https://brightdesk.test/blog/brightdesk-launches-shift-swapping-for-retail-teams",
+   "published_at": "2026-04-14"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://brightdesk.test/",
+   "https://brightdesk.test/about",
+   "https://brightdesk.test/careers",
+   "https://brightdesk.test/blog",
+   "https://brightdesk.test/blog/brightdesk-launches-shift-swapping-for-retail-teams"
+  ],
+  "input_tokens": 627,
+  "output_tokens": 270,
+  "seconds": 47.09,
+  "built_at": "2026-10-05T23:27:57+00:00"
+ }
+}

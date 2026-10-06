@@ -1,0 +1,85 @@
+{
+ "id": "atlasfieldworks",
+ "company": {
+  "name": "Atlas Fieldworks",
+  "domain": "atlasfieldworks.test",
+  "description": "Atlas Fieldworks digitizes daily reports and safety checklists for construction crews.",
+  "industry": "construction"
+ },
+ "person": {
+  "name": "Jorge Ramirez",
+  "title": "Head of Customer Success"
+ },
+ "offer": {
+  "product": "Ledgerly",
+  "value_props": [
+   "turn CRM and billing data into board-ready revenue reports automatically",
+   "give sales leaders a forecast they can trust"
+  ],
+  "call_to_action": "Worth a quick call to see if it fits?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Ledgerly"
+ },
+ "facts": [
+  {
+   "id": 1601,
+   "kind": "product",
+   "text": "Atlas Fieldworks digitizes daily reports and safety checklists for construction crews.",
+   "source_url": "https://atlasfieldworks.test/",
+   "published_at": null
+  },
+  {
+   "id": 1602,
+   "kind": "team_size",
+   "text": "Today we are a team of 64 people.",
+   "source_url": "https://atlasfieldworks.test/about",
+   "published_at": null
+  },
+  {
+   "id": 1603,
+   "kind": "tech_stack",
+   "text": "Our stack includes React Native, Node.js, MongoDB.",
+   "source_url": "https://atlasfieldworks.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 1604,
+   "kind": "open_role",
+   "text": "Mobile Engineer, Join the team in Phoenix, AZ.",
+   "source_url": "https://atlasfieldworks.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 1605,
+   "kind": "open_role",
+   "text": "Implementation Specialist, Join the team in Phoenix, AZ.",
+   "source_url": "https://atlasfieldworks.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 1606,
+   "kind": "news",
+   "text": "Atlas adds offline mode for job sites, Crews can complete reports without connectivity and sync when back online.",
+   "source_url": "https://atlasfieldworks.test/blog/atlas-adds-offline-mode-for-job-sites",
+   "published_at": "2026-05-08"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://atlasfieldworks.test/",
+   "https://atlasfieldworks.test/about",
+   "https://atlasfieldworks.test/careers",
+   "https://atlasfieldworks.test/blog",
+   "https://atlasfieldworks.test/blog/atlas-adds-offline-mode-for-job-sites"
+  ],
+  "input_tokens": 642,
+  "output_tokens": 295,
+  "seconds": 42.41,
+  "built_at": "2026-10-05T23:29:39+00:00"
+ }
+}

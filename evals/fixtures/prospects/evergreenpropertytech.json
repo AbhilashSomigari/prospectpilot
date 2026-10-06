@@ -1,0 +1,85 @@
+{
+ "id": "evergreenpropertytech",
+ "company": {
+  "name": "Evergreen Property Tech",
+  "domain": "evergreenpropertytech.test",
+  "description": "Evergreen Property Tech automates maintenance requests for multifamily operators.",
+  "industry": "proptech"
+ },
+ "person": {
+  "name": "Hassan Ali",
+  "title": "VP Product"
+ },
+ "offer": {
+  "product": "Tracewell",
+  "value_props": [
+   "alert engineering teams to failing data pipelines before dashboards break",
+   "cut on-call noise by grouping related alerts"
+  ],
+  "call_to_action": "Open to a 15-minute call next week?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Tracewell"
+ },
+ "facts": [
+  {
+   "id": 3301,
+   "kind": "product",
+   "text": "Evergreen Property Tech automates maintenance requests for multifamily operators.",
+   "source_url": "https://evergreenpropertytech.test/",
+   "published_at": null
+  },
+  {
+   "id": 3302,
+   "kind": "team_size",
+   "text": "Evergreen Property Tech is a team of 67 people.",
+   "source_url": "https://evergreenpropertytech.test/about",
+   "published_at": null
+  },
+  {
+   "id": 3303,
+   "kind": "tech_stack",
+   "text": "Evergreen Property Tech's stack includes TypeScript, NestJS, Postgres.",
+   "source_url": "https://evergreenpropertytech.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 3304,
+   "kind": "open_role",
+   "text": "Senior Full-Stack Engineer position open in Dallas, TX.",
+   "source_url": "https://evergreenpropertytech.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 3305,
+   "kind": "open_role",
+   "text": "Customer Onboarding Manager position open in Dallas, TX.",
+   "source_url": "https://evergreenpropertytech.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 3306,
+   "kind": "news",
+   "text": "Evergreen Property Tech launches vendor scheduling.",
+   "source_url": "https://evergreenpropertytech.test/blog/evergreen-launches-vendor-scheduling",
+   "published_at": "2026-03-18"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://evergreenpropertytech.test/",
+   "https://evergreenpropertytech.test/about",
+   "https://evergreenpropertytech.test/careers",
+   "https://evergreenpropertytech.test/blog",
+   "https://evergreenpropertytech.test/blog/evergreen-launches-vendor-scheduling"
+  ],
+  "input_tokens": 657,
+  "output_tokens": 243,
+  "seconds": 37.92,
+  "built_at": "2026-10-05T23:33:28+00:00"
+ }
+}

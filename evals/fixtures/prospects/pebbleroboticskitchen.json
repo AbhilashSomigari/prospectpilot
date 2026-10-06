@@ -1,0 +1,78 @@
+{
+ "id": "pebbleroboticskitchen",
+ "company": {
+  "name": "Pebble Robotics Kitchen",
+  "domain": "pebbleroboticskitchen.test",
+  "description": "Pebble Robotics Kitchen automates bowl assembly lines for fast-casual restaurants.",
+  "industry": "foodtech"
+ },
+ "person": {
+  "name": "Ahmed Hassan",
+  "title": "VP Engineering"
+ },
+ "offer": {
+  "product": "Tracewell",
+  "value_props": [
+   "alert engineering teams to failing data pipelines before dashboards break",
+   "cut on-call noise by grouping related alerts"
+  ],
+  "call_to_action": "Open to a 15-minute call next week?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Tracewell"
+ },
+ "facts": [
+  {
+   "id": 2101,
+   "kind": "product",
+   "text": "Pebble Robotics Kitchen automates bowl assembly lines for fast-casual restaurants.",
+   "source_url": "https://pebbleroboticskitchen.test/",
+   "published_at": null
+  },
+  {
+   "id": 2102,
+   "kind": "team_size",
+   "text": "Today we are a team of 80 people.",
+   "source_url": "https://pebbleroboticskitchen.test/about",
+   "published_at": null
+  },
+  {
+   "id": 2103,
+   "kind": "tech_stack",
+   "text": "Our stack includes C++, Python, ROS.",
+   "source_url": "https://pebbleroboticskitchen.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 2104,
+   "kind": "open_role",
+   "text": "Controls Engineer, Field Deployment Lead, join the team in Los Angeles, CA.",
+   "source_url": "https://pebbleroboticskitchen.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 2105,
+   "kind": "news",
+   "text": "Pebble installs its 50th kitchen robot.",
+   "source_url": "https://pebbleroboticskitchen.test/blog/pebble-installs-its-50th-kitchen-robot",
+   "published_at": "2026-07-07"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://pebbleroboticskitchen.test/",
+   "https://pebbleroboticskitchen.test/about",
+   "https://pebbleroboticskitchen.test/careers",
+   "https://pebbleroboticskitchen.test/blog",
+   "https://pebbleroboticskitchen.test/blog/pebble-installs-its-50th-kitchen-robot"
+  ],
+  "input_tokens": 702,
+  "output_tokens": 266,
+  "seconds": 50.62,
+  "built_at": "2026-10-05T23:30:51+00:00"
+ }
+}

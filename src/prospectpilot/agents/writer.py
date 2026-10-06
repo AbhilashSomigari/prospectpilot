@@ -62,6 +62,7 @@ async def write_sequence(
     round_: int = 0,
     previous: EmailSequence | None = None,
     critique: Critique | None = None,
+    seed: int | None = None,
 ) -> EmailSequence:
     with span(
         "agent.writer",
@@ -78,6 +79,7 @@ async def write_sequence(
             prompt=render_writer_prompt(ctx, offer, sender, settings, previous, critique),
             max_tokens=2000,
             temperature=0.4,
+            seed=seed,
             context={
                 "company": ctx.company_name,
                 "person_name": ctx.person_name,

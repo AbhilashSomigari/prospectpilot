@@ -1,0 +1,78 @@
+{
+ "id": "corvidlabs",
+ "company": {
+  "name": "Corvid Labs",
+  "domain": "corvidlabs.test",
+  "description": "Corvid Labs builds evaluation tooling for teams shipping LLM features.",
+  "industry": "ai"
+ },
+ "person": {
+  "name": "Nina Volkova",
+  "title": "Founder & CEO"
+ },
+ "offer": {
+  "product": "Ledgerly",
+  "value_props": [
+   "turn CRM and billing data into board-ready revenue reports automatically",
+   "give sales leaders a forecast they can trust"
+  ],
+  "call_to_action": "Worth a quick call to see if it fits?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Ledgerly"
+ },
+ "facts": [
+  {
+   "id": 1701,
+   "kind": "tech_stack",
+   "text": "Corvid Labs stack includes Python, TypeScript, Postgres.",
+   "source_url": "https://corvidlabs.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 1702,
+   "kind": "team_size",
+   "text": "Corvid Labs is a team of 12 people.",
+   "source_url": "https://corvidlabs.test/about",
+   "published_at": null
+  },
+  {
+   "id": 1703,
+   "kind": "funding",
+   "text": "Corvid Labs raised a $3M pre-seed round in 2026 to grow the team.",
+   "source_url": "https://corvidlabs.test/about",
+   "published_at": null
+  },
+  {
+   "id": 1704,
+   "kind": "product",
+   "text": "Corvid Labs builds evaluation tooling for teams shipping LLM features.",
+   "source_url": "https://corvidlabs.test/",
+   "published_at": null
+  },
+  {
+   "id": 1705,
+   "kind": "news",
+   "text": "Corvid releases open-source eval runner.",
+   "source_url": "https://corvidlabs.test/blog/corvid-releases-open-source-eval-runner",
+   "published_at": "2026-09-22"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://corvidlabs.test/",
+   "https://corvidlabs.test/about",
+   "https://corvidlabs.test/careers",
+   "https://corvidlabs.test/blog",
+   "https://corvidlabs.test/blog/corvid-releases-open-source-eval-runner"
+  ],
+  "input_tokens": 644,
+  "output_tokens": 243,
+  "seconds": 41.59,
+  "built_at": "2026-10-05T23:29:53+00:00"
+ }
+}

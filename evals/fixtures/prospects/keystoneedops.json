@@ -1,0 +1,71 @@
+{
+ "id": "keystoneedops",
+ "company": {
+  "name": "Keystone Ed Ops",
+  "domain": "keystoneedops.test",
+  "description": "Keystone Ed Ops automates class scheduling for universities.",
+  "industry": "edtech"
+ },
+ "person": {
+  "name": "Alan Turner",
+  "title": "VP Product"
+ },
+ "offer": {
+  "product": "Tracewell",
+  "value_props": [
+   "alert engineering teams to failing data pipelines before dashboards break",
+   "cut on-call noise by grouping related alerts"
+  ],
+  "call_to_action": "Open to a 15-minute call next week?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Tracewell"
+ },
+ "facts": [
+  {
+   "id": 4501,
+   "kind": "product",
+   "text": "Keystone Ed Ops automates class scheduling for universities.",
+   "source_url": "https://keystoneedops.test/",
+   "published_at": null
+  },
+  {
+   "id": 4502,
+   "kind": "team_size",
+   "text": "Keystone Ed Ops is a team of 39 people.",
+   "source_url": "https://keystoneedops.test/about",
+   "published_at": null
+  },
+  {
+   "id": 4503,
+   "kind": "tech_stack",
+   "text": "Keystone Ed Ops stack includes Python, Postgres, React.",
+   "source_url": "https://keystoneedops.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 4504,
+   "kind": "news",
+   "text": "Keystone wins contract with a 40,000-student university.",
+   "source_url": "https://keystoneedops.test/blog/keystone-wins-contract-with-a-40-000-student-university",
+   "published_at": "2026-02-25"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://keystoneedops.test/",
+   "https://keystoneedops.test/about",
+   "https://keystoneedops.test/careers",
+   "https://keystoneedops.test/blog",
+   "https://keystoneedops.test/blog/keystone-wins-contract-with-a-40-000-student-university"
+  ],
+  "input_tokens": 689,
+  "output_tokens": 212,
+  "seconds": 41.33,
+  "built_at": "2026-10-05T23:36:15+00:00"
+ }
+}

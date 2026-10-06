@@ -1,0 +1,78 @@
+{
+ "id": "gridlinetelecom",
+ "company": {
+  "name": "Gridline Telecom",
+  "domain": "gridlinetelecom.test",
+  "description": "Gridline Telecom provides private 5G networks for ports and factories.",
+  "industry": "telecom"
+ },
+ "person": {
+  "name": "Laura Becker",
+  "title": "VP Engineering"
+ },
+ "offer": {
+  "product": "Tracewell",
+  "value_props": [
+   "alert engineering teams to failing data pipelines before dashboards break",
+   "cut on-call noise by grouping related alerts"
+  ],
+  "call_to_action": "Open to a 15-minute call next week?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Tracewell"
+ },
+ "facts": [
+  {
+   "id": 1401,
+   "kind": "product",
+   "text": "Gridline Telecom provides private 5G networks for ports and factories.",
+   "source_url": "https://gridlinetelecom.test/",
+   "published_at": null
+  },
+  {
+   "id": 1402,
+   "kind": "team_size",
+   "text": "Today we are a team of 210 people.",
+   "source_url": "https://gridlinetelecom.test/about",
+   "published_at": null
+  },
+  {
+   "id": 1403,
+   "kind": "funding",
+   "text": "Gridline Telecom raised a $45M Series C in 2025 to grow the team.",
+   "source_url": "https://gridlinetelecom.test/about",
+   "published_at": null
+  },
+  {
+   "id": 1404,
+   "kind": "tech_stack",
+   "text": "Our stack includes C++, Go, Kubernetes.",
+   "source_url": "https://gridlinetelecom.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 1405,
+   "kind": "news",
+   "text": "Gridline deploys private 5G at the Port of Tacoma.",
+   "source_url": "https://gridlinetelecom.test/blog/gridline-deploys-private-5g-at-the-port-of-tacoma",
+   "published_at": "2026-03-30"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://gridlinetelecom.test/",
+   "https://gridlinetelecom.test/about",
+   "https://gridlinetelecom.test/careers",
+   "https://gridlinetelecom.test/blog",
+   "https://gridlinetelecom.test/blog/gridline-deploys-private-5g-at-the-port-of-tacoma"
+  ],
+  "input_tokens": 701,
+  "output_tokens": 261,
+  "seconds": 40.13,
+  "built_at": "2026-10-05T23:29:11+00:00"
+ }
+}

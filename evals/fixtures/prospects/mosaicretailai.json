@@ -1,0 +1,71 @@
+{
+ "id": "mosaicretailai",
+ "company": {
+  "name": "Mosaic Retail AI",
+  "domain": "mosaicretailai.test",
+  "description": "Mosaic Retail AI predicts store-level demand so grocers can cut waste.",
+  "industry": "retail"
+ },
+ "person": {
+  "name": "Hannah Kowalski",
+  "title": "Head of Data Science"
+ },
+ "offer": {
+  "product": "Tracewell",
+  "value_props": [
+   "alert engineering teams to failing data pipelines before dashboards break",
+   "cut on-call noise by grouping related alerts"
+  ],
+  "call_to_action": "Open to a 15-minute call next week?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Tracewell"
+ },
+ "facts": [
+  {
+   "id": 1201,
+   "kind": "product",
+   "text": "Mosaic Retail AI predicts store-level demand so grocers can cut waste.",
+   "source_url": "https://mosaicretailai.test/",
+   "published_at": null
+  },
+  {
+   "id": 1202,
+   "kind": "team_size",
+   "text": "Today we are a team of 42 people.",
+   "source_url": "https://mosaicretailai.test/about",
+   "published_at": null
+  },
+  {
+   "id": 1203,
+   "kind": "tech_stack",
+   "text": "Our stack includes Python, Spark, Databricks.",
+   "source_url": "https://mosaicretailai.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 1204,
+   "kind": "news",
+   "text": "In a 20-store pilot, a regional grocer cut fresh-produce waste by 18% using Mosaic forecasts.",
+   "source_url": "https://mosaicretailai.test/blog/mosaic-cuts-fresh-produce-waste-by-18-in-pilot",
+   "published_at": "2026-06-18"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://mosaicretailai.test/",
+   "https://mosaicretailai.test/about",
+   "https://mosaicretailai.test/careers",
+   "https://mosaicretailai.test/blog",
+   "https://mosaicretailai.test/blog/mosaic-cuts-fresh-produce-waste-by-18-in-pilot"
+  ],
+  "input_tokens": 714,
+  "output_tokens": 223,
+  "seconds": 34.29,
+  "built_at": "2026-10-05T23:28:44+00:00"
+ }
+}

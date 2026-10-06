@@ -1,0 +1,55 @@
+{
+ "id": "ironcladfabrication",
+ "company": {
+  "name": "Ironclad Fabrication",
+  "domain": "ironcladfabrication.test",
+  "description": "Ironclad Fabrication makes custom steel components for commercial construction.",
+  "industry": "manufacturing"
+ },
+ "person": {
+  "name": "Frank Russo",
+  "title": "Operations Manager"
+ },
+ "offer": {
+  "product": "Ledgerly",
+  "value_props": [
+   "turn CRM and billing data into board-ready revenue reports automatically",
+   "give sales leaders a forecast they can trust"
+  ],
+  "call_to_action": "Worth a quick call to see if it fits?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Ledgerly"
+ },
+ "facts": [
+  {
+   "id": 4101,
+   "kind": "other",
+   "text": "Ironclad Fabrication makes custom steel components for commercial construction.",
+   "source_url": "https://ironcladfabrication.test/",
+   "published_at": null
+  },
+  {
+   "id": 4102,
+   "kind": "team_size",
+   "text": "Ironclad Fabrication is a team of 180 people.",
+   "source_url": "https://ironcladfabrication.test/about",
+   "published_at": null
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://ironcladfabrication.test/",
+   "https://ironcladfabrication.test/about",
+   "https://ironcladfabrication.test/careers"
+  ],
+  "input_tokens": 497,
+  "output_tokens": 95,
+  "seconds": 33.42,
+  "built_at": "2026-10-05T23:35:17+00:00"
+ }
+}

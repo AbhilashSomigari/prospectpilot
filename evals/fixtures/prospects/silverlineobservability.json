@@ -1,0 +1,92 @@
+{
+ "id": "silverlineobservability",
+ "company": {
+  "name": "Silverline Observability",
+  "domain": "silverlineobservability.test",
+  "description": "Silverline Observability offers low-cost log search on object storage.",
+  "industry": "devtools"
+ },
+ "person": {
+  "name": "Ivan Petrov",
+  "title": "Head of Engineering"
+ },
+ "offer": {
+  "product": "Tracewell",
+  "value_props": [
+   "alert engineering teams to failing data pipelines before dashboards break",
+   "cut on-call noise by grouping related alerts"
+  ],
+  "call_to_action": "Open to a 15-minute call next week?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Tracewell"
+ },
+ "facts": [
+  {
+   "id": 4201,
+   "kind": "product",
+   "text": "Silverline Observability offers low-cost log search on object storage.",
+   "source_url": "https://silverlineobservability.test/",
+   "published_at": null
+  },
+  {
+   "id": 4202,
+   "kind": "tech_stack",
+   "text": "Silverline Observability's stack includes Rust, Go, S3, Kubernetes.",
+   "source_url": "https://silverlineobservability.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 4203,
+   "kind": "open_role",
+   "text": "Senior Rust Engineer position available in Remote.",
+   "source_url": "https://silverlineobservability.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 4204,
+   "kind": "open_role",
+   "text": "Solutions Engineer position available in Remote.",
+   "source_url": "https://silverlineobservability.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 4205,
+   "kind": "team_size",
+   "text": "Silverline Observability is a team of 29 people.",
+   "source_url": "https://silverlineobservability.test/about",
+   "published_at": null
+  },
+  {
+   "id": 4206,
+   "kind": "funding",
+   "text": "Silverline Observability raised a $8M seed round in 2026 to grow the team.",
+   "source_url": "https://silverlineobservability.test/about",
+   "published_at": null
+  },
+  {
+   "id": 4207,
+   "kind": "news",
+   "text": "Silverline cuts log storage costs with tiering, older logs move to cheaper storage tiers automatically while staying searchable.",
+   "source_url": "https://silverlineobservability.test/blog/silverline-cuts-log-storage-costs-with-tiering",
+   "published_at": "2026-09-20"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://silverlineobservability.test/",
+   "https://silverlineobservability.test/about",
+   "https://silverlineobservability.test/careers",
+   "https://silverlineobservability.test/blog",
+   "https://silverlineobservability.test/blog/silverline-cuts-log-storage-costs-with-tiering"
+  ],
+  "input_tokens": 685,
+  "output_tokens": 300,
+  "seconds": 35.13,
+  "built_at": "2026-10-05T23:35:34+00:00"
+ }
+}

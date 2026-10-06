@@ -1,0 +1,71 @@
+{
+ "id": "orchardlearning",
+ "company": {
+  "name": "Orchard Learning",
+  "domain": "orchardlearning.test",
+  "description": "Orchard Learning runs tutoring programs for school districts with live progress dashboards.",
+  "industry": "edtech"
+ },
+ "person": {
+  "name": "Grace Adeyemi",
+  "title": "COO"
+ },
+ "offer": {
+  "product": "Ledgerly",
+  "value_props": [
+   "turn CRM and billing data into board-ready revenue reports automatically",
+   "give sales leaders a forecast they can trust"
+  ],
+  "call_to_action": "Worth a quick call to see if it fits?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Ledgerly"
+ },
+ "facts": [
+  {
+   "id": 901,
+   "kind": "tech_stack",
+   "text": "Orchard Learning's tech stack includes Ruby on Rails, React, Postgres.",
+   "source_url": "https://orchardlearning.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 902,
+   "kind": "team_size",
+   "text": "Orchard Learning is a team of 95 people.",
+   "source_url": "https://orchardlearning.test/about",
+   "published_at": null
+  },
+  {
+   "id": 903,
+   "kind": "product",
+   "text": "Orchard Learning runs tutoring programs for school districts with live progress dashboards.",
+   "source_url": "https://orchardlearning.test/",
+   "published_at": null
+  },
+  {
+   "id": 904,
+   "kind": "news",
+   "text": "Orchard Learning expands to 12 new districts, adding high-dosage math tutoring for middle schools.",
+   "source_url": "https://orchardlearning.test/blog/orchard-expands-to-12-new-districts",
+   "published_at": "2026-08-05"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://orchardlearning.test/",
+   "https://orchardlearning.test/about",
+   "https://orchardlearning.test/careers",
+   "https://orchardlearning.test/blog",
+   "https://orchardlearning.test/blog/orchard-expands-to-12-new-districts"
+  ],
+  "input_tokens": 643,
+  "output_tokens": 216,
+  "seconds": 46.06,
+  "built_at": "2026-10-05T23:28:10+00:00"
+ }
+}

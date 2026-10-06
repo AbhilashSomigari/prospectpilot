@@ -1,0 +1,85 @@
+{
+ "id": "tidepoolsecurity",
+ "company": {
+  "name": "Tidepool Security",
+  "domain": "tidepoolsecurity.test",
+  "description": "Tidepool Security detects risky OAuth grants across a company's SaaS apps.",
+  "industry": "security"
+ },
+ "person": {
+  "name": "Yuki Tanaka",
+  "title": "Head of Security"
+ },
+ "offer": {
+  "product": "Tracewell",
+  "value_props": [
+   "alert engineering teams to failing data pipelines before dashboards break",
+   "cut on-call noise by grouping related alerts"
+  ],
+  "call_to_action": "Open to a 15-minute call next week?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Tracewell"
+ },
+ "facts": [
+  {
+   "id": 701,
+   "kind": "product",
+   "text": "Tidepool Security detects risky OAuth grants across a company's SaaS apps.",
+   "source_url": "https://tidepoolsecurity.test/",
+   "published_at": null
+  },
+  {
+   "id": 702,
+   "kind": "team_size",
+   "text": "Today we are a team of 48 people.",
+   "source_url": "https://tidepoolsecurity.test/about",
+   "published_at": null
+  },
+  {
+   "id": 703,
+   "kind": "funding",
+   "text": "Tidepool Security raised a $9M Series A in 2025 to grow the team.",
+   "source_url": "https://tidepoolsecurity.test/about",
+   "published_at": null
+  },
+  {
+   "id": 704,
+   "kind": "tech_stack",
+   "text": "Our stack includes Go, Postgres, GCP, Terraform.",
+   "source_url": "https://tidepoolsecurity.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 705,
+   "kind": "open_role",
+   "text": "Detection Engineer, Security Researcher",
+   "source_url": "https://tidepoolsecurity.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 706,
+   "kind": "news",
+   "text": "Tidepool publishes its 2026 SaaS exposure report",
+   "source_url": "https://tidepoolsecurity.test/blog/tidepool-publishes-its-2026-saas-exposure-report",
+   "published_at": "2026-09-03"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://tidepoolsecurity.test/",
+   "https://tidepoolsecurity.test/about",
+   "https://tidepoolsecurity.test/careers",
+   "https://tidepoolsecurity.test/blog",
+   "https://tidepoolsecurity.test/blog/tidepool-publishes-its-2026-saas-exposure-report"
+  ],
+  "input_tokens": 704,
+  "output_tokens": 305,
+  "seconds": 46.69,
+  "built_at": "2026-10-05T23:27:41+00:00"
+ }
+}

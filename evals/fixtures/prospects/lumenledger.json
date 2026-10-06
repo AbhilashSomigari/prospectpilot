@@ -1,0 +1,92 @@
+{
+ "id": "lumenledger",
+ "company": {
+  "name": "Lumen Ledger",
+  "domain": "lumenledger.test",
+  "description": "Lumen Ledger automates month-end close for mid-market finance teams.",
+  "industry": "fintech"
+ },
+ "person": {
+  "name": "Priya Raman",
+  "title": "VP Engineering"
+ },
+ "offer": {
+  "product": "Tracewell",
+  "value_props": [
+   "alert engineering teams to failing data pipelines before dashboards break",
+   "cut on-call noise by grouping related alerts"
+  ],
+  "call_to_action": "Open to a 15-minute call next week?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Tracewell"
+ },
+ "facts": [
+  {
+   "id": 101,
+   "kind": "product",
+   "text": "Lumen Ledger automates month-end close for mid-market finance teams.",
+   "source_url": "https://lumenledger.test/",
+   "published_at": null
+  },
+  {
+   "id": 102,
+   "kind": "team_size",
+   "text": "Today we are a team of 60 people.",
+   "source_url": "https://lumenledger.test/about",
+   "published_at": null
+  },
+  {
+   "id": 103,
+   "kind": "funding",
+   "text": "Lumen Ledger raised a $14M Series A in April 2026 to grow the team.",
+   "source_url": "https://lumenledger.test/about",
+   "published_at": null
+  },
+  {
+   "id": 104,
+   "kind": "tech_stack",
+   "text": "Our stack includes Python, Postgres, AWS.",
+   "source_url": "https://lumenledger.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 105,
+   "kind": "open_role",
+   "text": "Senior Backend Engineer",
+   "source_url": "https://lumenledger.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 106,
+   "kind": "open_role",
+   "text": "Implementation Manager",
+   "source_url": "https://lumenledger.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 107,
+   "kind": "news",
+   "text": "Lumen Ledger launches AI reconciliation.",
+   "source_url": "https://lumenledger.test/blog/lumen-ledger-launches-ai-reconciliation",
+   "published_at": "2026-08-19"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://lumenledger.test/",
+   "https://lumenledger.test/about",
+   "https://lumenledger.test/careers",
+   "https://lumenledger.test/blog",
+   "https://lumenledger.test/blog/lumen-ledger-launches-ai-reconciliation"
+  ],
+  "input_tokens": 653,
+  "output_tokens": 310,
+  "seconds": 38.84,
+  "built_at": "2026-10-05T23:26:24+00:00"
+ }
+}

@@ -1,0 +1,78 @@
+{
+ "id": "polariscompliance",
+ "company": {
+  "name": "Polaris Compliance",
+  "domain": "polariscompliance.test",
+  "description": "Polaris Compliance automates SOC 2 and ISO 27001 evidence collection.",
+  "industry": "regtech"
+ },
+ "person": {
+  "name": "Anna Schmidt",
+  "title": "Head of Compliance"
+ },
+ "offer": {
+  "product": "Hirewise",
+  "value_props": [
+   "give hiring teams structured interview kits for every open role",
+   "shorten time-to-hire without lowering the bar"
+  ],
+  "call_to_action": "Would a 20-minute walkthrough be useful?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Hirewise"
+ },
+ "facts": [
+  {
+   "id": 3401,
+   "kind": "product",
+   "text": "Polaris Compliance automates SOC 2 and ISO 27001 evidence collection.",
+   "source_url": "https://polariscompliance.test/",
+   "published_at": null
+  },
+  {
+   "id": 3402,
+   "kind": "tech_stack",
+   "text": "Polaris Compliance stack includes Python, Go, AWS.",
+   "source_url": "https://polariscompliance.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 3403,
+   "kind": "team_size",
+   "text": "Polaris Compliance is a team of 52 people.",
+   "source_url": "https://polariscompliance.test/about",
+   "published_at": null
+  },
+  {
+   "id": 3404,
+   "kind": "funding",
+   "text": "Polaris Compliance raised a $12M Series A in 2026 to grow the team.",
+   "source_url": "https://polariscompliance.test/about",
+   "published_at": null
+  },
+  {
+   "id": 3405,
+   "kind": "news",
+   "text": "Polaris adds continuous control monitoring, re-tested daily with alerts when evidence goes stale.",
+   "source_url": "https://polariscompliance.test/blog/polaris-adds-continuous-control-monitoring",
+   "published_at": "2026-09-08"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://polariscompliance.test/",
+   "https://polariscompliance.test/about",
+   "https://polariscompliance.test/careers",
+   "https://polariscompliance.test/blog",
+   "https://polariscompliance.test/blog/polaris-adds-continuous-control-monitoring"
+  ],
+  "input_tokens": 676,
+  "output_tokens": 270,
+  "seconds": 41.19,
+  "built_at": "2026-10-05T23:33:43+00:00"
+ }
+}

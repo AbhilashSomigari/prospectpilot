@@ -1,0 +1,71 @@
+{
+ "id": "velluminsights",
+ "company": {
+  "name": "Vellum Insights",
+  "domain": "velluminsights.test",
+  "description": "Vellum Insights measures B2B brand awareness from ad and search signals.",
+  "industry": "martech"
+ },
+ "person": {
+  "name": "Chloe Martin",
+  "title": "VP Marketing"
+ },
+ "offer": {
+  "product": "Ledgerly",
+  "value_props": [
+   "turn CRM and billing data into board-ready revenue reports automatically",
+   "give sales leaders a forecast they can trust"
+  ],
+  "call_to_action": "Worth a quick call to see if it fits?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Ledgerly"
+ },
+ "facts": [
+  {
+   "id": 1501,
+   "kind": "product",
+   "text": "Vellum Insights measures B2B brand awareness from ad and search signals.",
+   "source_url": "https://velluminsights.test/",
+   "published_at": null
+  },
+  {
+   "id": 1502,
+   "kind": "team_size",
+   "text": "Today Vellum Insights is a team of 18 people.",
+   "source_url": "https://velluminsights.test/about",
+   "published_at": null
+  },
+  {
+   "id": 1503,
+   "kind": "tech_stack",
+   "text": "Vellum Insights stack includes Python, ClickHouse, Vue.",
+   "source_url": "https://velluminsights.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 1504,
+   "kind": "news",
+   "text": "Vellum launches share-of-search benchmarks.",
+   "source_url": "https://velluminsights.test/blog/vellum-launches-share-of-search-benchmarks",
+   "published_at": "2026-09-15"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://velluminsights.test/",
+   "https://velluminsights.test/about",
+   "https://velluminsights.test/careers",
+   "https://velluminsights.test/blog",
+   "https://velluminsights.test/blog/vellum-launches-share-of-search-benchmarks"
+  ],
+  "input_tokens": 660,
+  "output_tokens": 173,
+  "seconds": 38.01,
+  "built_at": "2026-10-05T23:29:22+00:00"
+ }
+}

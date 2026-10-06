@@ -1,0 +1,85 @@
+{
+ "id": "foundryhiring",
+ "company": {
+  "name": "Foundry Hiring",
+  "domain": "foundryhiring.test",
+  "description": "Foundry Hiring runs structured technical interviews for engineering teams.",
+  "industry": "hrtech"
+ },
+ "person": {
+  "name": "Chris Johnson",
+  "title": "Head of Talent"
+ },
+ "offer": {
+  "product": "Hirewise",
+  "value_props": [
+   "give hiring teams structured interview kits for every open role",
+   "shorten time-to-hire without lowering the bar"
+  ],
+  "call_to_action": "Would a 20-minute walkthrough be useful?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Hirewise"
+ },
+ "facts": [
+  {
+   "id": 3701,
+   "kind": "product",
+   "text": "Foundry Hiring runs structured technical interviews for engineering teams.",
+   "source_url": "https://foundryhiring.test/",
+   "published_at": null
+  },
+  {
+   "id": 3702,
+   "kind": "tech_stack",
+   "text": "Our stack includes TypeScript, React, Go.",
+   "source_url": "https://foundryhiring.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 3703,
+   "kind": "team_size",
+   "text": "Today we are a team of 34 people.",
+   "source_url": "https://foundryhiring.test/about",
+   "published_at": null
+  },
+  {
+   "id": 3704,
+   "kind": "open_role",
+   "text": "Senior Frontend Engineer",
+   "source_url": "https://foundryhiring.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 3705,
+   "kind": "open_role",
+   "text": "Talent Partner",
+   "source_url": "https://foundryhiring.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 3706,
+   "kind": "news",
+   "text": "Foundry adds live pair-programming interviews",
+   "source_url": "https://foundryhiring.test/blog/foundry-adds-live-pair-programming-interviews",
+   "published_at": "2026-09-12"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://foundryhiring.test/",
+   "https://foundryhiring.test/about",
+   "https://foundryhiring.test/careers",
+   "https://foundryhiring.test/blog",
+   "https://foundryhiring.test/blog/foundry-adds-live-pair-programming-interviews"
+  ],
+  "input_tokens": 650,
+  "output_tokens": 266,
+  "seconds": 48.53,
+  "built_at": "2026-10-05T23:34:31+00:00"
+ }
+}

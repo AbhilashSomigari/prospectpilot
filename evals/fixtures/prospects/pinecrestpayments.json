@@ -1,0 +1,62 @@
+{
+ "id": "pinecrestpayments",
+ "company": {
+  "name": "Pinecrest Payments",
+  "domain": "pinecrestpayments.test",
+  "description": "Pinecrest Payments offers embedded invoicing and payments for vertical SaaS platforms.",
+  "industry": "fintech"
+ },
+ "person": {
+  "name": "Owen Fitzgerald",
+  "title": "VP Partnerships"
+ },
+ "offer": {
+  "product": "Ledgerly",
+  "value_props": [
+   "turn CRM and billing data into board-ready revenue reports automatically",
+   "give sales leaders a forecast they can trust"
+  ],
+  "call_to_action": "Worth a quick call to see if it fits?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Ledgerly"
+ },
+ "facts": [
+  {
+   "id": 1101,
+   "kind": "product",
+   "text": "Pinecrest Payments offers embedded invoicing and payments for vertical SaaS platforms.",
+   "source_url": "https://pinecrestpayments.test/",
+   "published_at": null
+  },
+  {
+   "id": 1102,
+   "kind": "team_size",
+   "text": "Pinecrest Payments is a team of 55 people.",
+   "source_url": "https://pinecrestpayments.test/about",
+   "published_at": null
+  },
+  {
+   "id": 1103,
+   "kind": "tech_stack",
+   "text": "Pinecrest Payments stack includes Go, Kafka, Postgres.",
+   "source_url": "https://pinecrestpayments.test/careers",
+   "published_at": null
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://pinecrestpayments.test/",
+   "https://pinecrestpayments.test/about",
+   "https://pinecrestpayments.test/careers"
+  ],
+  "input_tokens": 480,
+  "output_tokens": 117,
+  "seconds": 34.11,
+  "built_at": "2026-10-05T23:28:31+00:00"
+ }
+}

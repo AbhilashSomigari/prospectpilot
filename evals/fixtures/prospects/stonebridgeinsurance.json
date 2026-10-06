@@ -1,0 +1,92 @@
+{
+ "id": "stonebridgeinsurance",
+ "company": {
+  "name": "Stonebridge Insurance",
+  "domain": "stonebridgeinsurance.test",
+  "description": "Stonebridge Insurance underwrites cyber insurance for small businesses using automated scans.",
+  "industry": "insurtech"
+ },
+ "person": {
+  "name": "Kenji Watanabe",
+  "title": "Chief Underwriting Officer"
+ },
+ "offer": {
+  "product": "Tracewell",
+  "value_props": [
+   "alert engineering teams to failing data pipelines before dashboards break",
+   "cut on-call noise by grouping related alerts"
+  ],
+  "call_to_action": "Open to a 15-minute call next week?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Tracewell"
+ },
+ "facts": [
+  {
+   "id": 2001,
+   "kind": "product",
+   "text": "Stonebridge Insurance underwrites cyber insurance for small businesses using automated scans.",
+   "source_url": "https://stonebridgeinsurance.test/",
+   "published_at": null
+  },
+  {
+   "id": 2002,
+   "kind": "team_size",
+   "text": "Today we are a team of 120 people.",
+   "source_url": "https://stonebridgeinsurance.test/about",
+   "published_at": null
+  },
+  {
+   "id": 2003,
+   "kind": "funding",
+   "text": "Stonebridge Insurance raised a $38M Series B in February 2026 to grow the team.",
+   "source_url": "https://stonebridgeinsurance.test/about",
+   "published_at": null
+  },
+  {
+   "id": 2004,
+   "kind": "tech_stack",
+   "text": "Our stack includes Python, Go, Snowflake.",
+   "source_url": "https://stonebridgeinsurance.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 2005,
+   "kind": "open_role",
+   "text": "Underwriting Data Scientist, Join the team in Toronto, ON.",
+   "source_url": "https://stonebridgeinsurance.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 2006,
+   "kind": "open_role",
+   "text": "Broker Partnerships Manager, Join the team in Toronto, ON.",
+   "source_url": "https://stonebridgeinsurance.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 2007,
+   "kind": "news",
+   "text": "Stonebridge raises Series B to expand to Canada",
+   "source_url": "https://stonebridgeinsurance.test/blog/stonebridge-raises-series-b-to-expand-to-canada",
+   "published_at": "2026-02-11"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://stonebridgeinsurance.test/",
+   "https://stonebridgeinsurance.test/about",
+   "https://stonebridgeinsurance.test/careers",
+   "https://stonebridgeinsurance.test/blog",
+   "https://stonebridgeinsurance.test/blog/stonebridge-raises-series-b-to-expand-to-canada"
+  ],
+  "input_tokens": 670,
+  "output_tokens": 335,
+  "seconds": 43.16,
+  "built_at": "2026-10-05T23:30:36+00:00"
+ }
+}

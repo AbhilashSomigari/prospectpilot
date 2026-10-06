@@ -1,0 +1,78 @@
+{
+ "id": "driftwoodmedia",
+ "company": {
+  "name": "Driftwood Media",
+  "domain": "driftwoodmedia.test",
+  "description": "Driftwood Media produces branded podcasts for B2B companies.",
+  "industry": "media"
+ },
+ "person": {
+  "name": "Emma Davis",
+  "title": "Founder"
+ },
+ "offer": {
+  "product": "Ledgerly",
+  "value_props": [
+   "turn CRM and billing data into board-ready revenue reports automatically",
+   "give sales leaders a forecast they can trust"
+  ],
+  "call_to_action": "Worth a quick call to see if it fits?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Ledgerly"
+ },
+ "facts": [
+  {
+   "id": 3801,
+   "kind": "product",
+   "text": "Driftwood Media produces branded podcasts for B2B companies.",
+   "source_url": "https://driftwoodmedia.test/",
+   "published_at": null
+  },
+  {
+   "id": 3802,
+   "kind": "team_size",
+   "text": "Today we are a team of 20 people.",
+   "source_url": "https://driftwoodmedia.test/about",
+   "published_at": null
+  },
+  {
+   "id": 3803,
+   "kind": "open_role",
+   "text": "Audio Producer, Join the team in Remote.",
+   "source_url": "https://driftwoodmedia.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 3804,
+   "kind": "open_role",
+   "text": "Account Manager, Join the team in Remote.",
+   "source_url": "https://driftwoodmedia.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 3805,
+   "kind": "news",
+   "text": "Driftwood launches podcast analytics dashboard",
+   "source_url": "https://driftwoodmedia.test/blog/driftwood-launches-podcast-analytics-dashboard",
+   "published_at": "2026-05-15"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://driftwoodmedia.test/",
+   "https://driftwoodmedia.test/about",
+   "https://driftwoodmedia.test/careers",
+   "https://driftwoodmedia.test/blog",
+   "https://driftwoodmedia.test/blog/driftwood-launches-podcast-analytics-dashboard"
+  ],
+  "input_tokens": 642,
+  "output_tokens": 230,
+  "seconds": 46.34,
+  "built_at": "2026-10-05T23:34:44+00:00"
+ }
+}

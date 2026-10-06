@@ -1,0 +1,68 @@
+{
+ "id": "helixsupply",
+ "company": {
+  "name": "Helix Supply",
+  "domain": "helixsupply.test",
+  "description": "Helix Supply manages purchase orders and supplier onboarding for retail chains.",
+  "industry": "retail"
+ },
+ "person": null,
+ "offer": {
+  "product": "Hirewise",
+  "value_props": [
+   "give hiring teams structured interview kits for every open role",
+   "shorten time-to-hire without lowering the bar"
+  ],
+  "call_to_action": "Would a 20-minute walkthrough be useful?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Hirewise"
+ },
+ "facts": [
+  {
+   "id": 4601,
+   "kind": "product",
+   "text": "Helix Supply manages purchase orders and supplier onboarding for retail chains.",
+   "source_url": "https://helixsupply.test/",
+   "published_at": null
+  },
+  {
+   "id": 4602,
+   "kind": "team_size",
+   "text": "Today we are a team of 57 people.",
+   "source_url": "https://helixsupply.test/about",
+   "published_at": null
+  },
+  {
+   "id": 4603,
+   "kind": "tech_stack",
+   "text": "Our stack includes Java, Spring, Postgres.",
+   "source_url": "https://helixsupply.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 4604,
+   "kind": "news",
+   "text": "Helix adds EDI onboarding in one day.",
+   "source_url": "https://helixsupply.test/blog/helix-adds-edi-onboarding-in-one-day",
+   "published_at": "2026-07-11"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://helixsupply.test/",
+   "https://helixsupply.test/about",
+   "https://helixsupply.test/careers",
+   "https://helixsupply.test/blog",
+   "https://helixsupply.test/blog/helix-adds-edi-onboarding-in-one-day"
+  ],
+  "input_tokens": 653,
+  "output_tokens": 191,
+  "seconds": 37.31,
+  "built_at": "2026-10-05T23:36:26+00:00"
+ }
+}

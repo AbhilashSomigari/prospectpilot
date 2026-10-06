@@ -1,0 +1,71 @@
+{
+ "id": "sablewoodlegal",
+ "company": {
+  "name": "Sablewood Legal",
+  "domain": "sablewoodlegal.test",
+  "description": "Sablewood Legal speeds up contract review for in-house legal teams.",
+  "industry": "legaltech"
+ },
+ "person": {
+  "name": "Ravi Iyer",
+  "title": "Founder"
+ },
+ "offer": {
+  "product": "Ledgerly",
+  "value_props": [
+   "turn CRM and billing data into board-ready revenue reports automatically",
+   "give sales leaders a forecast they can trust"
+  ],
+  "call_to_action": "Worth a quick call to see if it fits?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Ledgerly"
+ },
+ "facts": [
+  {
+   "id": 1301,
+   "kind": "tech_stack",
+   "text": "Sablewood Legal uses Python, FastAPI, React.",
+   "source_url": "https://sablewoodlegal.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 1302,
+   "kind": "team_size",
+   "text": "Sablewood Legal is a team of 30 people.",
+   "source_url": "https://sablewoodlegal.test/about",
+   "published_at": null
+  },
+  {
+   "id": 1303,
+   "kind": "product",
+   "text": "Sablewood Legal speeds up contract review for in-house legal teams.",
+   "source_url": "https://sablewoodlegal.test/",
+   "published_at": null
+  },
+  {
+   "id": 1304,
+   "kind": "news",
+   "text": "Sablewood adds clause benchmarking, allowing legal teams to compare clauses against market-standard positions.",
+   "source_url": "https://sablewoodlegal.test/blog/sablewood-adds-clause-benchmarking",
+   "published_at": "2023-11-02"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://sablewoodlegal.test/",
+   "https://sablewoodlegal.test/about",
+   "https://sablewoodlegal.test/careers",
+   "https://sablewoodlegal.test/blog",
+   "https://sablewoodlegal.test/blog/sablewood-adds-clause-benchmarking"
+  ],
+  "input_tokens": 656,
+  "output_tokens": 206,
+  "seconds": 32.0,
+  "built_at": "2026-10-05T23:28:56+00:00"
+ }
+}

@@ -89,3 +89,8 @@ addopts = "-q -m 'not integration'"
 markers = [
   "integration: needs the docker-compose stack (postgres + mailpit)",
 ]
+
+[[tool.mypy.overrides]]
+# evalforge ships no py.typed marker, so its base classes are Any to mypy
+module = ["prospectpilot.evals.*"]
+disallow_subclassing_any = false

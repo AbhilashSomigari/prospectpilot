@@ -1,0 +1,78 @@
+{
+ "id": "cobaltfreight",
+ "company": {
+  "name": "Cobalt Freight",
+  "domain": "cobaltfreight.test",
+  "description": "Cobalt Freight is a digital freight brokerage for refrigerated trucking.",
+  "industry": "logistics"
+ },
+ "person": {
+  "name": "Elena Petrova",
+  "title": "VP Sales"
+ },
+ "offer": {
+  "product": "Ledgerly",
+  "value_props": [
+   "turn CRM and billing data into board-ready revenue reports automatically",
+   "give sales leaders a forecast they can trust"
+  ],
+  "call_to_action": "Worth a quick call to see if it fits?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Ledgerly"
+ },
+ "facts": [
+  {
+   "id": 501,
+   "kind": "product",
+   "text": "Cobalt Freight is a digital freight brokerage for refrigerated trucking.",
+   "source_url": "https://cobaltfreight.test/",
+   "published_at": null
+  },
+  {
+   "id": 502,
+   "kind": "team_size",
+   "text": "Cobalt Freight is a team of 110 people.",
+   "source_url": "https://cobaltfreight.test/about",
+   "published_at": null
+  },
+  {
+   "id": 503,
+   "kind": "funding",
+   "text": "Cobalt Freight raised a $30M Series B in January 2026 to grow the team.",
+   "source_url": "https://cobaltfreight.test/about",
+   "published_at": null
+  },
+  {
+   "id": 504,
+   "kind": "tech_stack",
+   "text": "Cobalt Freight's stack includes Java, Kafka, Snowflake, AWS.",
+   "source_url": "https://cobaltfreight.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 505,
+   "kind": "product",
+   "text": "Cobalt Freight launches live temperature tracking.",
+   "source_url": "https://cobaltfreight.test/blog/cobalt-freight-launches-live-temperature-tracking",
+   "published_at": "2026-05-21"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://cobaltfreight.test/",
+   "https://cobaltfreight.test/about",
+   "https://cobaltfreight.test/careers",
+   "https://cobaltfreight.test/blog",
+   "https://cobaltfreight.test/blog/cobalt-freight-launches-live-temperature-tracking"
+  ],
+  "input_tokens": 668,
+  "output_tokens": 259,
+  "seconds": 45.37,
+  "built_at": "2026-10-05T23:27:10+00:00"
+ }
+}

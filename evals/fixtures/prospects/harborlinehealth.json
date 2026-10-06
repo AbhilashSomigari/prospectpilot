@@ -1,0 +1,85 @@
+{
+ "id": "harborlinehealth",
+ "company": {
+  "name": "Harborline Health",
+  "domain": "harborlinehealth.test",
+  "description": "Harborline Health coordinates post-discharge care between hospitals and home-care agencies.",
+  "industry": "healthtech"
+ },
+ "person": {
+  "name": "Daniel Mbeki",
+  "title": "Head of Data"
+ },
+ "offer": {
+  "product": "Tracewell",
+  "value_props": [
+   "alert engineering teams to failing data pipelines before dashboards break",
+   "cut on-call noise by grouping related alerts"
+  ],
+  "call_to_action": "Open to a 15-minute call next week?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Tracewell"
+ },
+ "facts": [
+  {
+   "id": 401,
+   "kind": "tech_stack",
+   "text": "Harborline Health uses Python, Django, Postgres, Azure.",
+   "source_url": "https://harborlinehealth.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 402,
+   "kind": "team_size",
+   "text": "Harborline Health is a team of 85 people.",
+   "source_url": "https://harborlinehealth.test/about",
+   "published_at": null
+  },
+  {
+   "id": 403,
+   "kind": "product",
+   "text": "Harborline Health coordinates post-discharge care between hospitals and home-care agencies.",
+   "source_url": "https://harborlinehealth.test/",
+   "published_at": null
+  },
+  {
+   "id": 404,
+   "kind": "open_role",
+   "text": "Product Manager, Care Coordination role is open in Boston, MA.",
+   "source_url": "https://harborlinehealth.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 405,
+   "kind": "open_role",
+   "text": "Senior Data Engineer role is open in Boston, MA.",
+   "source_url": "https://harborlinehealth.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 406,
+   "kind": "news",
+   "text": "Harborline Health partners with three regional hospital networks.",
+   "source_url": "https://harborlinehealth.test/blog/harborline-partners-with-three-regional-hospital-networks",
+   "published_at": "2026-07-15"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://harborlinehealth.test/",
+   "https://harborlinehealth.test/about",
+   "https://harborlinehealth.test/careers",
+   "https://harborlinehealth.test/blog",
+   "https://harborlinehealth.test/blog/harborline-partners-with-three-regional-hospital-networks"
+  ],
+  "input_tokens": 668,
+  "output_tokens": 297,
+  "seconds": 46.82,
+  "built_at": "2026-10-05T23:26:54+00:00"
+ }
+}

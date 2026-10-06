@@ -1,0 +1,85 @@
+{
+ "id": "halcyontravel",
+ "company": {
+  "name": "Halcyon Travel",
+  "domain": "halcyontravel.test",
+  "description": "Halcyon Travel manages corporate travel for companies with distributed teams.",
+  "industry": "travel"
+ },
+ "person": {
+  "name": "Isabel Moreau",
+  "title": "VP Operations"
+ },
+ "offer": {
+  "product": "Ledgerly",
+  "value_props": [
+   "turn CRM and billing data into board-ready revenue reports automatically",
+   "give sales leaders a forecast they can trust"
+  ],
+  "call_to_action": "Worth a quick call to see if it fits?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Ledgerly"
+ },
+ "facts": [
+  {
+   "id": 1901,
+   "kind": "tech_stack",
+   "text": "Halcyon Travel's stack includes Python, Django, React, AWS.",
+   "source_url": "https://halcyontravel.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 1902,
+   "kind": "team_size",
+   "text": "Halcyon Travel is a team of 75 people.",
+   "source_url": "https://halcyontravel.test/about",
+   "published_at": null
+  },
+  {
+   "id": 1903,
+   "kind": "open_role",
+   "text": "Senior Backend Engineer role is open.",
+   "source_url": "https://halcyontravel.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 1904,
+   "kind": "open_role",
+   "text": "Travel Operations Lead role is open.",
+   "source_url": "https://halcyontravel.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 1905,
+   "kind": "product",
+   "text": "Halcyon Travel manages corporate travel for companies with distributed teams.",
+   "source_url": "https://halcyontravel.test/",
+   "published_at": null
+  },
+  {
+   "id": 1906,
+   "kind": "product",
+   "text": "Halcyon Travel launches carbon budgets for trips.",
+   "source_url": "https://halcyontravel.test/blog/halcyon-launches-carbon-budgets-for-trips",
+   "published_at": "2026-06-25"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://halcyontravel.test/",
+   "https://halcyontravel.test/about",
+   "https://halcyontravel.test/careers",
+   "https://halcyontravel.test/blog",
+   "https://halcyontravel.test/blog/halcyon-launches-carbon-budgets-for-trips"
+  ],
+  "input_tokens": 671,
+  "output_tokens": 282,
+  "seconds": 38.08,
+  "built_at": "2026-10-05T23:30:17+00:00"
+ }
+}

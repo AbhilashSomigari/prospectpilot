@@ -1,0 +1,57 @@
+{
+ "id": "ridgeviewclinics",
+ "company": {
+  "name": "Ridgeview Clinics",
+  "domain": "ridgeviewclinics.test",
+  "description": "Ridgeview Clinics operates 25 urgent-care clinics across Colorado.",
+  "industry": "healthcare"
+ },
+ "person": {
+  "name": "Mark Henderson",
+  "title": "Director of IT"
+ },
+ "offer": {
+  "product": "Tracewell",
+  "value_props": [
+   "alert engineering teams to failing data pipelines before dashboards break",
+   "cut on-call noise by grouping related alerts"
+  ],
+  "call_to_action": "Open to a 15-minute call next week?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Tracewell"
+ },
+ "facts": [
+  {
+   "id": 1801,
+   "kind": "team_size",
+   "text": "Ridgeview Clinics is a team of 900 people.",
+   "source_url": "https://ridgeviewclinics.test/about",
+   "published_at": null
+  },
+  {
+   "id": 1802,
+   "kind": "news",
+   "text": "Ridgeview Clinics opens a clinic in Fort Collins.",
+   "source_url": "https://ridgeviewclinics.test/blog/ridgeview-opens-a-clinic-in-fort-collins",
+   "published_at": "2026-08-12"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://ridgeviewclinics.test/",
+   "https://ridgeviewclinics.test/about",
+   "https://ridgeviewclinics.test/careers",
+   "https://ridgeviewclinics.test/blog",
+   "https://ridgeviewclinics.test/blog/ridgeview-opens-a-clinic-in-fort-collins"
+  ],
+  "input_tokens": 675,
+  "output_tokens": 117,
+  "seconds": 38.62,
+  "built_at": "2026-10-05T23:30:01+00:00"
+ }
+}

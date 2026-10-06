@@ -1,0 +1,85 @@
+{
+ "id": "quillstack",
+ "company": {
+  "name": "Quillstack",
+  "domain": "quillstack.test",
+  "description": "Quillstack turns API specs into always-current developer documentation.",
+  "industry": "devtools"
+ },
+ "person": {
+  "name": "Amara Okafor",
+  "title": "Founder & CEO"
+ },
+ "offer": {
+  "product": "Ledgerly",
+  "value_props": [
+   "turn CRM and billing data into board-ready revenue reports automatically",
+   "give sales leaders a forecast they can trust"
+  ],
+  "call_to_action": "Worth a quick call to see if it fits?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Ledgerly"
+ },
+ "facts": [
+  {
+   "id": 301,
+   "kind": "product",
+   "text": "Quillstack turns API specs into always-current developer documentation.",
+   "source_url": "https://quillstack.test/",
+   "published_at": null
+  },
+  {
+   "id": 302,
+   "kind": "tech_stack",
+   "text": "Quillstack's stack includes TypeScript, Next.js, Go.",
+   "source_url": "https://quillstack.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 303,
+   "kind": "team_size",
+   "text": "Quillstack is a team of 22 people.",
+   "source_url": "https://quillstack.test/about",
+   "published_at": null
+  },
+  {
+   "id": 304,
+   "kind": "funding",
+   "text": "Quillstack raised a $4M seed round in 2025 to grow the team.",
+   "source_url": "https://quillstack.test/about",
+   "published_at": null
+  },
+  {
+   "id": 305,
+   "kind": "open_role",
+   "text": "Quillstack is hiring a Founding Frontend Engineer.",
+   "source_url": "https://quillstack.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 306,
+   "kind": "news",
+   "text": "Quillstack ships versioned docs previews with broken-link checks.",
+   "source_url": "https://quillstack.test/blog/quillstack-ships-versioned-docs-previews",
+   "published_at": "2026-09-10"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://quillstack.test/",
+   "https://quillstack.test/about",
+   "https://quillstack.test/careers",
+   "https://quillstack.test/blog",
+   "https://quillstack.test/blog/quillstack-ships-versioned-docs-previews"
+  ],
+  "input_tokens": 650,
+  "output_tokens": 248,
+  "seconds": 52.33,
+  "built_at": "2026-10-05T23:26:38+00:00"
+ }
+}

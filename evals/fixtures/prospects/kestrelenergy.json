@@ -1,0 +1,78 @@
+{
+ "id": "kestrelenergy",
+ "company": {
+  "name": "Kestrel Energy",
+  "domain": "kestrelenergy.test",
+  "description": "Kestrel Energy forecasts solar output for grid operators using satellite imagery.",
+  "industry": "climate"
+ },
+ "person": {
+  "name": "Sofia Alvarez",
+  "title": "CTO"
+ },
+ "offer": {
+  "product": "Tracewell",
+  "value_props": [
+   "alert engineering teams to failing data pipelines before dashboards break",
+   "cut on-call noise by grouping related alerts"
+  ],
+  "call_to_action": "Open to a 15-minute call next week?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Tracewell"
+ },
+ "facts": [
+  {
+   "id": 1001,
+   "kind": "product",
+   "text": "Kestrel Energy forecasts solar output for grid operators using satellite imagery.",
+   "source_url": "https://kestrelenergy.test/",
+   "published_at": null
+  },
+  {
+   "id": 1002,
+   "kind": "team_size",
+   "text": "Today we are a team of 28 people.",
+   "source_url": "https://kestrelenergy.test/about",
+   "published_at": null
+  },
+  {
+   "id": 1003,
+   "kind": "funding",
+   "text": "Kestrel Energy raised a $6M seed round in 2026 to grow the team.",
+   "source_url": "https://kestrelenergy.test/about",
+   "published_at": null
+  },
+  {
+   "id": 1004,
+   "kind": "tech_stack",
+   "text": "Our stack includes Python, PyTorch, Airflow, AWS.",
+   "source_url": "https://kestrelenergy.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 1005,
+   "kind": "product",
+   "text": "Kestrel releases 15-minute solar forecasts.",
+   "source_url": "https://kestrelenergy.test/blog/kestrel-releases-15-minute-solar-forecasts",
+   "published_at": "2026-07-29"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://kestrelenergy.test/",
+   "https://kestrelenergy.test/about",
+   "https://kestrelenergy.test/careers",
+   "https://kestrelenergy.test/blog",
+   "https://kestrelenergy.test/blog/kestrel-releases-15-minute-solar-forecasts"
+  ],
+  "input_tokens": 687,
+  "output_tokens": 250,
+  "seconds": 42.9,
+  "built_at": "2026-10-05T23:28:24+00:00"
+ }
+}

@@ -1,0 +1,71 @@
+{
+ "id": "bluebirdnonprofitcloud",
+ "company": {
+  "name": "Bluebird Nonprofit Cloud",
+  "domain": "bluebirdnonprofitcloud.test",
+  "description": "Bluebird Nonprofit Cloud is a donor CRM built for small nonprofits.",
+  "industry": "nonprofit"
+ },
+ "person": {
+  "name": "Megan Clarke",
+  "title": "Executive Director"
+ },
+ "offer": {
+  "product": "Tracewell",
+  "value_props": [
+   "alert engineering teams to failing data pipelines before dashboards break",
+   "cut on-call noise by grouping related alerts"
+  ],
+  "call_to_action": "Open to a 15-minute call next week?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Tracewell"
+ },
+ "facts": [
+  {
+   "id": 4001,
+   "kind": "product",
+   "text": "Bluebird Nonprofit Cloud is a donor CRM built for small nonprofits.",
+   "source_url": "https://bluebirdnonprofitcloud.test/",
+   "published_at": null
+  },
+  {
+   "id": 4002,
+   "kind": "team_size",
+   "text": "Today we are a team of 15 people.",
+   "source_url": "https://bluebirdnonprofitcloud.test/about",
+   "published_at": null
+  },
+  {
+   "id": 4003,
+   "kind": "tech_stack",
+   "text": "Our stack includes PHP, Laravel, MySQL.",
+   "source_url": "https://bluebirdnonprofitcloud.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 4004,
+   "kind": "news",
+   "text": "Bluebird adds recurring-gift reminders 2026-08-16 Nonprofits can send automated reminders before a recurring gift renews.",
+   "source_url": "https://bluebirdnonprofitcloud.test/blog/bluebird-adds-recurring-gift-reminders",
+   "published_at": "2026-08-16"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://bluebirdnonprofitcloud.test/",
+   "https://bluebirdnonprofitcloud.test/about",
+   "https://bluebirdnonprofitcloud.test/careers",
+   "https://bluebirdnonprofitcloud.test/blog",
+   "https://bluebirdnonprofitcloud.test/blog/bluebird-adds-recurring-gift-reminders"
+  ],
+  "input_tokens": 673,
+  "output_tokens": 218,
+  "seconds": 40.17,
+  "built_at": "2026-10-05T23:35:12+00:00"
+ }
+}

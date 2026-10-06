@@ -1,0 +1,71 @@
+{
+ "id": "quantumleaplogistics",
+ "company": {
+  "name": "Quantum Leap Logistics",
+  "domain": "quantumleaplogistics.test",
+  "description": "Quantum Leap Logistics optimizes last-mile delivery routes for grocery chains.",
+  "industry": "logistics"
+ },
+ "person": {
+  "name": "Raj Patel",
+  "title": "VP Engineering"
+ },
+ "offer": {
+  "product": "Tracewell",
+  "value_props": [
+   "alert engineering teams to failing data pipelines before dashboards break",
+   "cut on-call noise by grouping related alerts"
+  ],
+  "call_to_action": "Open to a 15-minute call next week?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Tracewell"
+ },
+ "facts": [
+  {
+   "id": 3901,
+   "kind": "product",
+   "text": "Quantum Leap Logistics optimizes last-mile delivery routes for grocery chains.",
+   "source_url": "https://quantumleaplogistics.test/",
+   "published_at": null
+  },
+  {
+   "id": 3902,
+   "kind": "team_size",
+   "text": "Today we are a team of 73 people.",
+   "source_url": "https://quantumleaplogistics.test/about",
+   "published_at": null
+  },
+  {
+   "id": 3903,
+   "kind": "tech_stack",
+   "text": "Our stack includes Python, OR-Tools, Kubernetes.",
+   "source_url": "https://quantumleaplogistics.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 3904,
+   "kind": "news",
+   "text": "Quantum Leap cuts delivery miles 12% for a grocery chain 2026-07-19 A 90-day rollout reduced total delivery miles by 12% across 30 stores.",
+   "source_url": "https://quantumleaplogistics.test/blog/quantum-leap-cuts-delivery-miles-12-for-a-grocery-chain",
+   "published_at": "2026-07-19"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://quantumleaplogistics.test/",
+   "https://quantumleaplogistics.test/about",
+   "https://quantumleaplogistics.test/careers",
+   "https://quantumleaplogistics.test/blog",
+   "https://quantumleaplogistics.test/blog/quantum-leap-cuts-delivery-miles-12-for-a-grocery-chain"
+  ],
+  "input_tokens": 700,
+  "output_tokens": 248,
+  "seconds": 41.46,
+  "built_at": "2026-10-05T23:34:59+00:00"
+ }
+}

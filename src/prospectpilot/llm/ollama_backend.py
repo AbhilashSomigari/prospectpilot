@@ -28,7 +28,7 @@ class OllamaBackend:
             ],
             "options": {
                 "temperature": req.temperature,
-                "seed": self.settings.llm_seed,
+                "seed": req.seed if req.seed is not None else self.settings.llm_seed,
                 "num_ctx": self.settings.ollama_num_ctx,
                 "num_predict": req.max_tokens,
             },

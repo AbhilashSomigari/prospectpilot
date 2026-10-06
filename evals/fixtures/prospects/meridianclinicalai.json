@@ -1,0 +1,92 @@
+{
+ "id": "meridianclinicalai",
+ "company": {
+  "name": "Meridian Clinical AI",
+  "domain": "meridianclinicalai.test",
+  "description": "Meridian Clinical AI drafts clinical notes from doctor-patient conversations.",
+  "industry": "healthtech"
+ },
+ "person": {
+  "name": "Dr. Aisha Bello",
+  "title": "Chief Medical Officer"
+ },
+ "offer": {
+  "product": "Ledgerly",
+  "value_props": [
+   "turn CRM and billing data into board-ready revenue reports automatically",
+   "give sales leaders a forecast they can trust"
+  ],
+  "call_to_action": "Worth a quick call to see if it fits?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Ledgerly"
+ },
+ "facts": [
+  {
+   "id": 3601,
+   "kind": "product",
+   "text": "Meridian Clinical AI drafts clinical notes from doctor-patient conversations.",
+   "source_url": "https://meridianclinicalai.test/",
+   "published_at": null
+  },
+  {
+   "id": 3602,
+   "kind": "team_size",
+   "text": "Today we are a team of 61 people.",
+   "source_url": "https://meridianclinicalai.test/about",
+   "published_at": null
+  },
+  {
+   "id": 3603,
+   "kind": "funding",
+   "text": "Meridian Clinical AI raised a $20M Series A in 2026 to grow the team.",
+   "source_url": "https://meridianclinicalai.test/about",
+   "published_at": null
+  },
+  {
+   "id": 3604,
+   "kind": "tech_stack",
+   "text": "Our stack includes Python, PyTorch, Azure.",
+   "source_url": "https://meridianclinicalai.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 3605,
+   "kind": "open_role",
+   "text": "Clinical NLP Engineer, Join the team in Philadelphia, PA.",
+   "source_url": "https://meridianclinicalai.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 3606,
+   "kind": "open_role",
+   "text": "Implementation Manager, Join the team in Philadelphia, PA.",
+   "source_url": "https://meridianclinicalai.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 3607,
+   "kind": "news",
+   "text": "Meridian publishes accuracy study with two health systems 2026-08-08 The study compared AI-drafted notes with physician-written notes across 2,400 visits.",
+   "source_url": "https://meridianclinicalai.test/blog/meridian-publishes-accuracy-study-with-two-health-systems",
+   "published_at": "2026-08-08"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://meridianclinicalai.test/",
+   "https://meridianclinicalai.test/about",
+   "https://meridianclinicalai.test/careers",
+   "https://meridianclinicalai.test/blog",
+   "https://meridianclinicalai.test/blog/meridian-publishes-accuracy-study-with-two-health-systems"
+  ],
+  "input_tokens": 693,
+  "output_tokens": 371,
+  "seconds": 49.05,
+  "built_at": "2026-10-05T23:34:17+00:00"
+ }
+}

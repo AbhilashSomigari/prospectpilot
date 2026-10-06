@@ -1,0 +1,71 @@
+{
+ "id": "saffronfoodsmarketplace",
+ "company": {
+  "name": "Saffron Foods Marketplace",
+  "domain": "saffronfoodsmarketplace.test",
+  "description": "Saffron Foods Marketplace connects independent restaurants with local farms.",
+  "industry": "marketplace"
+ },
+ "person": {
+  "name": "Diego Fernandez",
+  "title": "Head of Growth"
+ },
+ "offer": {
+  "product": "Ledgerly",
+  "value_props": [
+   "turn CRM and billing data into board-ready revenue reports automatically",
+   "give sales leaders a forecast they can trust"
+  ],
+  "call_to_action": "Worth a quick call to see if it fits?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Ledgerly"
+ },
+ "facts": [
+  {
+   "id": 3201,
+   "kind": "tech_stack",
+   "text": "Our stack includes Elixir, Phoenix, Postgres.",
+   "source_url": "https://saffronfoodsmarketplace.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 3202,
+   "kind": "team_size",
+   "text": "Today we are a team of 46 people.",
+   "source_url": "https://saffronfoodsmarketplace.test/about",
+   "published_at": null
+  },
+  {
+   "id": 3203,
+   "kind": "product",
+   "text": "Saffron Foods Marketplace connects independent restaurants with local farms.",
+   "source_url": "https://saffronfoodsmarketplace.test/",
+   "published_at": null
+  },
+  {
+   "id": 3204,
+   "kind": "news",
+   "text": "Saffron expands to Portland and Seattle 2026-06-10 Restaurants in both cities can now order directly from 120 nearby farms.",
+   "source_url": "https://saffronfoodsmarketplace.test/blog/saffron-expands-to-portland-and-seattle",
+   "published_at": "2026-06-10"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://saffronfoodsmarketplace.test/",
+   "https://saffronfoodsmarketplace.test/about",
+   "https://saffronfoodsmarketplace.test/careers",
+   "https://saffronfoodsmarketplace.test/blog",
+   "https://saffronfoodsmarketplace.test/blog/saffron-expands-to-portland-and-seattle"
+  ],
+  "input_tokens": 694,
+  "output_tokens": 230,
+  "seconds": 34.41,
+  "built_at": "2026-10-05T23:33:15+00:00"
+ }
+}

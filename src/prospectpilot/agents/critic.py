@@ -305,16 +305,20 @@ async def critique_sequence(
     settings: Settings,
     *,
     round_: int = 0,
+    always_judge: bool = False,
 ) -> Critique:
     with span("agent.critic", **{"pp.company": ctx.company_name, "pp.round": round_}) as s:
         checks, claims = deterministic_checks(seq, ctx, offer, settings)
         det_ok = all(c.passed for c in checks)
-        try:
-            scores: JudgeScores | None = await judge(llm, seq, ctx, offer)
-        except LLMError as exc:
-            scores = None
-            checks.append(CheckResult(code="judge_error", passed=False, detail=str(exc)[:200]))
-            det_ok = False
+        scores: JudgeScores | None = None
+        # Cheap checks first: the LLM judge only runs on drafts that already pass every
+        # deterministic check (a failing draft is rewritten regardless of its rubric score).
+        if det_ok or always_judge:
+            try:
+                scores = await judge(llm, seq, ctx, offer)
+            except LLMError as exc:
+                checks.append(CheckResult(code="judge_error", passed=False, detail=str(exc)[:200]))
+                det_ok = False
         passed = det_ok and scores is not None and scores.mean >= settings.critic_min_judge
         critique = Critique(
             passed=passed,

@@ -1,0 +1,71 @@
+{
+ "id": "lanternsupport",
+ "company": {
+  "name": "Lantern Support",
+  "domain": "lanternsupport.test",
+  "description": "Lantern Support is a help desk for SaaS companies that routes tickets with AI triage.",
+  "industry": "saas"
+ },
+ "person": {
+  "name": "Olivia Brooks",
+  "title": "VP Customer Experience"
+ },
+ "offer": {
+  "product": "Ledgerly",
+  "value_props": [
+   "turn CRM and billing data into board-ready revenue reports automatically",
+   "give sales leaders a forecast they can trust"
+  ],
+  "call_to_action": "Worth a quick call to see if it fits?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Ledgerly"
+ },
+ "facts": [
+  {
+   "id": 2801,
+   "kind": "product",
+   "text": "Lantern Support is a help desk for SaaS companies that routes tickets with AI triage.",
+   "source_url": "https://lanternsupport.test/",
+   "published_at": null
+  },
+  {
+   "id": 2802,
+   "kind": "team_size",
+   "text": "Today we are a team of 38 people.",
+   "source_url": "https://lanternsupport.test/about",
+   "published_at": null
+  },
+  {
+   "id": 2803,
+   "kind": "tech_stack",
+   "text": "Our stack includes Python, React, Postgres.",
+   "source_url": "https://lanternsupport.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 2804,
+   "kind": "news",
+   "text": "Lantern adds AI reply drafts 2026-09-18 Agents get suggested replies grounded in the company's help center.",
+   "source_url": "https://lanternsupport.test/blog/lantern-adds-ai-reply-drafts",
+   "published_at": "2026-09-18"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://lanternsupport.test/",
+   "https://lanternsupport.test/about",
+   "https://lanternsupport.test/careers",
+   "https://lanternsupport.test/blog",
+   "https://lanternsupport.test/blog/lantern-adds-ai-reply-drafts"
+  ],
+  "input_tokens": 635,
+  "output_tokens": 216,
+  "seconds": 41.27,
+  "built_at": "2026-10-05T23:32:24+00:00"
+ }
+}

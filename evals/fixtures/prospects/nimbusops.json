@@ -1,0 +1,71 @@
+{
+ "id": "nimbusops",
+ "company": {
+  "name": "Nimbus Ops",
+  "domain": "nimbusops.test",
+  "description": "Nimbus Ops gives platform teams a self-serve portal for cloud environments.",
+  "industry": "devtools"
+ },
+ "person": {
+  "name": "Ethan Wright",
+  "title": "Head of Platform"
+ },
+ "offer": {
+  "product": "Tracewell",
+  "value_props": [
+   "alert engineering teams to failing data pipelines before dashboards break",
+   "cut on-call noise by grouping related alerts"
+  ],
+  "call_to_action": "Open to a 15-minute call next week?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Tracewell"
+ },
+ "facts": [
+  {
+   "id": 3101,
+   "kind": "product",
+   "text": "Nimbus Ops gives platform teams a self-serve portal for cloud environments.",
+   "source_url": "https://nimbusops.test/",
+   "published_at": null
+  },
+  {
+   "id": 3102,
+   "kind": "team_size",
+   "text": "Today we are a team of 31 people.",
+   "source_url": "https://nimbusops.test/about",
+   "published_at": null
+  },
+  {
+   "id": 3103,
+   "kind": "tech_stack",
+   "text": "Our stack includes Go, Terraform, Kubernetes, React.",
+   "source_url": "https://nimbusops.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 3104,
+   "kind": "news",
+   "text": "Nimbus adds cost guardrails to environment templates Templates can now cap monthly spend and auto-expire idle environments.",
+   "source_url": "https://nimbusops.test/blog/nimbus-adds-cost-guardrails-to-environment-templates",
+   "published_at": "2026-07-24"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://nimbusops.test/",
+   "https://nimbusops.test/about",
+   "https://nimbusops.test/careers",
+   "https://nimbusops.test/blog",
+   "https://nimbusops.test/blog/nimbus-adds-cost-guardrails-to-environment-templates"
+  ],
+  "input_tokens": 623,
+  "output_tokens": 206,
+  "seconds": 37.45,
+  "built_at": "2026-10-05T23:33:02+00:00"
+ }
+}

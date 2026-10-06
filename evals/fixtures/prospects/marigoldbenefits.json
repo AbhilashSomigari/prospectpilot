@@ -1,0 +1,62 @@
+{
+ "id": "marigoldbenefits",
+ "company": {
+  "name": "Marigold Benefits",
+  "domain": "marigoldbenefits.test",
+  "description": "Marigold Benefits administers benefits for companies with 50 to 500 employees.",
+  "industry": "hrtech"
+ },
+ "person": {
+  "name": "Fatima Noor",
+  "title": "Head of People"
+ },
+ "offer": {
+  "product": "Hirewise",
+  "value_props": [
+   "give hiring teams structured interview kits for every open role",
+   "shorten time-to-hire without lowering the bar"
+  ],
+  "call_to_action": "Would a 20-minute walkthrough be useful?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Hirewise"
+ },
+ "facts": [
+  {
+   "id": 2301,
+   "kind": "team_size",
+   "text": "Today we are a team of 90 people.",
+   "source_url": "https://marigoldbenefits.test/about",
+   "published_at": null
+  },
+  {
+   "id": 2302,
+   "kind": "tech_stack",
+   "text": "Our stack includes Ruby on Rails, Postgres.",
+   "source_url": "https://marigoldbenefits.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 2303,
+   "kind": "product",
+   "text": "Marigold Benefits administers benefits for companies with 50 to 500 employees.",
+   "source_url": "https://marigoldbenefits.test/",
+   "published_at": null
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://marigoldbenefits.test/",
+   "https://marigoldbenefits.test/about",
+   "https://marigoldbenefits.test/careers"
+  ],
+  "input_tokens": 506,
+  "output_tokens": 142,
+  "seconds": 39.78,
+  "built_at": "2026-10-05T23:31:16+00:00"
+ }
+}

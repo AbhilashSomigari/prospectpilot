@@ -1,0 +1,85 @@
+{
+ "id": "granitemanufacturingcloud",
+ "company": {
+  "name": "Granite Manufacturing Cloud",
+  "domain": "granitemanufacturingcloud.test",
+  "description": "Granite Manufacturing Cloud tracks machine uptime and OEE for small factories.",
+  "industry": "manufacturing"
+ },
+ "person": {
+  "name": "Peter Novak",
+  "title": "Head of Engineering"
+ },
+ "offer": {
+  "product": "Tracewell",
+  "value_props": [
+   "alert engineering teams to failing data pipelines before dashboards break",
+   "cut on-call noise by grouping related alerts"
+  ],
+  "call_to_action": "Open to a 15-minute call next week?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Tracewell"
+ },
+ "facts": [
+  {
+   "id": 2901,
+   "kind": "product",
+   "text": "Granite Manufacturing Cloud tracks machine uptime and OEE for small factories.",
+   "source_url": "https://granitemanufacturingcloud.test/",
+   "published_at": null
+  },
+  {
+   "id": 2902,
+   "kind": "team_size",
+   "text": "Today we are a team of 50 people.",
+   "source_url": "https://granitemanufacturingcloud.test/about",
+   "published_at": null
+  },
+  {
+   "id": 2903,
+   "kind": "tech_stack",
+   "text": "Our stack includes Go, InfluxDB, React.",
+   "source_url": "https://granitemanufacturingcloud.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 2904,
+   "kind": "open_role",
+   "text": "Embedded Software Engineer, Join the team in Detroit, MI.",
+   "source_url": "https://granitemanufacturingcloud.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 2905,
+   "kind": "open_role",
+   "text": "Customer Success Engineer, Join the team in Detroit, MI.",
+   "source_url": "https://granitemanufacturingcloud.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 2906,
+   "kind": "news",
+   "text": "Granite reaches 1,000 connected machines.",
+   "source_url": "https://granitemanufacturingcloud.test/blog/granite-reaches-1-000-connected-machines",
+   "published_at": "2026-04-22"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://granitemanufacturingcloud.test/",
+   "https://granitemanufacturingcloud.test/about",
+   "https://granitemanufacturingcloud.test/careers",
+   "https://granitemanufacturingcloud.test/blog",
+   "https://granitemanufacturingcloud.test/blog/granite-reaches-1-000-connected-machines"
+  ],
+  "input_tokens": 688,
+  "output_tokens": 302,
+  "seconds": 43.71,
+  "built_at": "2026-10-05T23:32:40+00:00"
+ }
+}

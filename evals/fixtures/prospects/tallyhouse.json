@@ -1,0 +1,78 @@
+{
+ "id": "tallyhouse",
+ "company": {
+  "name": "Tallyhouse",
+  "domain": "tallyhouse.test",
+  "description": "Tallyhouse automates sales-tax filing for e-commerce brands.",
+  "industry": "fintech"
+ },
+ "person": {
+  "name": "Rachel Green",
+  "title": "CFO"
+ },
+ "offer": {
+  "product": "Ledgerly",
+  "value_props": [
+   "turn CRM and billing data into board-ready revenue reports automatically",
+   "give sales leaders a forecast they can trust"
+  ],
+  "call_to_action": "Worth a quick call to see if it fits?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Ledgerly"
+ },
+ "facts": [
+  {
+   "id": 2601,
+   "kind": "product",
+   "text": "Tallyhouse automates sales-tax filing for e-commerce brands.",
+   "source_url": "https://tallyhouse.test/",
+   "published_at": null
+  },
+  {
+   "id": 2602,
+   "kind": "team_size",
+   "text": "Tallyhouse is a team of 44 people.",
+   "source_url": "https://tallyhouse.test/about",
+   "published_at": null
+  },
+  {
+   "id": 2603,
+   "kind": "funding",
+   "text": "Tallyhouse raised a $7M Series A in 2025 to grow the team.",
+   "source_url": "https://tallyhouse.test/about",
+   "published_at": null
+  },
+  {
+   "id": 2604,
+   "kind": "tech_stack",
+   "text": "Tallyhouse's stack includes TypeScript, Node.js, Postgres.",
+   "source_url": "https://tallyhouse.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 2605,
+   "kind": "news",
+   "text": "Tallyhouse adds automatic filing in 20 more states.",
+   "source_url": "https://tallyhouse.test/blog/tallyhouse-adds-automatic-filing-in-20-more-states",
+   "published_at": "2026-07-02"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://tallyhouse.test/",
+   "https://tallyhouse.test/about",
+   "https://tallyhouse.test/careers",
+   "https://tallyhouse.test/blog",
+   "https://tallyhouse.test/blog/tallyhouse-adds-automatic-filing-in-20-more-states"
+  ],
+  "input_tokens": 674,
+  "output_tokens": 251,
+  "seconds": 40.87,
+  "built_at": "2026-10-05T23:31:57+00:00"
+ }
+}

@@ -1,0 +1,78 @@
+{
+ "id": "fernwayanalytics",
+ "company": {
+  "name": "Fernway Analytics",
+  "domain": "fernwayanalytics.test",
+  "description": "Fernway Analytics gives product teams self-serve funnel analysis on top of their warehouse.",
+  "industry": "data"
+ },
+ "person": {
+  "name": "Marcus Chen",
+  "title": "Head of Product"
+ },
+ "offer": {
+  "product": "Tracewell",
+  "value_props": [
+   "alert engineering teams to failing data pipelines before dashboards break",
+   "cut on-call noise by grouping related alerts"
+  ],
+  "call_to_action": "Open to a 15-minute call next week?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Tracewell"
+ },
+ "facts": [
+  {
+   "id": 601,
+   "kind": "product",
+   "text": "Fernway Analytics gives product teams self-serve funnel analysis on top of their warehouse.",
+   "source_url": "https://fernwayanalytics.test/",
+   "published_at": null
+  },
+  {
+   "id": 602,
+   "kind": "team_size",
+   "text": "Today we are a team of 35 people.",
+   "source_url": "https://fernwayanalytics.test/about",
+   "published_at": null
+  },
+  {
+   "id": 603,
+   "kind": "tech_stack",
+   "text": "Our stack includes Python, dbt, Snowflake, React.",
+   "source_url": "https://fernwayanalytics.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 604,
+   "kind": "open_role",
+   "text": "Analytics Engineer, Solutions Engineer roles available in San Francisco, CA.",
+   "source_url": "https://fernwayanalytics.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 605,
+   "kind": "product",
+   "text": "Teams can now analyze A/B tests directly on Snowflake and BigQuery without exporting data.",
+   "source_url": "https://fernwayanalytics.test/blog/fernway-adds-warehouse-native-experiments",
+   "published_at": "2026-08-28"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://fernwayanalytics.test/",
+   "https://fernwayanalytics.test/about",
+   "https://fernwayanalytics.test/careers",
+   "https://fernwayanalytics.test/blog",
+   "https://fernwayanalytics.test/blog/fernway-adds-warehouse-native-experiments"
+  ],
+  "input_tokens": 653,
+  "output_tokens": 249,
+  "seconds": 45.82,
+  "built_at": "2026-10-05T23:27:24+00:00"
+ }
+}

@@ -1,0 +1,85 @@
+{
+ "id": "summitdataco",
+ "company": {
+  "name": "Summit Data Co",
+  "domain": "summitdataco.test",
+  "description": "Summit Data Co cleans and deduplicates CRM data for revenue operations teams.",
+  "industry": "data"
+ },
+ "person": {
+  "name": "Liam O'Connor",
+  "title": "Director of RevOps"
+ },
+ "offer": {
+  "product": "Tracewell",
+  "value_props": [
+   "alert engineering teams to failing data pipelines before dashboards break",
+   "cut on-call noise by grouping related alerts"
+  ],
+  "call_to_action": "Open to a 15-minute call next week?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Tracewell"
+ },
+ "facts": [
+  {
+   "id": 2401,
+   "kind": "product",
+   "text": "Summit Data Co cleans and deduplicates CRM data for revenue operations teams.",
+   "source_url": "https://summitdataco.test/",
+   "published_at": null
+  },
+  {
+   "id": 2402,
+   "kind": "team_size",
+   "text": "Summit Data Co is a team of 26 people.",
+   "source_url": "https://summitdataco.test/about",
+   "published_at": null
+  },
+  {
+   "id": 2403,
+   "kind": "tech_stack",
+   "text": "Summit Data Co stack includes Python, Airflow, Postgres.",
+   "source_url": "https://summitdataco.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 2404,
+   "kind": "open_role",
+   "text": "Backend Engineer role open in Dublin, IE.",
+   "source_url": "https://summitdataco.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 2405,
+   "kind": "open_role",
+   "text": "RevOps Consultant role open in Dublin, IE.",
+   "source_url": "https://summitdataco.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 2406,
+   "kind": "news",
+   "text": "Summit adds HubSpot two-way sync.",
+   "source_url": "https://summitdataco.test/blog/summit-adds-hubspot-two-way-sync",
+   "published_at": "2026-09-01"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://summitdataco.test/",
+   "https://summitdataco.test/about",
+   "https://summitdataco.test/careers",
+   "https://summitdataco.test/blog",
+   "https://summitdataco.test/blog/summit-adds-hubspot-two-way-sync"
+  ],
+  "input_tokens": 647,
+  "output_tokens": 285,
+  "seconds": 39.36,
+  "built_at": "2026-10-05T23:31:31+00:00"
+ }
+}

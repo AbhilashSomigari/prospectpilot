@@ -1,0 +1,71 @@
+{
+ "id": "arcadiabiotechsystems",
+ "company": {
+  "name": "Arcadia Biotech Systems",
+  "domain": "arcadiabiotechsystems.test",
+  "description": "Arcadia Biotech Systems schedules and tracks lab instrument runs for biotech R&D teams.",
+  "industry": "biotech"
+ },
+ "person": {
+  "name": "Dr. Mei Lin",
+  "title": "Head of Lab Operations"
+ },
+ "offer": {
+  "product": "Tracewell",
+  "value_props": [
+   "alert engineering teams to failing data pipelines before dashboards break",
+   "cut on-call noise by grouping related alerts"
+  ],
+  "call_to_action": "Open to a 15-minute call next week?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Tracewell"
+ },
+ "facts": [
+  {
+   "id": 2501,
+   "kind": "tech_stack",
+   "text": "Arcadia Biotech Systems uses Python, Vue, Postgres.",
+   "source_url": "https://arcadiabiotechsystems.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 2502,
+   "kind": "team_size",
+   "text": "Arcadia Biotech Systems is a team of 33 people.",
+   "source_url": "https://arcadiabiotechsystems.test/about",
+   "published_at": null
+  },
+  {
+   "id": 2503,
+   "kind": "product",
+   "text": "Arcadia Biotech Systems schedules and tracks lab instrument runs for biotech R&D teams.",
+   "source_url": "https://arcadiabiotechsystems.test/",
+   "published_at": null
+  },
+  {
+   "id": 2504,
+   "kind": "product",
+   "text": "Arcadia integrates with 30 lab instruments.",
+   "source_url": "https://arcadiabiotechsystems.test/blog/arcadia-integrates-with-30-lab-instruments",
+   "published_at": "2026-05-27"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://arcadiabiotechsystems.test/",
+   "https://arcadiabiotechsystems.test/about",
+   "https://arcadiabiotechsystems.test/careers",
+   "https://arcadiabiotechsystems.test/blog",
+   "https://arcadiabiotechsystems.test/blog/arcadia-integrates-with-30-lab-instruments"
+  ],
+  "input_tokens": 704,
+  "output_tokens": 211,
+  "seconds": 34.97,
+  "built_at": "2026-10-05T23:31:43+00:00"
+ }
+}

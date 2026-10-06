@@ -1,0 +1,85 @@
+{
+ "id": "copperleafbanking",
+ "company": {
+  "name": "Copperleaf Banking",
+  "domain": "copperleafbanking.test",
+  "description": "Copperleaf Banking provides banking-as-a-service for credit unions.",
+  "industry": "fintech"
+ },
+ "person": {
+  "name": "Thomas Weber",
+  "title": "CTO"
+ },
+ "offer": {
+  "product": "Tracewell",
+  "value_props": [
+   "alert engineering teams to failing data pipelines before dashboards break",
+   "cut on-call noise by grouping related alerts"
+  ],
+  "call_to_action": "Open to a 15-minute call next week?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Tracewell"
+ },
+ "facts": [
+  {
+   "id": 4301,
+   "kind": "tech_stack",
+   "text": "Copperleaf Banking uses Java, Kotlin, Postgres.",
+   "source_url": "https://copperleafbanking.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 4302,
+   "kind": "team_size",
+   "text": "Copperleaf Banking has a team of 130 people.",
+   "source_url": "https://copperleafbanking.test/about",
+   "published_at": null
+  },
+  {
+   "id": 4303,
+   "kind": "product",
+   "text": "Copperleaf Banking provides banking-as-a-service for credit unions.",
+   "source_url": "https://copperleafbanking.test/",
+   "published_at": null
+  },
+  {
+   "id": 4304,
+   "kind": "open_role",
+   "text": "Core Banking Engineer role is open in Charlotte, NC.",
+   "source_url": "https://copperleafbanking.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 4305,
+   "kind": "open_role",
+   "text": "Partner Success Manager role is open in Charlotte, NC.",
+   "source_url": "https://copperleafbanking.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 4306,
+   "kind": "news",
+   "text": "Copperleaf signs its tenth credit union on 2026-06-30.",
+   "source_url": "https://copperleafbanking.test/blog/copperleaf-signs-its-tenth-credit-union",
+   "published_at": "2026-06-30"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://copperleafbanking.test/",
+   "https://copperleafbanking.test/about",
+   "https://copperleafbanking.test/careers",
+   "https://copperleafbanking.test/blog",
+   "https://copperleafbanking.test/blog/copperleaf-signs-its-tenth-credit-union"
+  ],
+  "input_tokens": 659,
+  "output_tokens": 263,
+  "seconds": 37.01,
+  "built_at": "2026-10-05T23:35:49+00:00"
+ }
+}

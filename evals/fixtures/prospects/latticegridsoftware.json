@@ -1,0 +1,92 @@
+{
+ "id": "latticegridsoftware",
+ "company": {
+  "name": "Lattice Grid Software",
+  "domain": "latticegridsoftware.test",
+  "description": "Lattice Grid Software offers feature flags with built-in experiment analysis.",
+  "industry": "devtools"
+ },
+ "person": {
+  "name": "Ben Carter",
+  "title": "Engineering Manager"
+ },
+ "offer": {
+  "product": "Tracewell",
+  "value_props": [
+   "alert engineering teams to failing data pipelines before dashboards break",
+   "cut on-call noise by grouping related alerts"
+  ],
+  "call_to_action": "Open to a 15-minute call next week?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Tracewell"
+ },
+ "facts": [
+  {
+   "id": 2201,
+   "kind": "product",
+   "text": "Lattice Grid Software offers feature flags with built-in experiment analysis.",
+   "source_url": "https://latticegridsoftware.test/",
+   "published_at": null
+  },
+  {
+   "id": 2202,
+   "kind": "tech_stack",
+   "text": "Lattice Grid Software's stack includes Go, TypeScript, Postgres, Kubernetes.",
+   "source_url": "https://latticegridsoftware.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 2203,
+   "kind": "team_size",
+   "text": "Lattice Grid Software is a team of 40 people.",
+   "source_url": "https://latticegridsoftware.test/about",
+   "published_at": null
+  },
+  {
+   "id": 2204,
+   "kind": "funding",
+   "text": "Lattice Grid Software raised a $10M Series A in 2025 to grow the team.",
+   "source_url": "https://latticegridsoftware.test/about",
+   "published_at": null
+  },
+  {
+   "id": 2205,
+   "kind": "open_role",
+   "text": "Senior Platform Engineer position is open in Remote.",
+   "source_url": "https://latticegridsoftware.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 2206,
+   "kind": "open_role",
+   "text": "Developer Advocate position is open in Remote.",
+   "source_url": "https://latticegridsoftware.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 2207,
+   "kind": "news",
+   "text": "Lattice ships flag cleanup suggestions that find stale flags and remove them via pull requests.",
+   "source_url": "https://latticegridsoftware.test/blog/lattice-ships-flag-cleanup-suggestions",
+   "published_at": "2026-08-21"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://latticegridsoftware.test/",
+   "https://latticegridsoftware.test/about",
+   "https://latticegridsoftware.test/careers",
+   "https://latticegridsoftware.test/blog",
+   "https://latticegridsoftware.test/blog/lattice-ships-flag-cleanup-suggestions"
+  ],
+  "input_tokens": 666,
+  "output_tokens": 294,
+  "seconds": 51.12,
+  "built_at": "2026-10-05T23:31:08+00:00"
+ }
+}

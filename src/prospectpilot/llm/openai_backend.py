@@ -26,7 +26,7 @@ class OpenAICompatBackend:
             "model": model,
             "max_tokens": req.max_tokens,
             "temperature": req.temperature,
-            "seed": self.settings.llm_seed,
+            "seed": req.seed if req.seed is not None else self.settings.llm_seed,
             "messages": [
                 {"role": "system", "content": req.system},
                 {"role": "user", "content": req.prompt},

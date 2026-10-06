@@ -106,3 +106,66 @@ def reply_sim(ctx: dict[str, Any]) -> dict[str, Any]:
             "body": "Appreciate it, but we already have something in place for this.",
         }
     return {"outcome": "no_reply", "probability": probability, "body": ""}
+
+
+_ROOT_CAUSES: dict[str, tuple[str, str]] = {
+    "ungrounded_claims": (
+        "The writer paraphrases facts loosely or adds unsupported specifics next to a marker.",
+        "Restate the cited fact's key terms in the same sentence as its [fact:id] marker and never add numbers that are not in the fact.",
+    ),
+    "missing_fact_markers": (
+        "The writer forgets to cite a fact in the first email.",
+        "Open step 1 with a sentence built on one fact and its [fact:id] marker, and cite a different fact in step 2.",
+    ),
+    "spam_words": (
+        "Follow-ups drift into hype when trying to create urgency.",
+        "Create urgency with a specific, relevant reason instead of hype words like guaranteed or act now.",
+    ),
+    "word_limit": (
+        "Emails try to cover every value proposition at once.",
+        "Keep each email to one idea and one ask so it stays well under the word limit.",
+    ),
+    "judge_below_threshold": (
+        "Emails are generic and do not connect the fact to the offer.",
+        "Connect the cited fact to one concrete benefit of the offer in the very next sentence.",
+    ),
+}
+
+
+def failure_analysis(ctx: dict[str, Any]) -> dict[str, Any]:
+    findings = []
+    for c in ctx.get("clusters", []):
+        cause, learning = _ROOT_CAUSES.get(
+            c["code"], ("The writer misses a review rule.", "Re-read every rule before answering.")
+        )
+        findings.append({"code": c["code"], "root_cause": cause, "learning": learning})
+    return {"findings": findings}
+
+
+def optimizer(ctx: dict[str, Any]) -> dict[str, Any]:
+    rules = [f["learning"] for f in ctx.get("findings", [])][:3] or [
+        "Cite one fact in step 1 and a different fact in step 2."
+    ]
+    return {
+        "candidates": [
+            {
+                "name": "targeted",
+                "rationale": "rules for the top failure clusters",
+                "guidance": "\n".join(f"- {r}" for r in rules),
+            },
+            {
+                "name": "checklist",
+                "rationale": "self-check before answering",
+                "guidance": "Before answering check: 1) step 1 has a [fact:ID] marker; 2) two distinct "
+                "facts are cited; 3) every marked sentence restates its fact; 4) no email "
+                "exceeds the word limit; 5) no hype words.",
+            },
+            {
+                "name": "exemplar",
+                "rationale": "shows a grounded sentence",
+                "guidance": "Good: 'Saw that your team added offline mode for job sites [fact:ID].' "
+                "Bad: 'Your team must be growing fast [fact:ID].' (not in the fact). Real ids "
+                "come from the FACTS list.",
+            },
+        ]
+    }

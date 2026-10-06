@@ -108,6 +108,8 @@ async def execute_run(run_id: uuid.UUID, deps: PipelineDeps | None = None) -> di
                 set_attrs(root, **{"pp.resumed": resume})
                 await graph.ainvoke(state_in, config=config)
         stats = await run_stats(run_id)
+        stats.update({"provider": deps.llm.provider, "models": deps.llm.models(),
+                      "embedder": deps.embedder.name, "options": options})  # fmt: skip
         async with session_scope() as s:
             run = await s.get(Run, run_id)
             assert run is not None

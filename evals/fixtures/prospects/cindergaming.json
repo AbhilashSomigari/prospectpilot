@@ -1,0 +1,78 @@
+{
+ "id": "cindergaming",
+ "company": {
+  "name": "Cinder Gaming",
+  "domain": "cindergaming.test",
+  "description": "Cinder Gaming makes live-ops tooling for mobile game studios.",
+  "industry": "gaming"
+ },
+ "person": {
+  "name": "Lucas Silva",
+  "title": "CTO"
+ },
+ "offer": {
+  "product": "Tracewell",
+  "value_props": [
+   "alert engineering teams to failing data pipelines before dashboards break",
+   "cut on-call noise by grouping related alerts"
+  ],
+  "call_to_action": "Open to a 15-minute call next week?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Tracewell"
+ },
+ "facts": [
+  {
+   "id": 3501,
+   "kind": "product",
+   "text": "Cinder Gaming makes live-ops tooling for mobile game studios.",
+   "source_url": "https://cindergaming.test/",
+   "published_at": null
+  },
+  {
+   "id": 3502,
+   "kind": "team_size",
+   "text": "Today we are a team of 27 people.",
+   "source_url": "https://cindergaming.test/about",
+   "published_at": null
+  },
+  {
+   "id": 3503,
+   "kind": "tech_stack",
+   "text": "Our stack includes C#, Go, ClickHouse.",
+   "source_url": "https://cindergaming.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 3504,
+   "kind": "open_role",
+   "text": "Backend Engineer, Developer Relations Lead",
+   "source_url": "https://cindergaming.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 3505,
+   "kind": "news",
+   "text": "Cinder launches player segmentation",
+   "source_url": "https://cindergaming.test/blog/cinder-launches-player-segmentation",
+   "published_at": "2025-12-04"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://cindergaming.test/",
+   "https://cindergaming.test/about",
+   "https://cindergaming.test/careers",
+   "https://cindergaming.test/blog",
+   "https://cindergaming.test/blog/cinder-launches-player-segmentation"
+  ],
+  "input_tokens": 622,
+  "output_tokens": 227,
+  "seconds": 42.78,
+  "built_at": "2026-10-05T23:33:58+00:00"
+ }
+}

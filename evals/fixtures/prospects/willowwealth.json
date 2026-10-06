@@ -1,0 +1,69 @@
+{
+ "id": "willowwealth",
+ "company": {
+  "name": "Willow Wealth",
+  "domain": "willowwealth.test",
+  "description": "Willow Wealth offers automated tax-loss harvesting for independent advisors.",
+  "industry": "fintech"
+ },
+ "person": {
+  "name": "Sarah Kim",
+  "title": "Founder & CEO"
+ },
+ "offer": {
+  "product": "Ledgerly",
+  "value_props": [
+   "turn CRM and billing data into board-ready revenue reports automatically",
+   "give sales leaders a forecast they can trust"
+  ],
+  "call_to_action": "Worth a quick call to see if it fits?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Ledgerly"
+ },
+ "facts": [
+  {
+   "id": 3001,
+   "kind": "product",
+   "text": "Willow Wealth offers automated tax-loss harvesting for independent advisors.",
+   "source_url": "https://willowwealth.test/",
+   "published_at": null
+  },
+  {
+   "id": 3002,
+   "kind": "team_size",
+   "text": "Willow Wealth is headquartered in Remote. Today we are a team of 25 people.",
+   "source_url": "https://willowwealth.test/about",
+   "published_at": null
+  },
+  {
+   "id": 3003,
+   "kind": "funding",
+   "text": "Willow Wealth raised a $5M seed round in 2025 to grow the team.",
+   "source_url": "https://willowwealth.test/about",
+   "published_at": null
+  },
+  {
+   "id": 3004,
+   "kind": "tech_stack",
+   "text": "Our stack includes Python, Postgres, AWS.",
+   "source_url": "https://willowwealth.test/careers",
+   "published_at": null
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://willowwealth.test/",
+   "https://willowwealth.test/about",
+   "https://willowwealth.test/careers"
+  ],
+  "input_tokens": 448,
+  "output_tokens": 187,
+  "seconds": 37.83,
+  "built_at": "2026-10-05T23:32:50+00:00"
+ }
+}

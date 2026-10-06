@@ -226,6 +226,173 @@ def graph_mermaid() -> None:
     console.print(mermaid(), markup=False)
 
 
+# ---------------------------------------------------------------- eval / improve
+@app.command("eval")
+def eval_cmd(
+    trials: Annotated[int, typer.Option(help="trials per task")] = 2,
+    limit: Annotated[int | None, typer.Option(help="only the first N fixtures")] = None,
+    out: Annotated[Path | None, typer.Option(help="EvalForge run artifact path")] = None,
+    prompt_file: Annotated[
+        Path | None, typer.Option(help="writer prompt (default: ACTIVE)")
+    ] = None,
+    baseline: Annotated[Path | None, typer.Option(help="EvalForge run to compare against")] = None,
+    concurrency: int = 4,
+) -> None:
+    """Run the EvalForge suite against the ACTIVE writer prompt; exit 2 if a gate fails."""
+    from evalforge.regression import evaluate_gates
+    from evalforge.storage import load_run
+
+    from prospectpilot.evals.suite import GATES, run_suite
+    from prospectpilot.memory import learnings as learnings_mem
+    from prospectpilot.memory import prompts as registry
+    from prospectpilot.memory.db import session_scope
+
+    async def go() -> Any:
+        if prompt_file is not None:
+            prompt, snapshot, label = prompt_file.read_text(), [], prompt_file.name
+        else:
+            try:
+                async with session_scope() as s:
+                    active = await registry.get_active(s)
+                    prompt, label = active.template, f"writer-v{active.version}"
+                    snapshot = [x.text for x in await learnings_mem.all_active(s)]
+            except Exception as exc:  # no DB (e.g. a bare CI job): fall back to the seed prompt
+                console.print(
+                    f"[yellow]prompt registry unavailable ({type(exc).__name__}); using seed prompt[/yellow]"
+                )
+                from prospectpilot.prompts import load as load_prompt
+
+                prompt, snapshot, label = load_prompt("writer_v1"), [], "writer-seed"
+        stamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%S")
+        path = out or REPO_ROOT / "evals" / "runs" / "scratch" / f"eval-{label}-{stamp}.json"
+        return await run_suite(
+            prompt,
+            trials=trials,
+            limit=limit,
+            learnings=snapshot,
+            agent_name=label,
+            out=path,
+            concurrency=concurrency,
+        ), path
+
+    run, path = _run(go())
+    m = run.metadata["metrics"]
+    t = Table(title=f"EvalForge · {run.suite_name} · {run.agent_name} · {run.metadata['provider']}")
+    t.add_column("metric")
+    t.add_column("value", justify="right")
+    for k in (
+        "trials",
+        "pass_rate",
+        "first_pass_rate",
+        "grounded_claim_rate",
+        "hallucination_rate",
+        "judge_mean",
+        "cost_per_task_usd",
+        "tokens_per_task",
+        "avg_attempts",
+        "p50_latency_ms",
+        "p95_latency_ms",
+        "errors",
+    ):
+        v = m[k]
+        t.add_row(k, f"{v:.4f}" if isinstance(v, float) else str(v))
+    console.print(t)
+    console.print(f"run artifact: {path}")
+    base = load_run(baseline) if baseline else None
+    gates = evaluate_gates(run, GATES, base)
+    ok = True
+    for g in gates:
+        ok &= g.passed
+        console.print(
+            f"gate {g.metric} {g.threshold}: {g.actual:.4f} -> {'PASS' if g.passed else 'FAIL'}"
+        )
+    if not ok:
+        raise typer.Exit(code=2)  # EvalForge convention: failing gate blocks CI
+
+
+@app.command()
+def improve(
+    trials: Annotated[int, typer.Option(help="trials per task (same seeds for every variant)")] = 2,
+    limit: Annotated[int | None, typer.Option(help="only the first N fixtures")] = None,
+) -> None:
+    """Run one self-improvement round now (the worker/EventBridge job does the same nightly)."""
+    from prospectpilot.evals.improve import run_round
+
+    summary = _run(run_round(trials=trials, limit=limit))
+    am = summary["active"]["metrics"]
+    t = Table(
+        title=f"Improvement round {summary['round']} · {summary['provider']} · decision: {summary['decision']}"
+    )
+    for col in (
+        "variant",
+        "pass_rate",
+        "first_pass",
+        "grounded",
+        "judge",
+        "tokens/task",
+        "cost/task",
+        "gates",
+    ):
+        t.add_column(col)
+    t.add_row(
+        f"ACTIVE v{summary['active']['version']}",
+        f"{am['pass_rate']:.3f}",
+        f"{am['first_pass_rate']:.3f}",
+        f"{am['grounded_claim_rate']:.3f}",
+        f"{am['judge_mean']:.2f}",
+        f"{am['tokens_per_task']:.0f}",
+        f"{am['cost_per_task_usd']:.5f}",
+        "-",
+    )
+    for c in summary["candidates"]:
+        cm = c["metrics"]
+        t.add_row(
+            f"v{c['version']} {c['name']}",
+            f"{cm['pass_rate']:.3f}",
+            f"{cm['first_pass_rate']:.3f}",
+            f"{cm['grounded_claim_rate']:.3f}",
+            f"{cm['judge_mean']:.2f}",
+            f"{cm['tokens_per_task']:.0f}",
+            f"{cm['cost_per_task_usd']:.5f}",
+            "PASS" if c["gates_passed"] else "FAIL",
+        )
+    console.print(t)
+    console.print(f"new learnings: {summary['new_learnings']}")
+
+
+@app.command()
+def improvements() -> None:
+    """Show the improvement changelog."""
+    from prospectpilot.api.app import improvements as list_rounds
+
+    rows = _run(list_rounds())
+    t = Table(title="Improvement changelog")
+    for col in (
+        "round",
+        "status",
+        "provider",
+        "decision",
+        "pass before",
+        "pass after",
+        "judge before",
+        "judge after",
+    ):
+        t.add_column(col)
+    for r in rows:
+        b, a = r["metrics_before"] or {}, r["metrics_after"] or {}
+        t.add_row(
+            str(r["round"]),
+            r["status"],
+            r["provider"],
+            str(r["decision"]),
+            f"{b.get('pass_rate', 0):.3f}",
+            f"{a.get('pass_rate', 0):.3f}",
+            f"{b.get('judge_mean', 0):.2f}",
+            f"{a.get('judge_mean', 0):.2f}",
+        )
+    console.print(t)
+
+
 # ----------------------------------------------------------------------- demo
 @app.command()
 def demo(

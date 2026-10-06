@@ -1,0 +1,85 @@
+{
+ "id": "verdantagritech",
+ "company": {
+  "name": "Verdant Agritech",
+  "domain": "verdantagritech.test",
+  "description": "Verdant Agritech monitors soil moisture for orchards with low-power sensors.",
+  "industry": "agtech"
+ },
+ "person": {
+  "name": "Carlos Mendes",
+  "title": "CEO"
+ },
+ "offer": {
+  "product": "Ledgerly",
+  "value_props": [
+   "turn CRM and billing data into board-ready revenue reports automatically",
+   "give sales leaders a forecast they can trust"
+  ],
+  "call_to_action": "Worth a quick call to see if it fits?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Ledgerly"
+ },
+ "facts": [
+  {
+   "id": 4701,
+   "kind": "product",
+   "text": "Verdant Agritech monitors soil moisture for orchards with low-power sensors.",
+   "source_url": "https://verdantagritech.test/",
+   "published_at": null
+  },
+  {
+   "id": 4702,
+   "kind": "team_size",
+   "text": "Verdant Agritech is a team of 24 people.",
+   "source_url": "https://verdantagritech.test/about",
+   "published_at": null
+  },
+  {
+   "id": 4703,
+   "kind": "tech_stack",
+   "text": "Verdant Agritech's stack includes C, Python, AWS IoT.",
+   "source_url": "https://verdantagritech.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 4704,
+   "kind": "open_role",
+   "text": "Firmware Engineer role is open in Fresno, CA.",
+   "source_url": "https://verdantagritech.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 4705,
+   "kind": "open_role",
+   "text": "Agronomy Lead role is open in Fresno, CA.",
+   "source_url": "https://verdantagritech.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 4706,
+   "kind": "product",
+   "text": "Verdant Agritech launches irrigation recommendations.",
+   "source_url": "https://verdantagritech.test/blog/verdant-launches-irrigation-recommendations",
+   "published_at": "2026-06-06"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://verdantagritech.test/",
+   "https://verdantagritech.test/about",
+   "https://verdantagritech.test/careers",
+   "https://verdantagritech.test/blog",
+   "https://verdantagritech.test/blog/verdant-launches-irrigation-recommendations"
+  ],
+  "input_tokens": 681,
+  "output_tokens": 306,
+  "seconds": 39.14,
+  "built_at": "2026-10-05T23:36:42+00:00"
+ }
+}

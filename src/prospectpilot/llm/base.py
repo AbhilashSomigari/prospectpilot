@@ -17,6 +17,7 @@ class LLMRequest(BaseModel):
     max_tokens: int = 2048
     temperature: float = 0.2
     json_schema: dict[str, Any] | None = None
+    seed: int | None = None  # per-request seed (ollama/openai); evals vary it per trial
     # Structured inputs behind the prompt. Used by the mock backend and for trace attributes;
     # real backends only ever see `system` + `prompt`.
     context: dict[str, Any] = Field(default_factory=dict)

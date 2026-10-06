@@ -1,0 +1,85 @@
+{
+ "id": "aurorapethealth",
+ "company": {
+  "name": "Aurora Pet Health",
+  "domain": "aurorapethealth.test",
+  "description": "Aurora Pet Health runs telehealth visits for veterinary clinics.",
+  "industry": "healthtech"
+ },
+ "person": {
+  "name": "Jessica Lee",
+  "title": "Head of Partnerships"
+ },
+ "offer": {
+  "product": "Ledgerly",
+  "value_props": [
+   "turn CRM and billing data into board-ready revenue reports automatically",
+   "give sales leaders a forecast they can trust"
+  ],
+  "call_to_action": "Worth a quick call to see if it fits?"
+ },
+ "sender": {
+  "name": "Alex Rivera",
+  "title": "Account Executive",
+  "company": "Ledgerly"
+ },
+ "facts": [
+  {
+   "id": 4401,
+   "kind": "product",
+   "text": "Aurora Pet Health runs telehealth visits for veterinary clinics.",
+   "source_url": "https://aurorapethealth.test/",
+   "published_at": null
+  },
+  {
+   "id": 4402,
+   "kind": "team_size",
+   "text": "Aurora Pet Health is a team of 47 people.",
+   "source_url": "https://aurorapethealth.test/about",
+   "published_at": null
+  },
+  {
+   "id": 4403,
+   "kind": "tech_stack",
+   "text": "Aurora Pet Health's stack includes TypeScript, React Native, Postgres.",
+   "source_url": "https://aurorapethealth.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 4404,
+   "kind": "open_role",
+   "text": "Mobile Engineer position available.",
+   "source_url": "https://aurorapethealth.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 4405,
+   "kind": "open_role",
+   "text": "Clinic Partnerships Manager position available.",
+   "source_url": "https://aurorapethealth.test/careers",
+   "published_at": null
+  },
+  {
+   "id": 4406,
+   "kind": "news",
+   "text": "Aurora launches after-hours vet triage on 2026-04-03.",
+   "source_url": "https://aurorapethealth.test/blog/aurora-launches-after-hours-vet-triage",
+   "published_at": "2026-04-03"
+  }
+ ],
+ "extraction": {
+  "provider": "ollama",
+  "model": "qwen2.5",
+  "pages": [
+   "https://aurorapethealth.test/",
+   "https://aurorapethealth.test/about",
+   "https://aurorapethealth.test/careers",
+   "https://aurorapethealth.test/blog",
+   "https://aurorapethealth.test/blog/aurora-launches-after-hours-vet-triage"
+  ],
+  "input_tokens": 657,
+  "output_tokens": 257,
+  "seconds": 45.63,
+  "built_at": "2026-10-05T23:36:03+00:00"
+ }
+}

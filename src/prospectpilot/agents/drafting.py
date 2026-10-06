@@ -42,6 +42,7 @@ async def write_round(
     round_: int,
     previous: EmailSequence | None,
     critique: Critique | None,
+    seed: int | None = None,
 ) -> DraftAttempt:
     try:
         seq = await write_sequence(
@@ -54,6 +55,7 @@ async def write_round(
             round_=round_,
             previous=previous,
             critique=critique,
+            seed=None if seed is None else seed + round_,
         )
     except LLMError as exc:
         return DraftAttempt(
@@ -73,13 +75,14 @@ async def draft_with_critique(
     sender: Sender,
     system_prompt: str,
     settings: Settings,
+    seed: int | None = None,
 ) -> DraftOutcome:
     attempts: list[DraftAttempt] = []
     previous: EmailSequence | None = None
     critique: Critique | None = None
     for round_ in range(settings.critic_max_rewrites + 1):
         attempt = await write_round(
-            llm, ctx, offer, sender, system_prompt, settings, round_, previous, critique
+            llm, ctx, offer, sender, system_prompt, settings, round_, previous, critique, seed
         )
         attempts.append(attempt)
         if attempt.critique.passed:
