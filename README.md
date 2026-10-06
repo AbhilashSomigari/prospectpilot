@@ -226,28 +226,6 @@ evals/       frozen fixtures (sites, facts), suite YAML, raw run artifacts per r
 infra/terraform/  docker/  scripts/  tests/
 ```
 
-## How this was built
-
-ProspectPilot was built with **Claude Code** driving the implementation milestone by milestone
-(scaffold → sources/enricher → verifier → writer/critic/outbox → observability → evals and the
-improvement loop → AWS), with a spec that fixed the guardrails up front (allowed sources, sandbox
-sending, no SMTP probing, cite-every-claim, never invent results).
-
-- **Milestone loop**: plan briefly, write code and tests, run them, commit only when green —
-  every milestone is one conventional commit.
-- **Project memory**: a `CLAUDE.md` in the repo root holds architecture notes, commands, decisions
-  and environment gotchas, updated as work progressed. It is deliberately kept local (gitignored).
-- **Custom skill**: [`.claude/skills/eval/SKILL.md`](.claude/skills/eval/SKILL.md) teaches the agent
-  to run the EvalForge suite and report the gate result in a fixed shape (and to label mock numbers).
-- **Hooks**: a git pre-commit hook (`.githooks/pre-commit`, installed by `make install`) runs ruff and
-  the unit tests before every commit — the agent's commits go through it too.
-- **Reality checks over fixtures**: after each milestone the agent ran the real thing — a live HN
-  thread and company site, live DNS, a real ollama extraction, `make up && make demo`, and a tiny
-  real improvement round before the long ones. Those runs found the bugs unit tests could not:
-  job-board domains parsed as companies, Prometheus series invisible to `rate()` for one-shot runs,
-  integration tests that would have wiped the dev database, and a 7B optimizer that silently changed
-  the output schema (which led to the structured-edit optimizer design).
-
 ## License
 
 [MIT](LICENSE)
