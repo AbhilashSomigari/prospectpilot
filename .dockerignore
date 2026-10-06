@@ -1,0 +1,15 @@
+.git
+.venv
+.cache
+.mypy_cache
+.ruff_cache
+.pytest_cache
+**/__pycache__
+.env
+.env.*
+CLAUDE.md
+ENGINEERING_JOURNAL.md
+infra/terraform/.terraform
+evals/runs
+docs/*.gif
+tests

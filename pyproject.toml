@@ -10,6 +10,13 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"
 authors = [{ name = "Abhilash Reddy Somigari" }]
+keywords = ["ai-agents", "langgraph", "llm", "evaluation", "sales-automation", "self-improving", "opentelemetry"]
+classifiers = [
+  "Programming Language :: Python :: 3.12",
+  "License :: OSI Approved :: MIT License",
+  "Framework :: FastAPI",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 dependencies = [
   "pydantic>=2.8,<3",
   "pydantic-settings>=2.4,<3",
@@ -36,6 +43,11 @@ dependencies = [
   "prometheus-client>=0.20,<1",
   "evalforge @ git+https://github.com/AbhilashSomigari/evalforge.git@a74713b",
 ]
+
+[project.urls]
+Homepage = "https://github.com/AbhilashSomigari/prospectpilot"
+Repository = "https://github.com/AbhilashSomigari/prospectpilot"
+Results = "https://github.com/AbhilashSomigari/prospectpilot/blob/main/RESULTS.md"
 
 [project.optional-dependencies]
 langfuse = []  # Langfuse ingests OTLP directly; no extra SDK needed (see obs/tracing.py)

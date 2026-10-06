@@ -15,6 +15,7 @@ import statistics
 import uuid
 from datetime import UTC, datetime
 from pathlib import Path
+from typing import Any
 
 from sqlalchemy import select
 
@@ -24,6 +25,7 @@ from prospectpilot.memory.tables import (
     Draft,
     ImprovementRound,
     LLMCall,
+    Prompt,
     Prospect,
     Reply,
     Run,
@@ -41,19 +43,8 @@ def quantile(values: list[float], q: float) -> float:
     return v[max(0, min(len(v) - 1, round(q * (len(v) - 1))))]
 
 
-async def campaign_section(run_id: uuid.UUID | None) -> list[str]:
+async def _run_metrics(run: Run) -> dict[str, Any]:
     async with session_scope() as s:
-        if run_id is None:
-            runs = list(await s.scalars(
-                select(Run).where(Run.status == "succeeded").order_by(Run.finished_at.desc())
-            ))  # fmt: skip
-            real = [r for r in runs if (r.stats or {}).get("provider") not in (None, "mock")]
-            run = real[0] if real else None
-        else:
-            run = await s.get(Run, run_id)
-        if run is None:
-            return ["## Campaign run", "", "_No succeeded campaign run with a real model yet._", ""]
-        st = run.stats or {}
         prospects = list(
             await s.scalars(select(Prospect).where(Prospect.campaign_id == run.campaign_id))
         )
@@ -64,6 +55,10 @@ async def campaign_section(run_id: uuid.UUID | None) -> list[str]:
                 select(Reply).where(Reply.prospect_id.in_([p.id for p in prospects] or [-1]))
             )
         )
+        prompt_ids = {d.prompt_id for d in drafts if d.prompt_id}
+        versions = sorted(v for v in [
+            (await s.get(Prompt, pid)).version for pid in prompt_ids  # type: ignore[union-attr]
+        ])  # fmt: skip
     n = len(prospects)
     verified = sum(1 for p in prospects if (p.email_confidence or 0) >= 0.7)
     first = [d for d in drafts if d.round == 0]
@@ -75,35 +70,68 @@ async def campaign_section(run_id: uuid.UUID | None) -> list[str]:
     lat = [p.processing_ms / 1000 for p in worked]
     costs = [p.cost_usd for p in worked]
     tokens = sum(c.input_tokens + c.output_tokens for c in calls)
-    sim_engaged = sum(1 for r in replies if r.simulated and r.outcome != "no_reply")
-    sim_total = sum(1 for r in replies if r.simulated)
-    sim_prob = statistics.fmean(r.probability for r in replies if r.simulated) if sim_total else 0.0
+    sim = [r for r in replies if r.simulated]
+    engaged = sum(1 for r in sim if r.outcome != "no_reply")
+    fp = sum(d.passed for d in first)
+    fin = sum(d.passed for d in final)
+    return {
+        "run": f"`{str(run.id)[:8]}` · writer v{','.join(map(str, versions)) or '?'}",
+        "Leads processed": str(n),
+        "Verified-email confidence ≥ 0.7": f"{verified}/{n} ({pct(verified, n)})",
+        "Personalized claims grounded (final drafts)": f"{grounded}/{claims} ({pct(grounded, claims)})",
+        "Critic pass — first draft": f"{fp}/{len(first)} ({pct(fp, len(first))})",
+        "Critic pass — after rewrite (≤2)": f"{fin}/{len(final)} ({pct(fin, len(final))})",
+        "Emails delivered to Mailpit (step 1)": str((run.stats or {}).get("emails_sent")),
+        "LLM cost per drafted lead (USD)": f"{statistics.fmean(costs) if costs else 0:.5f}",
+        "LLM tokens per drafted lead": f"{tokens / len(worked):.0f}" if worked else "0",
+        "Latency per drafted lead p50 / p95 (s)": f"{quantile(lat, 0.5):.1f} / {quantile(lat, 0.95):.1f}",
+        "**SIMULATED** reply-or-objection rate": f"{engaged}/{len(sim)} ({pct(engaged, len(sim))})",
+        "_meta": run,
+    }
+
+
+async def campaign_section(run_id: uuid.UUID | None) -> list[str]:
+    async with session_scope() as s:
+        if run_id is not None:
+            r = await s.get(Run, run_id)
+            runs = [r] if r else []
+        else:
+            runs = [
+                r for r in await s.scalars(
+                    select(Run).where(Run.status == "succeeded").order_by(Run.finished_at)
+                )
+                if (r.stats or {}).get("provider") not in (None, "mock")
+            ]  # fmt: skip
+    if not runs:
+        return ["## Campaign runs", "", "_No succeeded campaign run with a real model yet._", ""]
+    cols = [await _run_metrics(r) for r in runs]
+    st = runs[-1].stats or {}
     models = st.get("models", {})
+    keys = [k for k in cols[0] if k not in ("run", "_meta")]
     lines = [
-        "## Campaign run",
+        "## Campaign runs",
         "",
-        f"Run `{run.id}` · provider **{st.get('provider')}** · writer `{models.get('large')}` · "
-        f"critic/extraction/reply-sim `{models.get('small')}` · embeddings `{st.get('embedder')}` · "
-        f"finished {run.finished_at:%Y-%m-%d %H:%M} UTC · trace `{run.trace_id}`",
+        f"Provider **{st.get('provider')}** · writer `{models.get('large')}` · critic / extraction / "
+        f"reply simulator `{models.get('small')}` · embeddings `{st.get('embedder')}` · offline replay "
+        "of 8 fictional fixture companies (`examples/demo_icp.yaml`), facts re-extracted every run.",
         "",
-        f"Options: `{st.get('options')}` (offline replay of the fictional fixture companies).",
+        "| Metric | " + " | ".join(c["run"] for c in cols) + " |",
+        "|---|" + "---|" * len(cols),
+    ]
+    lines += [f"| {k} | " + " | ".join(c[k] for c in cols) + " |" for k in keys]
+    lines += [
         "",
-        "| Metric | Value |",
-        "|---|---|",
-        f"| Leads processed | {n} |",
-        f"| Leads with verified-email confidence ≥ 0.7 | {verified}/{n} ({pct(verified, n)}) |",
-        f"| Personalized claims grounded (final drafts) | {grounded}/{claims} ({pct(grounded, claims)}) |",
-        f"| Critic pass rate — first draft | {sum(d.passed for d in first)}/{len(first)} ({pct(sum(d.passed for d in first), len(first))}) |",
-        f"| Critic pass rate — after rewrite (≤2) | {sum(d.passed for d in final)}/{len(final)} ({pct(sum(d.passed for d in final), len(final))}) |",
-        f"| Emails delivered to the Mailpit sandbox (step 1) | {st.get('emails_sent')} |",
-        f"| LLM cost per drafted lead (USD) | {statistics.fmean(costs) if costs else 0:.5f} |",
-        f"| LLM tokens, whole run | {tokens} ({len(calls)} calls) |",
-        f"| Latency per drafted lead p50 / p95 (s) | {quantile(lat, 0.5):.1f} / {quantile(lat, 0.95):.1f} |",
-        f"| **SIMULATED** reply-or-objection rate | {sim_engaged}/{sim_total} ({pct(sim_engaged, sim_total)}) — mean simulated reply probability {sim_prob:.3f} |",
+        "Runs in time order: "
+        + "; ".join(
+            f"`{c['_meta'].id}` finished {c['_meta'].finished_at:%Y-%m-%d %H:%M} UTC, "
+            f"trace `{c['_meta'].trace_id}`"
+            for c in cols
+        ),
         "",
         "Latency per lead = wall-clock time attributed to that lead across enrichment (shared per",
-        "company), verification, drafting and critique. Replies are produced by the LLM reply",
-        "simulator and are **SIMULATED** — they are not real prospect behavior.",
+        "company), verification, drafting and critique. With 8 leads, campaign numbers are small",
+        "samples; the eval suite below (40 fixtures × 2 trials) is the statistically stronger signal.",
+        "Replies come from the LLM reply simulator and are **SIMULATED**, not real prospect behavior.",
         "",
     ]
     return lines
@@ -202,12 +230,15 @@ async def build(run_id: str | None) -> str:
         "## How these numbers were produced",
         "",
         "```bash",
-        "make up                                              # postgres, mailpit, otel, grafana, ...",
-        "LLM_PROVIDER=ollama uv run python scripts/build_eval_fixtures.py   # freeze eval fixtures",
-        "LLM_PROVIDER=ollama uv run prospectpilot demo --inline              # campaign run",
-        "make improve PROVIDER=ollama   # x3: one self-improvement round each",
+        "make up                                                  # postgres, mailpit, otel, grafana, ...",
+        "LLM_PROVIDER=ollama uv run python scripts/build_eval_fixtures.py   # freeze the 47 eval fixtures",
+        "scripts/run_real_rounds.sh 3 40 2   # campaign (before) → 3 improve rounds (40 fixtures × 2 trials) → campaign (after)",
         "uv run python scripts/make_results.py",
         "```",
+        "",
+        "Raw outputs: EvalForge run artifacts per variant, failure analysis, optimizer proposals,",
+        "prompt diffs and summaries in `evals/runs/round-NN/`; console logs in `evals/runs/logs/`.",
+        "Hardware: Apple M4, 16 GB (local ollama).",
         "",
     ]
     await dispose()

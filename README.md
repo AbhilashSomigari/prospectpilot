@@ -250,4 +250,4 @@ sending, no SMTP probing, cite-every-claim, never invent results).
 
 ## License
 
-MIT
+[MIT](LICENSE)
