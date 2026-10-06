@@ -170,3 +170,49 @@ async def test_mock_draft_loop_converges(tmp_path: Path, company: str) -> None:
     assert usage.purposes.count("writer") == len(outcome.attempts)
     if not outcome.first_passed:
         assert outcome.attempts[0].critique.failure_codes  # the rewrite was driven by a critique
+
+
+# regressions from the first real ollama campaign run (2026-10-06)
+def test_inflected_restatement_is_grounded() -> None:
+    ctx = CTX.model_copy(
+        update={
+            "facts": [
+                Fact(
+                    id=25,
+                    kind="news",
+                    text="Lumen Ledger launches AI reconciliation.",
+                    source_url="u",
+                ),
+                Fact(
+                    id=3,
+                    kind="team_size",
+                    text="Lumen Ledger is a team of 22 people.",
+                    source_url="u",
+                ),
+            ],
+            "company_name": "Lumen Ledger",
+        }
+    )
+    s = seq(
+        "Hi Priya, Lumen Ledger recently launched AI reconciliation [fact:25].",
+        "Your 22-person team could use it [fact:3].",
+        "Bye.",
+    )
+    claims = check_claims(s, ctx, OFFER)
+    assert all(c.grounded for c in claims), [c.reason for c in claims]
+
+
+def test_minutes_are_not_millions() -> None:
+    s = seq(GOOD.emails[0].body, GOOD.emails[1].body, "Let's chat 15 mins next week?")
+    assert "ungrounded_claims" not in codes(s)
+    s2 = seq(GOOD.emails[0].body, GOOD.emails[1].body, "Teams save $15m with this.")
+    assert "ungrounded_claims" in codes(s2)
+
+
+def test_marker_on_offer_sentence_is_still_ungrounded() -> None:
+    s = seq(
+        GOOD.emails[0].body,
+        "Tracewell can cut on-call noise by grouping related alerts [fact:12].",
+        "Bye.",
+    )
+    assert "ungrounded_claims" in codes(s)

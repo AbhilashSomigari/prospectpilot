@@ -57,8 +57,8 @@ _PLACEHOLDER = re.compile(
     r"\[(?!fact:\d+\])[A-Z][A-Za-z _]{1,30}\]|\{\{?\s*\w+\s*\}?\}|<[a-z_ ]{3,30}>"
 )
 _SENTENCE = re.compile(r"(?<=[.!?])\s+|\n+")
-_WORD = re.compile(r"[a-z0-9][a-z0-9.+#'-]*")
-_NUMBER = re.compile(r"\$?\d[\d,.]*\s?(?:%|k|m|bn|x|\+)?", re.I)
+_WORD = re.compile(r"[a-z0-9][a-z0-9.+#]*")  # hyphens/apostrophes split words: "22-person"
+_NUMBER = re.compile(r"\$?\d[\d,.]*(?:\s?(?:%|k\b|m\b|bn\b|x\b)|\+)?", re.I)  # "15 mins" ≠ 15M
 _CLAIM_VERBS = re.compile(
     r"\b(launch(?:ed|es|ing)?|raised|announc(?:ed|es|ing)|releas(?:ed|es|ing)|hiring|hired|"
     r"grew|growing|expand(?:ed|ing)|acquir(?:ed|es)|partner(?:ed|s)|uses?|using|built|"
@@ -73,12 +73,28 @@ _STOP = frozenset(
 )
 
 
+_SUFFIXES = (("ies", "y"), ("ing", ""), ("ed", ""), ("es", ""), ("s", ""), ("ly", ""))
+
+
+def stem(word: str) -> str:
+    """Tiny suffix stripper so 'launched'/'launches'/'launch' match (no NLP dependency)."""
+    for suffix, repl in _SUFFIXES:
+        if word.endswith(suffix) and len(word) - len(suffix) >= 3:
+            return word[: -len(suffix)] + repl
+    return word
+
+
 def _words(text: str) -> list[str]:
-    return [w.strip(".'-") for w in _WORD.findall(text.lower())]
+    return [stem(w.strip(".")) for w in _WORD.findall(text.lower()) if w.strip(".")]
 
 
 def content_words(text: str, extra_stop: frozenset[str] = frozenset()) -> set[str]:
-    return {w for w in _words(text) if len(w) > 2 and w not in _STOP and w not in extra_stop}
+    """Stemmed content words; numbers always count (a restated '22' is strong evidence)."""
+    return {
+        w
+        for w in _words(text)
+        if (len(w) > 2 or w.isdigit()) and w not in _STOP and w not in extra_stop
+    }
 
 
 def word_count(text: str) -> int:
@@ -126,7 +142,9 @@ def check_claims(seq: EmailSequence, ctx: ProspectContext, offer: Offer) -> list
                     )
                     continue
                 cited = " ".join(facts[i].text for i in ids)
-                overlap = content_words(text, company_tokens) & content_words(cited, company_tokens)
+                fact_words = content_words(cited, company_tokens)
+                overlap = content_words(text, company_tokens) & fact_words
+                needed = min(2, len(fact_words))  # very short facts need only one shared word
                 bad_numbers = _numbers(text) - _numbers(cited) - offer_numbers
                 if bad_numbers:
                     claims.append(
@@ -138,7 +156,7 @@ def check_claims(seq: EmailSequence, ctx: ProspectContext, offer: Offer) -> list
                             reason=f"numbers not in cited facts: {sorted(bad_numbers)}",
                         )
                     )
-                elif len(overlap) < 2:
+                elif len(overlap) < needed or not overlap:
                     claims.append(
                         ClaimCheck(
                             step=email.step,
