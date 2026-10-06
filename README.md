@@ -58,9 +58,9 @@ flowchart LR
     CH[("improvement changelog")]
   end
   E --> F
-  W <-- "facts, similar learnings" --> F
-  W <-- L
-  W <-- PR
+  F -- "facts" --> W
+  L -- "similar learnings" --> W
+  PR -- "ACTIVE prompt" --> W
   subgraph Improve["Nightly: prospectpilot improve"]
     EV["EvalForge suite<br/>47 frozen fixtures × trials"] --> FA["Failure analysis<br/>cluster by root cause"]
     FA --> OPT["Optimizer<br/>3 candidate prompts"] --> EV2["Evaluate candidates<br/>same suite, same seeds"]
