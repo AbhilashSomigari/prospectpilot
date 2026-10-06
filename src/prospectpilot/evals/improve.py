@@ -52,13 +52,15 @@ JUDGE_REGRESSION = 0.2  # absolute, on the 1-5 rubric mean
 
 
 # ----------------------------------------------------------------- queueing
-async def queue_round(trials: int = 2, limit: int | None = None, command: str = "") -> int:
+async def queue_round(
+    trials: int = 2, limit: int | None = None, command: str = "", status: str = "queued"
+) -> int:
     llm = get_llm()
     async with session_scope() as s:
         current = await s.scalar(select(func.max(ImprovementRound.round)))
         row = ImprovementRound(
             round=int(current or 0) + 1,
-            status="queued",
+            status=status,
             provider=llm.provider,
             models=llm.models(),
             command=command,
@@ -465,7 +467,8 @@ async def _execute(round_id: int, round_no: int, trials: int, limit: int | None)
 
 async def run_round(trials: int = 2, limit: int | None = None) -> dict[str, Any]:
     command = "prospectpilot " + " ".join(shlex.quote(a) for a in sys.argv[1:])
-    round_id = await queue_round(trials=trials, limit=limit, command=command)
+    # created as running (not queued) so a worker can never claim an inline round
+    round_id = await queue_round(trials=trials, limit=limit, command=command, status="running")
     return await execute_round(round_id)
 
 

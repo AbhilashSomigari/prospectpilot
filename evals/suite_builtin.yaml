@@ -1,0 +1,713 @@
+name: prospectpilot-writer-builtin
+description: "Grounded-and-passing rate of the writer\u21C4critic loop over frozen fixtures."
+trials_per_task: 2
+concurrency: 4
+graders:
+- type: json_contract
+  name: json_contract
+  weight: 1.0
+  pass_threshold: 1.0
+  config:
+    required_keys:
+    - emails
+- type: citation_groundedness
+  name: cites_known_fact
+  weight: 1.0
+  pass_threshold: 1.0
+  config: {}
+gates:
+- metric: task_success
+  op: '>='
+  value: 0.5
+  max_regression: null
+- metric: hallucination_rate
+  op: <=
+  value: 0.25
+  max_regression: null
+tasks:
+- id: arcadiabiotechsystems
+  input: Write a 3-step outbound sequence to Dr. Mei Lin (Head of Lab Operations) at Arcadia Biotech Systems
+    selling Tracewell.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: arcadiabiotechsystems
+    source_ids:
+    - '[fact:2501]'
+    - '[fact:2502]'
+    - '[fact:2503]'
+    - '[fact:2504]'
+  graders: []
+- id: atlasfieldworks
+  input: Write a 3-step outbound sequence to Jorge Ramirez (Head of Customer Success) at Atlas Fieldworks
+    selling Ledgerly.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: atlasfieldworks
+    source_ids:
+    - '[fact:1601]'
+    - '[fact:1602]'
+    - '[fact:1603]'
+    - '[fact:1604]'
+    - '[fact:1605]'
+    - '[fact:1606]'
+  graders: []
+- id: aurorapethealth
+  input: Write a 3-step outbound sequence to Jessica Lee (Head of Partnerships) at Aurora Pet Health selling
+    Ledgerly.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: aurorapethealth
+    source_ids:
+    - '[fact:4401]'
+    - '[fact:4402]'
+    - '[fact:4403]'
+    - '[fact:4404]'
+    - '[fact:4405]'
+    - '[fact:4406]'
+  graders: []
+- id: beaconfleet
+  input: Write a 3-step outbound sequence to Victor Nguyen (CTO) at Beacon Fleet selling Tracewell.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: beaconfleet
+    source_ids:
+    - '[fact:2701]'
+    - '[fact:2702]'
+    - '[fact:2703]'
+    - '[fact:2704]'
+    - '[fact:2705]'
+    - '[fact:2706]'
+  graders: []
+- id: bluebirdnonprofitcloud
+  input: Write a 3-step outbound sequence to Megan Clarke (Executive Director) at Bluebird Nonprofit Cloud
+    selling Tracewell.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: bluebirdnonprofitcloud
+    source_ids:
+    - '[fact:4001]'
+    - '[fact:4002]'
+    - '[fact:4003]'
+    - '[fact:4004]'
+  graders: []
+- id: brightdesk
+  input: Write a 3-step outbound sequence to the team (unknown title) at Brightdesk selling Hirewise.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: brightdesk
+    source_ids:
+    - '[fact:801]'
+    - '[fact:802]'
+    - '[fact:803]'
+    - '[fact:804]'
+    - '[fact:805]'
+    - '[fact:806]'
+  graders: []
+- id: cindergaming
+  input: Write a 3-step outbound sequence to Lucas Silva (CTO) at Cinder Gaming selling Tracewell.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: cindergaming
+    source_ids:
+    - '[fact:3501]'
+    - '[fact:3502]'
+    - '[fact:3503]'
+    - '[fact:3504]'
+    - '[fact:3505]'
+  graders: []
+- id: cobaltfreight
+  input: Write a 3-step outbound sequence to Elena Petrova (VP Sales) at Cobalt Freight selling Ledgerly.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: cobaltfreight
+    source_ids:
+    - '[fact:501]'
+    - '[fact:502]'
+    - '[fact:503]'
+    - '[fact:504]'
+    - '[fact:505]'
+  graders: []
+- id: copperleafbanking
+  input: Write a 3-step outbound sequence to Thomas Weber (CTO) at Copperleaf Banking selling Tracewell.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: copperleafbanking
+    source_ids:
+    - '[fact:4301]'
+    - '[fact:4302]'
+    - '[fact:4303]'
+    - '[fact:4304]'
+    - '[fact:4305]'
+    - '[fact:4306]'
+  graders: []
+- id: corvidlabs
+  input: Write a 3-step outbound sequence to Nina Volkova (Founder & CEO) at Corvid Labs selling Ledgerly.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: corvidlabs
+    source_ids:
+    - '[fact:1701]'
+    - '[fact:1702]'
+    - '[fact:1703]'
+    - '[fact:1704]'
+    - '[fact:1705]'
+  graders: []
+- id: driftwoodmedia
+  input: Write a 3-step outbound sequence to Emma Davis (Founder) at Driftwood Media selling Ledgerly.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: driftwoodmedia
+    source_ids:
+    - '[fact:3801]'
+    - '[fact:3802]'
+    - '[fact:3803]'
+    - '[fact:3804]'
+    - '[fact:3805]'
+  graders: []
+- id: evergreenpropertytech
+  input: Write a 3-step outbound sequence to Hassan Ali (VP Product) at Evergreen Property Tech selling
+    Tracewell.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: evergreenpropertytech
+    source_ids:
+    - '[fact:3301]'
+    - '[fact:3302]'
+    - '[fact:3303]'
+    - '[fact:3304]'
+    - '[fact:3305]'
+    - '[fact:3306]'
+  graders: []
+- id: fernwayanalytics
+  input: Write a 3-step outbound sequence to Marcus Chen (Head of Product) at Fernway Analytics selling
+    Tracewell.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: fernwayanalytics
+    source_ids:
+    - '[fact:601]'
+    - '[fact:602]'
+    - '[fact:603]'
+    - '[fact:604]'
+    - '[fact:605]'
+  graders: []
+- id: foundryhiring
+  input: Write a 3-step outbound sequence to Chris Johnson (Head of Talent) at Foundry Hiring selling
+    Hirewise.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: foundryhiring
+    source_ids:
+    - '[fact:3701]'
+    - '[fact:3702]'
+    - '[fact:3703]'
+    - '[fact:3704]'
+    - '[fact:3705]'
+    - '[fact:3706]'
+  graders: []
+- id: granitemanufacturingcloud
+  input: Write a 3-step outbound sequence to Peter Novak (Head of Engineering) at Granite Manufacturing
+    Cloud selling Tracewell.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: granitemanufacturingcloud
+    source_ids:
+    - '[fact:2901]'
+    - '[fact:2902]'
+    - '[fact:2903]'
+    - '[fact:2904]'
+    - '[fact:2905]'
+    - '[fact:2906]'
+  graders: []
+- id: gridlinetelecom
+  input: Write a 3-step outbound sequence to Laura Becker (VP Engineering) at Gridline Telecom selling
+    Tracewell.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: gridlinetelecom
+    source_ids:
+    - '[fact:1401]'
+    - '[fact:1402]'
+    - '[fact:1403]'
+    - '[fact:1404]'
+    - '[fact:1405]'
+  graders: []
+- id: halcyontravel
+  input: Write a 3-step outbound sequence to Isabel Moreau (VP Operations) at Halcyon Travel selling Ledgerly.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: halcyontravel
+    source_ids:
+    - '[fact:1901]'
+    - '[fact:1902]'
+    - '[fact:1903]'
+    - '[fact:1904]'
+    - '[fact:1905]'
+    - '[fact:1906]'
+  graders: []
+- id: harborlinehealth
+  input: Write a 3-step outbound sequence to Daniel Mbeki (Head of Data) at Harborline Health selling
+    Tracewell.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: harborlinehealth
+    source_ids:
+    - '[fact:401]'
+    - '[fact:402]'
+    - '[fact:403]'
+    - '[fact:404]'
+    - '[fact:405]'
+    - '[fact:406]'
+  graders: []
+- id: helixsupply
+  input: Write a 3-step outbound sequence to the team (unknown title) at Helix Supply selling Hirewise.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: helixsupply
+    source_ids:
+    - '[fact:4601]'
+    - '[fact:4602]'
+    - '[fact:4603]'
+    - '[fact:4604]'
+  graders: []
+- id: ironcladfabrication
+  input: Write a 3-step outbound sequence to Frank Russo (Operations Manager) at Ironclad Fabrication
+    selling Ledgerly.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: ironcladfabrication
+    source_ids:
+    - '[fact:4101]'
+    - '[fact:4102]'
+  graders: []
+- id: kestrelenergy
+  input: Write a 3-step outbound sequence to Sofia Alvarez (CTO) at Kestrel Energy selling Tracewell.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: kestrelenergy
+    source_ids:
+    - '[fact:1001]'
+    - '[fact:1002]'
+    - '[fact:1003]'
+    - '[fact:1004]'
+    - '[fact:1005]'
+  graders: []
+- id: keystoneedops
+  input: Write a 3-step outbound sequence to Alan Turner (VP Product) at Keystone Ed Ops selling Tracewell.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: keystoneedops
+    source_ids:
+    - '[fact:4501]'
+    - '[fact:4502]'
+    - '[fact:4503]'
+    - '[fact:4504]'
+  graders: []
+- id: lanternsupport
+  input: Write a 3-step outbound sequence to Olivia Brooks (VP Customer Experience) at Lantern Support
+    selling Ledgerly.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: lanternsupport
+    source_ids:
+    - '[fact:2801]'
+    - '[fact:2802]'
+    - '[fact:2803]'
+    - '[fact:2804]'
+  graders: []
+- id: latticegridsoftware
+  input: Write a 3-step outbound sequence to Ben Carter (Engineering Manager) at Lattice Grid Software
+    selling Tracewell.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: latticegridsoftware
+    source_ids:
+    - '[fact:2201]'
+    - '[fact:2202]'
+    - '[fact:2203]'
+    - '[fact:2204]'
+    - '[fact:2205]'
+    - '[fact:2206]'
+    - '[fact:2207]'
+  graders: []
+- id: lumenledger
+  input: Write a 3-step outbound sequence to Priya Raman (VP Engineering) at Lumen Ledger selling Tracewell.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: lumenledger
+    source_ids:
+    - '[fact:101]'
+    - '[fact:102]'
+    - '[fact:103]'
+    - '[fact:104]'
+    - '[fact:105]'
+    - '[fact:106]'
+    - '[fact:107]'
+  graders: []
+- id: marigoldbenefits
+  input: Write a 3-step outbound sequence to Fatima Noor (Head of People) at Marigold Benefits selling
+    Hirewise.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: marigoldbenefits
+    source_ids:
+    - '[fact:2301]'
+    - '[fact:2302]'
+    - '[fact:2303]'
+  graders: []
+- id: meridianclinicalai
+  input: Write a 3-step outbound sequence to Dr. Aisha Bello (Chief Medical Officer) at Meridian Clinical
+    AI selling Ledgerly.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: meridianclinicalai
+    source_ids:
+    - '[fact:3601]'
+    - '[fact:3602]'
+    - '[fact:3603]'
+    - '[fact:3604]'
+    - '[fact:3605]'
+    - '[fact:3606]'
+    - '[fact:3607]'
+  graders: []
+- id: mosaicretailai
+  input: Write a 3-step outbound sequence to Hannah Kowalski (Head of Data Science) at Mosaic Retail AI
+    selling Tracewell.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: mosaicretailai
+    source_ids:
+    - '[fact:1201]'
+    - '[fact:1202]'
+    - '[fact:1203]'
+    - '[fact:1204]'
+  graders: []
+- id: nimbusops
+  input: Write a 3-step outbound sequence to Ethan Wright (Head of Platform) at Nimbus Ops selling Tracewell.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: nimbusops
+    source_ids:
+    - '[fact:3101]'
+    - '[fact:3102]'
+    - '[fact:3103]'
+    - '[fact:3104]'
+  graders: []
+- id: northwindrobotics
+  input: Write a 3-step outbound sequence to Tomas Lindqvist (CTO) at Northwind Robotics selling Tracewell.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: northwindrobotics
+    source_ids:
+    - '[fact:201]'
+    - '[fact:202]'
+    - '[fact:203]'
+    - '[fact:204]'
+    - '[fact:205]'
+    - '[fact:206]'
+  graders: []
+- id: orchardlearning
+  input: Write a 3-step outbound sequence to Grace Adeyemi (COO) at Orchard Learning selling Ledgerly.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: orchardlearning
+    source_ids:
+    - '[fact:901]'
+    - '[fact:902]'
+    - '[fact:903]'
+    - '[fact:904]'
+  graders: []
+- id: pebbleroboticskitchen
+  input: Write a 3-step outbound sequence to Ahmed Hassan (VP Engineering) at Pebble Robotics Kitchen
+    selling Tracewell.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: pebbleroboticskitchen
+    source_ids:
+    - '[fact:2101]'
+    - '[fact:2102]'
+    - '[fact:2103]'
+    - '[fact:2104]'
+    - '[fact:2105]'
+  graders: []
+- id: pinecrestpayments
+  input: Write a 3-step outbound sequence to Owen Fitzgerald (VP Partnerships) at Pinecrest Payments selling
+    Ledgerly.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: pinecrestpayments
+    source_ids:
+    - '[fact:1101]'
+    - '[fact:1102]'
+    - '[fact:1103]'
+  graders: []
+- id: polariscompliance
+  input: Write a 3-step outbound sequence to Anna Schmidt (Head of Compliance) at Polaris Compliance selling
+    Hirewise.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: polariscompliance
+    source_ids:
+    - '[fact:3401]'
+    - '[fact:3402]'
+    - '[fact:3403]'
+    - '[fact:3404]'
+    - '[fact:3405]'
+  graders: []
+- id: quantumleaplogistics
+  input: Write a 3-step outbound sequence to Raj Patel (VP Engineering) at Quantum Leap Logistics selling
+    Tracewell.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: quantumleaplogistics
+    source_ids:
+    - '[fact:3901]'
+    - '[fact:3902]'
+    - '[fact:3903]'
+    - '[fact:3904]'
+  graders: []
+- id: quillstack
+  input: Write a 3-step outbound sequence to Amara Okafor (Founder & CEO) at Quillstack selling Ledgerly.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: quillstack
+    source_ids:
+    - '[fact:301]'
+    - '[fact:302]'
+    - '[fact:303]'
+    - '[fact:304]'
+    - '[fact:305]'
+    - '[fact:306]'
+  graders: []
+- id: ridgeviewclinics
+  input: Write a 3-step outbound sequence to Mark Henderson (Director of IT) at Ridgeview Clinics selling
+    Tracewell.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: ridgeviewclinics
+    source_ids:
+    - '[fact:1801]'
+    - '[fact:1802]'
+  graders: []
+- id: sablewoodlegal
+  input: Write a 3-step outbound sequence to Ravi Iyer (Founder) at Sablewood Legal selling Ledgerly.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: sablewoodlegal
+    source_ids:
+    - '[fact:1301]'
+    - '[fact:1302]'
+    - '[fact:1303]'
+    - '[fact:1304]'
+  graders: []
+- id: saffronfoodsmarketplace
+  input: Write a 3-step outbound sequence to Diego Fernandez (Head of Growth) at Saffron Foods Marketplace
+    selling Ledgerly.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: saffronfoodsmarketplace
+    source_ids:
+    - '[fact:3201]'
+    - '[fact:3202]'
+    - '[fact:3203]'
+    - '[fact:3204]'
+  graders: []
+- id: silverlineobservability
+  input: Write a 3-step outbound sequence to Ivan Petrov (Head of Engineering) at Silverline Observability
+    selling Tracewell.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: silverlineobservability
+    source_ids:
+    - '[fact:4201]'
+    - '[fact:4202]'
+    - '[fact:4203]'
+    - '[fact:4204]'
+    - '[fact:4205]'
+    - '[fact:4206]'
+    - '[fact:4207]'
+  graders: []
+- id: stonebridgeinsurance
+  input: Write a 3-step outbound sequence to Kenji Watanabe (Chief Underwriting Officer) at Stonebridge
+    Insurance selling Tracewell.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: stonebridgeinsurance
+    source_ids:
+    - '[fact:2001]'
+    - '[fact:2002]'
+    - '[fact:2003]'
+    - '[fact:2004]'
+    - '[fact:2005]'
+    - '[fact:2006]'
+    - '[fact:2007]'
+  graders: []
+- id: summitdataco
+  input: Write a 3-step outbound sequence to Liam O'Connor (Director of RevOps) at Summit Data Co selling
+    Tracewell.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: summitdataco
+    source_ids:
+    - '[fact:2401]'
+    - '[fact:2402]'
+    - '[fact:2403]'
+    - '[fact:2404]'
+    - '[fact:2405]'
+    - '[fact:2406]'
+  graders: []
+- id: tallyhouse
+  input: Write a 3-step outbound sequence to Rachel Green (CFO) at Tallyhouse selling Ledgerly.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: tallyhouse
+    source_ids:
+    - '[fact:2601]'
+    - '[fact:2602]'
+    - '[fact:2603]'
+    - '[fact:2604]'
+    - '[fact:2605]'
+  graders: []
+- id: tidepoolsecurity
+  input: Write a 3-step outbound sequence to Yuki Tanaka (Head of Security) at Tidepool Security selling
+    Tracewell.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: tidepoolsecurity
+    source_ids:
+    - '[fact:701]'
+    - '[fact:702]'
+    - '[fact:703]'
+    - '[fact:704]'
+    - '[fact:705]'
+    - '[fact:706]'
+  graders: []
+- id: velluminsights
+  input: Write a 3-step outbound sequence to Chloe Martin (VP Marketing) at Vellum Insights selling Ledgerly.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: velluminsights
+    source_ids:
+    - '[fact:1501]'
+    - '[fact:1502]'
+    - '[fact:1503]'
+    - '[fact:1504]'
+  graders: []
+- id: verdantagritech
+  input: Write a 3-step outbound sequence to Carlos Mendes (CEO) at Verdant Agritech selling Ledgerly.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: verdantagritech
+    source_ids:
+    - '[fact:4701]'
+    - '[fact:4702]'
+    - '[fact:4703]'
+    - '[fact:4704]'
+    - '[fact:4705]'
+    - '[fact:4706]'
+  graders: []
+- id: willowwealth
+  input: Write a 3-step outbound sequence to Sarah Kim (Founder & CEO) at Willow Wealth selling Ledgerly.
+  expected_output: null
+  expected_tools: []
+  context: []
+  metadata:
+    fixture: willowwealth
+    source_ids:
+    - '[fact:3001]'
+    - '[fact:3002]'
+    - '[fact:3003]'
+    - '[fact:3004]'
+  graders: []

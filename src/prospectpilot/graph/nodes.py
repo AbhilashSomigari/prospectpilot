@@ -180,8 +180,13 @@ def build_nodes(deps: PipelineDeps) -> dict[str, NodeFn]:
             async with session_scope() as session:
                 company = await session.get(Company, company_id)
                 assert company is not None
-                fresh = company.enriched_at is not None and (
-                    datetime.now(UTC) - company.enriched_at < timedelta(days=7)
+                extractor = f"{deps.llm.provider}:{deps.llm.model_for('extract')}"
+                # reuse facts only if they are recent AND came from the same extractor, so a
+                # real-model run never silently reuses facts extracted by another model
+                fresh = (
+                    company.enriched_at is not None
+                    and datetime.now(UTC) - company.enriched_at < timedelta(days=7)
+                    and (company.extra or {}).get("enriched_by") == extractor
                 )
                 existing = await repo.company_facts(session, company_id)
                 name, domain = company.name, company.domain
@@ -190,10 +195,15 @@ def build_nodes(deps: PipelineDeps) -> dict[str, NodeFn]:
                     pages = await enricher.collect_pages(deps.fetcher, domain)
                     facts = await enricher.extract_facts(deps.llm, name, pages)
                 async with session_scope() as session:
+                    if (
+                        existing
+                    ):  # replace facts from another extractor (cascade keeps drafts' JSON)
+                        await repo.delete_facts(session, company_id)
                     await repo.store_facts(session, company_id, facts, deps.embedder)
                     company = await session.get(Company, company_id)
                     assert company is not None
                     company.enriched_at = datetime.now(UTC)
+                    company.extra = {**(company.extra or {}), "enriched_by": extractor}
             async with session_scope() as session:
                 n = len(await repo.company_facts(session, company_id))
                 for pid in pids:

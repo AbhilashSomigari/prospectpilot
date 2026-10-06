@@ -6,7 +6,7 @@ import uuid
 from datetime import UTC, datetime
 from typing import Any
 
-from sqlalchemy import select
+from sqlalchemy import delete, select
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -153,3 +153,7 @@ async def record_llm_calls(
                 trace_id=trace_id,
             )
         )
+
+
+async def delete_facts(session: AsyncSession, company_id: int) -> None:
+    await session.execute(delete(FactRow).where(FactRow.company_id == company_id))
