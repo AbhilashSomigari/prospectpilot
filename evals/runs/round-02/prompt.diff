@@ -1,0 +1,11 @@
+--- writer-v2
++++ writer-v5
+@@ -14,5 +14,8 @@
+ Additional guidance (round 1, targeted):
+ 1. Use specific details from the FACTS list to personalize each sentence. 2. Restate each fact in your sentences using its [fact:ID] marker. 3. Avoid unsupported claims and numbers not from the facts.
+ 
++Additional guidance (round 2, targeted):
++1. Before writing, highlight all facts you will use in each email. 2. For each fact, ensure every sentence that references it uses its [fact:ID] marker. 3. Avoid unsupported claims and numbers not from the facts.
++
+ Reply with JSON only:
+ {"emails": [{"step": 1, "subject": "...", "body": "..."}, {"step": 2, ...}, {"step": 3, ...}]}

@@ -11,6 +11,9 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import itertools
+import json
+import random
 import statistics
 import uuid
 from datetime import UTC, datetime
@@ -209,6 +212,85 @@ async def improvement_section() -> list[str]:
     return lines
 
 
+def _trial_successes(path: Path) -> dict[tuple[str, int], bool]:
+    data = json.loads(path.read_text())
+    return {(r["task_id"], r["trial_index"]): bool(r["success"]) for r in data["results"]}
+
+
+def paired_bootstrap_ci(
+    a: dict[tuple[str, int], bool], b: dict[tuple[str, int], bool], n: int = 5000, seed: int = 7
+) -> tuple[float, float, float]:
+    """95% CI of pass-rate(b) - pass-rate(a), resampling fixtures (trials of a fixture stay together)."""
+    keys = sorted(set(a) & set(b))
+    tasks = sorted({k[0] for k in keys})
+    by_task = {t: [(a[k], b[k]) for k in keys if k[0] == t] for t in tasks}
+    rng = random.Random(seed)
+
+    def diff(sample: list[str]) -> float:
+        pairs = [p for t in sample for p in by_task[t]]
+        return sum(y - x for x, y in pairs) / len(pairs)
+
+    point = diff(tasks)
+    stats = sorted(diff([rng.choice(tasks) for _ in tasks]) for _ in range(n))
+    return point, stats[int(0.025 * n)], stats[int(0.975 * n)]
+
+
+async def interpretation_section() -> list[str]:
+    async with session_scope() as s:
+        rounds = [r for r in await s.scalars(select(ImprovementRound).order_by(ImprovementRound.round))
+                  if r.provider != "mock" and r.status == "completed"]  # fmt: skip
+    if not rounds:
+        return []
+    lines = [
+        "## Reading these numbers",
+        "",
+        "Computed from the per-trial run artifacts (paired by fixture and trial seed; bootstrap over",
+        "fixtures, 5,000 resamples). A promotion is only evidence of improvement if its interval",
+        "excludes 0.",
+        "",
+        "| Round | promoted | Δ pass rate vs ACTIVE | trials gained (of N) | paired 95% CI of Δ |",
+        "|---|---|---|---|---|",
+    ]
+    evals_dir = REPO_ROOT / "evals" / "runs"
+    for r in rounds:
+        d = evals_dir / f"round-{r.round:02d}"
+        active = d / f"active-v{_active_version(r)}.json"
+        best_v = (r.artifacts or {}).get("best_version")
+        best = next(iter(d.glob(f"candidate-v{best_v}-*.json")), None)
+        if not active.exists() or best is None:
+            continue
+        a, b = _trial_successes(active), _trial_successes(best)
+        point, lo, hi = paired_bootstrap_ci(a, b)
+        gained = round(point * len(a))
+        lines.append(
+            f"| {r.round} | v{best_v} ({r.decision}) | {point:+.3f} | {gained:+d} of {len(a)} "
+            f"| [{lo:+.3f}, {hi:+.3f}] |"
+        )
+    # winner's curse: the promoted prompt's score in the round that selected it vs its
+    # re-evaluation as ACTIVE at the start of the next round
+    drift = []
+    for prev, nxt in itertools.pairwise(rounds):
+        if prev.decision == "promoted":
+            drift.append(
+                f"v{(prev.artifacts or {}).get('best_version')}: {prev.metrics_after['pass_rate']:.3f} "
+                f"when selected (round {prev.round}) → {nxt.metrics_before['pass_rate']:.3f} when "
+                f"re-evaluated as ACTIVE (round {nxt.round})"
+            )
+    if drift:
+        lines += ["", "Selected vs re-evaluated pass rate of each promoted prompt:", ""]
+        lines += [f"- {x}" for x in drift]
+    lines += [
+        "",
+        "Taking the best of three candidates on the same noisy 80-trial evaluation favours lucky",
+        "variants (winner's curse), and each round's re-evaluation also adds that round's new learnings",
+        "to the writer's context, so it is not a pure replicate. The promotion gate here is",
+        '"strictly better than ACTIVE" with no significance test; see the CI column before reading',
+        "the round-by-round series as a trend.",
+        "",
+    ]
+    return lines
+
+
 def _active_version(r: ImprovementRound) -> str:
     return str((r.artifacts or {}).get("active_version", r.active_prompt_id))
 
@@ -226,6 +308,7 @@ async def build(run_id: str | None) -> str:
     ]
     parts += await campaign_section(uuid.UUID(run_id) if run_id else None)
     parts += await improvement_section()
+    parts += await interpretation_section()
     parts += [
         "## How these numbers were produced",
         "",

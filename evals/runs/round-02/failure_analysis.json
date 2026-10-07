@@ -1,0 +1,105 @@
+{
+ "clusters": [
+  {
+   "code": "ungrounded_claims",
+   "stage": "final",
+   "count": 31,
+   "tasks": [
+    "beaconfleet",
+    "bluebirdnonprofitcloud",
+    "brightdesk",
+    "cindergaming",
+    "evergreenpropertytech",
+    "fernwayanalytics",
+    "gridlinetelecom",
+    "harborlinehealth",
+    "helixsupply",
+    "ironcladfabrication",
+    "kestrelenergy",
+    "keystoneedops",
+    "latticegridsoftware",
+    "lumenledger",
+    "marigoldbenefits",
+    "meridianclinicalai",
+    "mosaicretailai",
+    "nimbusops",
+    "northwindrobotics",
+    "pebbleroboticskitchen",
+    "pinecrestpayments",
+    "polariscompliance",
+    "quantumleaplogistics",
+    "quillstack",
+    "saffronfoodsmarketplace",
+    "silverlineobservability"
+   ],
+   "examples": [
+    "- [ungrounded_claims] step 2: 'Beacon Fleet's smart charging schedules launched on August 30, 2026, showing your commitme' (numbers not in cited facts: ['2026', '30'])",
+    "- [ungrounded_claims] step 1: 'Hi Megan, I noticed Bluebird Nonprofit Cloud is a great fit for small nonprofits like.' (sentence does not restate the cited fact)",
+    "- [ungrounded_claims] step 2: 'At Hirewise, we understand the challenges faced by teams like yours.' (sentence does not restate the cited fact); step 2: 'Our solution can complement Brightdesk\u2019s shift-filling by providing structured interview k' (sentence does not restate the cited fact)"
+   ]
+  },
+  {
+   "code": "judge_below_threshold",
+   "stage": "final",
+   "count": 20,
+   "tasks": [
+    "atlasfieldworks",
+    "aurorapethealth",
+    "beaconfleet",
+    "bluebirdnonprofitcloud",
+    "cobaltfreight",
+    "corvidlabs",
+    "foundryhiring",
+    "granitemanufacturingcloud",
+    "gridlinetelecom",
+    "helixsupply",
+    "kestrelenergy",
+    "keystoneedops",
+    "lanternsupport",
+    "latticegridsoftware",
+    "meridianclinicalai",
+    "polariscompliance",
+    "quantumleaplogistics",
+    "ridgeviewclinics",
+    "sablewoodlegal"
+   ],
+   "examples": [
+    "- [judge] mean 3.25 < 3.5 (personalization 2, relevance 3, clarity 4, tone 4): The sequence lacks specific facts about Jorge or Atlas Fieldworks, making it generic. It also repeats the same offer in each email, which could come across as less personalized and less relevant over time.",
+    "- [judge] mean 3.00 < 3.5 (personalization 2, relevance 3, clarity 4, tone 3): The sequence lacks specific facts about Aurora Pet Health and is overly generic. It also doesn't clearly connect Ledgerly's offer to Aurora's specific needs or challenges.",
+    "- [judge] mean 3.25 < 3.5 (personalization 2, relevance 3, clarity 4, tone 4): The sequence lacks specific references to Beacon Fleet's role in EV charging management and the IoT/Fleet Solutions Engineer positions. It also doesn't clearly highlight how Tracewell specifically addresses Beacon Fleet's needs in a compelling way."
+   ]
+  },
+  {
+   "code": "placeholder",
+   "stage": "final",
+   "count": 3,
+   "tasks": [
+    "copperleafbanking",
+    "evergreenpropertytech",
+    "halcyontravel"
+   ],
+   "examples": [
+    "- [placeholder] step 1: unfilled placeholders ['[OFFER]']\n- [placeholder] step 2: unfilled placeholders ['[OFFER]']\n- [placeholder] step 3: unfilled placeholders ['[OFFER]']",
+    "- [placeholder] step 3: unfilled placeholders ['[OFFER]']",
+    "- [placeholder] step 1: unfilled placeholders ['[OFFER]', '[CTA]']\n- [placeholder] step 2: unfilled placeholders ['[OFFER]']\n- [placeholder] step 3: unfilled placeholders ['[OFFER]']"
+   ]
+  }
+ ],
+ "findings": [
+  {
+   "code": "ungrounded_claims",
+   "root_cause": "The AI generated unverified claims and unsupported sentences.",
+   "learning": "Ensure all claims are backed by the provided facts."
+  },
+  {
+   "code": "judge_below_threshold",
+   "root_cause": "The emails were generic and lacked specific personalization and relevance to the prospect.",
+   "learning": "Personalize each email with specific facts and challenges relevant to the prospect."
+  },
+  {
+   "code": "placeholder",
+   "root_cause": "The email template was not filled with specific offers or calls-to-action.",
+   "learning": "Fill all placeholders with specific offers and calls-to-action relevant to the prospect."
+  }
+ ]
+}

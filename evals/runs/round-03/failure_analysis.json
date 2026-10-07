@@ -1,0 +1,84 @@
+{
+ "clusters": [
+  {
+   "code": "ungrounded_claims",
+   "stage": "final",
+   "count": 42,
+   "tasks": [
+    "atlasfieldworks",
+    "beaconfleet",
+    "bluebirdnonprofitcloud",
+    "brightdesk",
+    "cindergaming",
+    "driftwoodmedia",
+    "fernwayanalytics",
+    "foundryhiring",
+    "granitemanufacturingcloud",
+    "harborlinehealth",
+    "helixsupply",
+    "ironcladfabrication",
+    "kestrelenergy",
+    "keystoneedops",
+    "lanternsupport",
+    "latticegridsoftware",
+    "lumenledger",
+    "marigoldbenefits",
+    "meridianclinicalai",
+    "mosaicretailai",
+    "nimbusops",
+    "northwindrobotics",
+    "pebbleroboticskitchen",
+    "quantumleaplogistics",
+    "ridgeviewclinics",
+    "saffronfoodsmarketplace",
+    "silverlineobservability"
+   ],
+   "examples": [
+    "- [ungrounded_claims] step 1: 'Hi Jorge, I noticed you're growing your team at Atlas Fieldworks!' (sentence does not restate the cited fact); step 1: 'Our Ledgerly product can help automate CRM and billing data into board-ready reports, savi' (sentence does not restate the cited fact)",
+    "- [ungrounded_claims] step 2: 'I wanted to share how Tracewell can enhance your operations by alerting engineering teams ' (sentence does not restate the cited fact); step 3: 'Tracewell can help alert your engineering teams to failing data pipelines, ensuring smooth' (sentence does not restate the cited fact)",
+    "- [ungrounded_claims] step 1: 'At Tracewell, we help engineering teams like yours stay ahead by alerting you to failing d' (sentence does not restate the cited fact); step 2: 'At Tracewell, we help teams like yours cut on-call noise by grouping related alerts.' (sentence does not restate the cited fact)"
+   ]
+  },
+  {
+   "code": "judge_below_threshold",
+   "stage": "final",
+   "count": 19,
+   "tasks": [
+    "arcadiabiotechsystems",
+    "atlasfieldworks",
+    "bluebirdnonprofitcloud",
+    "cindergaming",
+    "cobaltfreight",
+    "corvidlabs",
+    "gridlinetelecom",
+    "helixsupply",
+    "lumenledger",
+    "marigoldbenefits",
+    "nimbusops",
+    "pinecrestpayments",
+    "polariscompliance",
+    "quantumleaplogistics",
+    "quillstack",
+    "sablewoodlegal",
+    "silverlineobservability"
+   ],
+   "examples": [
+    "- [judge] mean 3.25 < 3.5 (personalization 2, relevance 3, clarity 4, tone 4): The sequence lacks specific personalization, only mentioning Python and Vue, which are generic. It also doesn't highlight how Tracewell specifically addresses Arcadia's needs, such as scheduling and tracking lab instrument runs.",
+    "- [judge] mean 3.25 < 3.5 (personalization 2, relevance 3, clarity 4, tone 4): The sequence lacks specific facts about Jorge or Atlas Fieldworks, making it generic. It also doesn't fully connect the offer to the prospect's situation, particularly in the second email.",
+    "- [judge] mean 2.75 < 3.5 (personalization 2, relevance 2, clarity 3, tone 4): The sequence lacks specific references to Bluebird Nonprofit Cloud's unique challenges and does not clearly connect the offer to Megan's role. The tone is professional but could be more engaging."
+   ]
+  }
+ ],
+ "findings": [
+  {
+   "code": "ungrounded_claims",
+   "root_cause": "The AI did not properly restate the cited facts in personalized sentences.",
+   "learning": "Ensure all claims are directly supported by the facts provided."
+  },
+  {
+   "code": "judge_below_threshold",
+   "root_cause": "The emails lacked specific personalization and connection to the prospect's situation.",
+   "learning": "Always tailor the content to the specific prospect and their context."
+  }
+ ]
+}

@@ -1,0 +1,194 @@
+{
+ "round": 1,
+ "provider": "ollama",
+ "models": {
+  "large": "qwen2.5",
+  "small": "qwen2.5"
+ },
+ "trials": 2,
+ "tasks": 40,
+ "decision": "promoted",
+ "active": {
+  "prompt_id": 1,
+  "version": 1,
+  "metrics": {
+   "trials": 80,
+   "pass_rate": 0.2875,
+   "first_pass_rate": 0.0875,
+   "critic_pass_rate": 0.2875,
+   "grounded_claim_rate": 0.8153310104529616,
+   "claims_total": 287,
+   "hallucination_rate": 0.1485119047619048,
+   "judge_mean": 3.0714285714285716,
+   "cost_per_task_usd": 0.0,
+   "total_cost_usd": 0.0,
+   "tokens_per_task": 3622.6125,
+   "avg_attempts": 2.7125,
+   "p50_latency_ms": 221213.25766597874,
+   "p95_latency_ms": 342005.0025830278,
+   "errors": 0
+  }
+ },
+ "candidates": [
+  {
+   "prompt_id": 2,
+   "version": 2,
+   "name": "targeted",
+   "rationale": "Ensure each sentence is specific to the prospect's situation or company, and directly restates a cited fact. Verify that all sentences, especially those in steps 2 and 3, include a fact ID and are grounded in the provided facts.",
+   "metrics": {
+    "trials": 80,
+    "pass_rate": 0.325,
+    "first_pass_rate": 0.1625,
+    "critic_pass_rate": 0.325,
+    "grounded_claim_rate": 0.8049645390070922,
+    "claims_total": 282,
+    "hallucination_rate": 0.16125,
+    "judge_mean": 3.2552083333333335,
+    "cost_per_task_usd": 0.0,
+    "total_cost_usd": 0.0,
+    "tokens_per_task": 3563.6375,
+    "avg_attempts": 2.5625,
+    "p50_latency_ms": 228815.7346660155,
+    "p95_latency_ms": 395864.08741702326,
+    "errors": 0
+   },
+   "gates": [
+    {
+     "gate": "task_success",
+     "source": "evalforge",
+     "passed": true,
+     "actual": 0.325,
+     "threshold": "> 0.2875",
+     "baseline": null,
+     "delta": null
+    },
+    {
+     "gate": "tokens_per_task (cost proxy; provider unpriced)",
+     "source": "local",
+     "passed": true,
+     "actual": 3563.6375,
+     "threshold": "<= 4166 (+15%)",
+     "baseline": 3622.6125
+    },
+    {
+     "gate": "judge_mean",
+     "source": "local",
+     "passed": true,
+     "actual": 3.2552083333333335,
+     "threshold": ">= 2.871 (-0.2)",
+     "baseline": 3.0714285714285716
+    }
+   ],
+   "gates_passed": true
+  },
+  {
+   "prompt_id": 3,
+   "version": 3,
+   "name": "checklist",
+   "rationale": "Create a self-check list to ensure each email step is grounded and specific.",
+   "metrics": {
+    "trials": 80,
+    "pass_rate": 0.2625,
+    "first_pass_rate": 0.0875,
+    "critic_pass_rate": 0.2625,
+    "grounded_claim_rate": 0.8133802816901409,
+    "claims_total": 284,
+    "hallucination_rate": 0.1552083333333334,
+    "judge_mean": 3.045,
+    "cost_per_task_usd": 0.0,
+    "total_cost_usd": 0.0,
+    "tokens_per_task": 3749.275,
+    "avg_attempts": 2.6875,
+    "p50_latency_ms": 181906.6065410152,
+    "p95_latency_ms": 364014.2263749731,
+    "errors": 0
+   },
+   "gates": [
+    {
+     "gate": "task_success",
+     "source": "evalforge",
+     "passed": false,
+     "actual": 0.2625,
+     "threshold": "> 0.2875",
+     "baseline": null,
+     "delta": null
+    },
+    {
+     "gate": "tokens_per_task (cost proxy; provider unpriced)",
+     "source": "local",
+     "passed": true,
+     "actual": 3749.275,
+     "threshold": "<= 4166 (+15%)",
+     "baseline": 3622.6125
+    },
+    {
+     "gate": "judge_mean",
+     "source": "local",
+     "passed": true,
+     "actual": 3.045,
+     "threshold": ">= 2.871 (-0.2)",
+     "baseline": 3.0714285714285716
+    }
+   ],
+   "gates_passed": false
+  },
+  {
+   "prompt_id": 4,
+   "version": 4,
+   "name": "exemplar",
+   "rationale": "Provide examples to illustrate the correct and incorrect usage of fact markers and grounded sentences.",
+   "metrics": {
+    "trials": 80,
+    "pass_rate": 0.1875,
+    "first_pass_rate": 0.0375,
+    "critic_pass_rate": 0.1875,
+    "grounded_claim_rate": 0.6638655462184874,
+    "claims_total": 357,
+    "hallucination_rate": 0.31062500000000004,
+    "judge_mean": 3.2155172413793105,
+    "cost_per_task_usd": 0.0,
+    "total_cost_usd": 0.0,
+    "tokens_per_task": 3648.7,
+    "avg_attempts": 2.8125,
+    "p50_latency_ms": 238382.21941597294,
+    "p95_latency_ms": 407881.0555000091,
+    "errors": 0
+   },
+   "gates": [
+    {
+     "gate": "task_success",
+     "source": "evalforge",
+     "passed": false,
+     "actual": 0.1875,
+     "threshold": "> 0.2875",
+     "baseline": null,
+     "delta": null
+    },
+    {
+     "gate": "tokens_per_task (cost proxy; provider unpriced)",
+     "source": "local",
+     "passed": true,
+     "actual": 3648.7,
+     "threshold": "<= 4166 (+15%)",
+     "baseline": 3622.6125
+    },
+    {
+     "gate": "judge_mean",
+     "source": "local",
+     "passed": true,
+     "actual": 3.2155172413793105,
+     "threshold": ">= 2.871 (-0.2)",
+     "baseline": 3.0714285714285716
+    }
+   ],
+   "gates_passed": false
+  }
+ ],
+ "best": 2,
+ "rejected_candidates": [],
+ "learnings_snapshot": [],
+ "new_learnings": [
+  "Use specific facts about the prospect's company or situation to personalize the email.",
+  "Ensure all claims are grounded in the facts provided and restate them clearly in the email."
+ ]
+}

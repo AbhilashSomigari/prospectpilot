@@ -1,0 +1,88 @@
+{
+ "clusters": [
+  {
+   "code": "judge_below_threshold",
+   "stage": "final",
+   "count": 33,
+   "tasks": [
+    "arcadiabiotechsystems",
+    "bluebirdnonprofitcloud",
+    "cindergaming",
+    "cobaltfreight",
+    "copperleafbanking",
+    "corvidlabs",
+    "evergreenpropertytech",
+    "foundryhiring",
+    "helixsupply",
+    "ironcladfabrication",
+    "keystoneedops",
+    "lanternsupport",
+    "latticegridsoftware",
+    "lumenledger",
+    "marigoldbenefits",
+    "mosaicretailai",
+    "nimbusops",
+    "northwindrobotics",
+    "orchardlearning",
+    "pinecrestpayments",
+    "polariscompliance",
+    "quantumleaplogistics",
+    "quillstack",
+    "ridgeviewclinics",
+    "sablewoodlegal",
+    "saffronfoodsmarketplace"
+   ],
+   "examples": [
+    "- [judge] mean 3.25 < 3.5 (personalization 2, relevance 3, clarity 4, tone 4): The emails lack specific details about Dr. Lin's role and the unique challenges she faces, making the personalization weak. The relevance could be stronger by directly connecting Tracewell's features to Arcadia's specific needs, such as managing 30 lab instruments.",
+    "- [judge] mean 2.50 < 3.5 (personalization 1, relevance 2, clarity 3, tone 4): The sequence lacks specific facts about Megan or Bluebird Nonprofit Cloud, making it generic. It also doesn't clearly connect the offer to Bluebird's specific needs or challenges.",
+    "- [judge] mean 3.25 < 3.5 (personalization 2, relevance 3, clarity 4, tone 4): Personalization is weak as it doesn't use specific facts about Lucas or Cinder Gaming. The relevance could be stronger by directly connecting Tracewell's features to Cinder's needs. The clarity and tone are good, but the sequence feels repetitive and could be more engaging."
+   ]
+  },
+  {
+   "code": "ungrounded_claims",
+   "stage": "final",
+   "count": 24,
+   "tasks": [
+    "atlasfieldworks",
+    "beaconfleet",
+    "bluebirdnonprofitcloud",
+    "brightdesk",
+    "cindergaming",
+    "copperleafbanking",
+    "corvidlabs",
+    "driftwoodmedia",
+    "foundryhiring",
+    "granitemanufacturingcloud",
+    "gridlinetelecom",
+    "halcyontravel",
+    "keystoneedops",
+    "lanternsupport",
+    "meridianclinicalai",
+    "mosaicretailai",
+    "northwindrobotics",
+    "pinecrestpayments",
+    "polariscompliance",
+    "quantumleaplogistics",
+    "quillstack",
+    "silverlineobservability"
+   ],
+   "examples": [
+    "- [ungrounded_claims] step 1: 'Could this help your team of 64 people?' (unsupported numbers ['64']); step 3: 'Could this help your team, especially with your 64-person company?' (unsupported numbers ['64'])",
+    "- [ungrounded_claims] step 1: 'Could we chat next week to see how we can support Beacon Fleet's tech stack?' (sentence does not restate the cited fact)",
+    "- [ungrounded_claims] step 1: 'Our real-time alerts can help prevent dashboard issues.' (sentence does not restate the cited fact); step 3: 'We can integrate with Bluebird's tech stack.' (sentence does not restate the cited fact)"
+   ]
+  }
+ ],
+ "findings": [
+  {
+   "code": "judge_below_threshold",
+   "root_cause": "The emails lack specific details about the prospect's situation, making personalization and relevance weak.",
+   "learning": "Use specific facts about the prospect's company or situation to personalize the email."
+  },
+  {
+   "code": "ungrounded_claims",
+   "root_cause": "The sentences contain unsupported claims or do not restate the cited facts.",
+   "learning": "Ensure all claims are grounded in the facts provided and restate them clearly in the email."
+  }
+ ]
+}
