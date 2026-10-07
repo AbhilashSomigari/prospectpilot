@@ -1,0 +1,16 @@
+               Improvement round 1 · ollama · decision: promoted                
+┏━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━┓
+┃ variant  ┃ pass_r… ┃ first_p… ┃ ground… ┃ judge ┃ tokens/… ┃ cost/t… ┃ gates ┃
+┡━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━┩
+│ ACTIVE   │ 0.287   │ 0.087    │ 0.815   │ 3.07  │ 3623     │ 0.00000 │ -     │
+│ v1       │         │          │         │       │          │         │       │
+│ v2       │ 0.325   │ 0.163    │ 0.805   │ 3.26  │ 3564     │ 0.00000 │ PASS  │
+│ targeted │         │          │         │       │          │         │       │
+│ v3       │ 0.263   │ 0.087    │ 0.813   │ 3.04  │ 3749     │ 0.00000 │ FAIL  │
+│ checkli… │         │          │         │       │          │         │       │
+│ v4       │ 0.188   │ 0.037    │ 0.664   │ 3.22  │ 3649     │ 0.00000 │ FAIL  │
+│ exemplar │         │          │         │       │          │         │       │
+└──────────┴─────────┴──────────┴─────────┴───────┴──────────┴─────────┴───────┘
+new learnings: ["Use specific facts about the prospect's company or situation to
+personalize the email.", 'Ensure all claims are grounded in the facts provided 
+and restate them clearly in the email.']

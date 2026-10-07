@@ -1,0 +1,22 @@
+───────────────────── ProspectPilot demo · provider=ollama ─────────────────────
+┌───────────────────────────────────────┬──────────────────────────────────────┐
+│ Leads processed                       │ 9                                    │
+│ Verified confidence >= 0.7            │ 8                                    │
+│ Sequences drafted                     │ 8                                    │
+│ Critic pass: first draft / final      │ 1 / 2                                │
+│ Personalized claims grounded          │ 21/31                                │
+│ Emails delivered to Mailpit (step 1 + │ 2                                    │
+│ follow-ups)                           │                                      │
+│ SIMULATED replies (reply or           │ 2                                    │
+│ objection)                            │                                      │
+│ LLM cost (USD)                        │ 0.0000                               │
+│ Status breakdown                      │ draft_failed=6, sim_objection=2,     │
+│                                       │ unverified=1                         │
+└───────────────────────────────────────┴──────────────────────────────────────┘
+Node timings (ms): {'outbox': 181.5, 'critic#0': 12147.6, 'critic#1': 6190.3, 
+'critic#2': 5579.1, 'enricher': 127853.0, 'finalize': 6.3, 'verifier': 26.0, 
+'writer#0': 102545.4, 'writer#1': 96988.6, 'writer#2': 91111.1, 'prospector': 
+36.2, 'reply_simulator': 11182.4}
+Run:     prospectpilot run-show 94c5b744-9a5a-4215-9f35-d4bfe91656a4
+Trace:   http://localhost:16686/trace/b9bf632ab23acf2ea1b4c3114cd0f2d9
+Mailpit: http://localhost:8025   Grafana: http://localhost:3000

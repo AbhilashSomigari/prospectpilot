@@ -1,0 +1,16 @@
+               Improvement round 3 · ollama · decision: promoted                
+┏━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━┓
+┃ variant  ┃ pass_r… ┃ first_p… ┃ ground… ┃ judge ┃ tokens/… ┃ cost/t… ┃ gates ┃
+┡━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━┩
+│ ACTIVE   │ 0.237   │ 0.062    │ 0.747   │ 3.23  │ 4111     │ 0.00000 │ -     │
+│ v5       │         │          │         │       │          │         │       │
+│ v8       │ 0.113   │ 0.062    │ 0.607   │ 3.21  │ 4124     │ 0.00000 │ FAIL  │
+│ targeted │         │          │         │       │          │         │       │
+│ v9       │ 0.250   │ 0.062    │ 0.669   │ 3.36  │ 4097     │ 0.00000 │ PASS  │
+│ checkli… │         │          │         │       │          │         │       │
+│ v10      │ 0.163   │ 0.050    │ 0.632   │ 3.24  │ 4242     │ 0.00000 │ FAIL  │
+│ exemplar │         │          │         │       │          │         │       │
+└──────────┴─────────┴──────────┴─────────┴───────┴──────────┴─────────┴───────┘
+new learnings: ['Ensure all claims are directly supported by the facts 
+provided.', 'Always tailor the content to the specific prospect and their 
+context.']
