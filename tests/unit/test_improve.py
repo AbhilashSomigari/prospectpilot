@@ -45,8 +45,24 @@ def run(results: list[TrialResult], success: float, cost: float = 0.0) -> EvalRu
     )
 
 
-def metrics(pass_rate: float, judge: float, tokens: float) -> dict[str, Any]:
-    return {"pass_rate": pass_rate, "judge_mean": judge, "tokens_per_task": tokens}
+def metrics(pass_rate: float, judge: float, tokens: float, grounded: float = 0.8) -> dict[str, Any]:
+    return {"pass_rate": pass_rate, "judge_mean": judge, "tokens_per_task": tokens,
+            "grounded_claim_rate": grounded}  # fmt: skip
+
+
+def paired_run(passes: int, cost: float = 0.0, tasks: int = 40, trials: int = 2) -> EvalRun:
+    """A run over the standard suite shape whose first `passes` trials succeed."""
+    results = []
+    for i in range(tasks * trials):
+        results.append(
+            TrialResult(task_id=f"t{i // trials:02d}", trial_index=i % trials, success=i < passes,
+                        output=AgentOutput(output="{}", usage=Usage(cost_usd=cost)))
+        )  # fmt: skip
+    return run(results, passes / (tasks * trials), cost=cost)
+
+
+def gates_by_name(gates: list[dict[str, Any]]) -> dict[str, bool]:
+    return {g["gate"]: g["passed"] for g in gates}
 
 
 def test_cluster_by_primary_failure() -> None:
@@ -79,30 +95,77 @@ def test_first_draft_failures_used_when_finals_are_rare() -> None:
 
 
 def test_gates_require_strict_improvement() -> None:
-    active = run([], 0.6)
-    same = run([], 0.6)
-    gates = promotion_gates(active, same, metrics(0.6, 4.0, 1000), metrics(0.6, 4.0, 1000))
-    assert not next(g for g in gates if g["gate"] == "task_success")["passed"]
+    active, same = paired_run(48), paired_run(48)
+    by = gates_by_name(
+        promotion_gates(active, same, metrics(0.6, 4.0, 1000), metrics(0.6, 4.0, 1000))
+    )
+    assert not by["task_success"] and not by["pass_rate_gain_significant"]
+
+
+def test_noise_level_gain_is_not_promoted() -> None:
+    """+1 of 80 trials (what round 3 promoted under the old gate) beats ACTIVE but not noise."""
+    active, cand = paired_run(19), paired_run(20)
+    gates = promotion_gates(active, cand, metrics(0.2375, 3.2, 4000), metrics(0.25, 3.3, 4000))
+    by = gates_by_name(gates)
+    assert by["task_success"]  # strictly better …
+    assert not by["pass_rate_gain_significant"]  # … but the CI includes 0
+    sig = next(g for g in gates if g["gate"] == "pass_rate_gain_significant")
+    assert sig["ci"][0] <= 0 <= sig["ci"][1] and "+1 of 80" in sig["threshold"]
+
+
+def test_clear_gain_is_promoted() -> None:
+    active, cand = paired_run(20), paired_run(50)  # +30 of 80
+    gates = promotion_gates(active, cand, metrics(0.25, 3.2, 4000), metrics(0.625, 3.4, 4000))
+    assert all(g["passed"] for g in gates), gates
+
+
+def test_grounding_regression_blocks_promotion() -> None:
+    active, cand = paired_run(20), paired_run(50)
+    worse = gates_by_name(
+        promotion_gates(
+            active,
+            cand,
+            metrics(0.25, 3.2, 4000, grounded=0.80),
+            metrics(0.625, 3.4, 4000, grounded=0.75),
+        )
+    )
+    assert worse["pass_rate_gain_significant"] and not worse["grounded_claim_rate"]
+    within = gates_by_name(
+        promotion_gates(
+            active,
+            cand,
+            metrics(0.25, 3.2, 4000, grounded=0.80),
+            metrics(0.625, 3.4, 4000, grounded=0.785),
+        )
+    )
+    assert within["grounded_claim_rate"]  # fmt: skip
 
 
 def test_gates_block_cost_and_judge_regressions() -> None:
-    active = run([], 0.6, cost=0.010)
-    better_but_pricey = run([], 0.8, cost=0.0116)  # +16%
-    gates = promotion_gates(
-        active, better_but_pricey, metrics(0.6, 4.0, 1000), metrics(0.8, 3.7, 1000)
+    active = paired_run(20, cost=0.010)
+    better_but_pricey = paired_run(50, cost=0.0116)  # +16%
+    by = gates_by_name(
+        promotion_gates(
+            active, better_but_pricey, metrics(0.25, 4.0, 1000), metrics(0.625, 3.7, 1000)
+        )
     )
-    by = {g["gate"]: g["passed"] for g in gates}
     assert by["task_success"] and not by["avg_cost_usd"] and not by["judge_mean"]
-    ok = run([], 0.8, cost=0.0114)  # +14%
-    gates = promotion_gates(active, ok, metrics(0.6, 4.0, 1000), metrics(0.8, 3.85, 1000))
-    assert all(g["passed"] for g in gates)
+    ok = paired_run(50, cost=0.0114)  # +14%
+    gates = promotion_gates(active, ok, metrics(0.25, 4.0, 1000), metrics(0.625, 3.85, 1000))
+    assert all(g["passed"] for g in gates), gates  # fmt: skip
 
 
 def test_unpriced_provider_uses_token_cost_proxy() -> None:
-    active, cand = run([], 0.5), run([], 0.7)
-    gates = promotion_gates(active, cand, metrics(0.5, 4.0, 1000), metrics(0.7, 4.0, 1200))
-    proxy = next(g for g in gates if g["gate"].startswith("tokens_per_task"))
-    assert not proxy["passed"]
+    active, cand = paired_run(20), paired_run(50)
+    gates = promotion_gates(active, cand, metrics(0.25, 4.0, 1000), metrics(0.625, 4.0, 1200))
+    assert not gates_by_name(gates)["tokens_per_task (cost proxy; provider unpriced)"]
+
+
+def test_no_paired_trials_cannot_promote() -> None:
+    gates = promotion_gates(
+        run([], 0.2), run([], 0.9), metrics(0.2, 4.0, 1000), metrics(0.9, 4.0, 1000)
+    )
+    assert not gates_by_name(gates)["pass_rate_gain_significant"]
 
 
 def test_candidate_validation() -> None:

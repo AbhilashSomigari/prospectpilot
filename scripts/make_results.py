@@ -13,7 +13,6 @@ import argparse
 import asyncio
 import itertools
 import json
-import random
 import statistics
 import uuid
 from datetime import UTC, datetime
@@ -22,7 +21,8 @@ from typing import Any
 
 from sqlalchemy import select
 
-from prospectpilot.config import REPO_ROOT
+from prospectpilot.config import REPO_ROOT, get_settings
+from prospectpilot.evals.stats import paired_bootstrap_ci, trial_successes
 from prospectpilot.memory.db import dispose, session_scope
 from prospectpilot.memory.tables import (
     Draft,
@@ -213,26 +213,7 @@ async def improvement_section() -> list[str]:
 
 
 def _trial_successes(path: Path) -> dict[tuple[str, int], bool]:
-    data = json.loads(path.read_text())
-    return {(r["task_id"], r["trial_index"]): bool(r["success"]) for r in data["results"]}
-
-
-def paired_bootstrap_ci(
-    a: dict[tuple[str, int], bool], b: dict[tuple[str, int], bool], n: int = 5000, seed: int = 7
-) -> tuple[float, float, float]:
-    """95% CI of pass-rate(b) - pass-rate(a), resampling fixtures (trials of a fixture stay together)."""
-    keys = sorted(set(a) & set(b))
-    tasks = sorted({k[0] for k in keys})
-    by_task = {t: [(a[k], b[k]) for k in keys if k[0] == t] for t in tasks}
-    rng = random.Random(seed)
-
-    def diff(sample: list[str]) -> float:
-        pairs = [p for t in sample for p in by_task[t]]
-        return sum(y - x for x, y in pairs) / len(pairs)
-
-    point = diff(tasks)
-    stats = sorted(diff([rng.choice(tasks) for _ in tasks]) for _ in range(n))
-    return point, stats[int(0.025 * n)], stats[int(0.975 * n)]
+    return trial_successes(json.loads(path.read_text())["results"])
 
 
 async def interpretation_section() -> list[str]:
@@ -248,8 +229,8 @@ async def interpretation_section() -> list[str]:
         "fixtures, 5,000 resamples). A promotion is only evidence of improvement if its interval",
         "excludes 0.",
         "",
-        "| Round | promoted | Δ pass rate vs ACTIVE | trials gained (of N) | paired 95% CI of Δ |",
-        "|---|---|---|---|---|",
+        "| Round | decision at the time | Δ pass rate vs ACTIVE | trials gained (of N) | paired 95% CI of Δ | grounded claims ACTIVE → best | current gate (CI > 0, grounding ≥ −0.02) |",
+        "|---|---|---|---|---|---|---|",
     ]
     evals_dir = REPO_ROOT / "evals" / "runs"
     for r in rounds:
@@ -260,11 +241,17 @@ async def interpretation_section() -> list[str]:
         if not active.exists() or best is None:
             continue
         a, b = _trial_successes(active), _trial_successes(best)
-        point, lo, hi = paired_bootstrap_ci(a, b)
-        gained = round(point * len(a))
+        ci = paired_bootstrap_ci(a, b)
+        g_before = r.metrics_before["grounded_claim_rate"]
+        g_after = r.metrics_after["grounded_claim_rate"]
+        grounding_ok = g_after >= g_before - get_settings().improve_grounding_max_drop
+        verdict = "would promote" if (ci.lower > 0 and grounding_ok) else "would keep ACTIVE"
+        reasons = [x for x, bad in (("CI includes 0", ci.lower <= 0),
+                                    ("grounding dropped", not grounding_ok)) if bad]  # fmt: skip
         lines.append(
-            f"| {r.round} | v{best_v} ({r.decision}) | {point:+.3f} | {gained:+d} of {len(a)} "
-            f"| [{lo:+.3f}, {hi:+.3f}] |"
+            f"| {r.round} | v{best_v} {r.decision} | {ci.delta:+.3f} | {ci.gained_trials:+d} of {ci.pairs} "
+            f"| [{ci.lower:+.3f}, {ci.upper:+.3f}] | {g_before:.3f} → {g_after:.3f} "
+            f"| {verdict}{' (' + ', '.join(reasons) + ')' if reasons else ''} |"
         )
     # winner's curse: the promoted prompt's score in the round that selected it vs its
     # re-evaluation as ACTIVE at the start of the next round
@@ -283,9 +270,10 @@ async def interpretation_section() -> list[str]:
         "",
         "Taking the best of three candidates on the same noisy 80-trial evaluation favours lucky",
         "variants (winner's curse), and each round's re-evaluation also adds that round's new learnings",
-        "to the writer's context, so it is not a pure replicate. The promotion gate here is",
-        '"strictly better than ACTIVE" with no significance test; see the CI column before reading',
-        "the round-by-round series as a trend.",
+        "to the writer's context, so it is not a pure replicate. These rounds ran under the original",
+        'gate ("strictly better than ACTIVE", no significance test). The gate now also requires the',
+        "paired 95% CI of the gain to exclude 0 and claim grounding not to drop by more than 0.02;",
+        "the last column shows what that gate would have decided on the same data.",
         "",
     ]
     return lines

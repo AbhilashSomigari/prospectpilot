@@ -99,6 +99,11 @@ class Settings(BaseSettings):
     critic_max_rewrites: int = 2
     critic_min_judge: float = 3.5
 
+    # self-improvement promotion gates
+    improve_ci_level: float = 0.95  # paired bootstrap CI of the pass-rate gain must exclude 0
+    improve_bootstrap_samples: int = 5000
+    improve_grounding_max_drop: float = 0.02  # absolute drop allowed in grounded-claim rate
+
     # observability
     otel_enabled: bool = True
     otel_exporter_otlp_endpoint: str = "http://localhost:4318"

@@ -64,7 +64,7 @@ flowchart LR
   subgraph Improve["Nightly: prospectpilot improve"]
     EV["EvalForge suite<br/>47 frozen fixtures × trials"] --> FA["Failure analysis<br/>cluster by root cause"]
     FA --> OPT["Optimizer<br/>3 candidate prompts"] --> EV2["Evaluate candidates<br/>same suite, same seeds"]
-    EV2 --> G{"Gates: beats ACTIVE<br/>cost ≤ +15%, judge ≥ −0.2"}
+    EV2 --> G{"Gates: gain CI excludes 0<br/>grounding ≥ −0.02, cost ≤ +15%, judge ≥ −0.2"}
   end
   PR --> EV
   FA --> L
@@ -111,8 +111,12 @@ graph TD;
    break the output contract.
 4. **Evaluate candidates** on the same suite, same seeds, same learnings snapshot.
 5. **Promote** the best candidate only if it beats ACTIVE on the primary metric
-   (grounded-and-passing rate = EvalForge `task_success`) **and** passes the regression gates:
-   cost ≤ +15% (token cost proxy for unpriced local models), judge mean ≥ ACTIVE − 0.2.
+   (grounded-and-passing rate = EvalForge `task_success`) **with a paired bootstrap 95% CI of the
+   gain that excludes 0** (trials paired by fixture and seed, resampled by fixture), **and** passes
+   the regression gates: grounded-claim rate ≥ ACTIVE − 0.02, cost ≤ +15% (token cost proxy for
+   unpriced local models), judge mean ≥ ACTIVE − 0.2. The significance gate was added after the
+   first three real rounds promoted +1 to +3 of 80 trial gains that were within noise — see
+   [RESULTS.md](RESULTS.md).
 6. **Changelog**: round, prompt diff, metrics before/after, gate results, decision →
    `improvement_rounds` table, Grafana panel, and raw EvalForge run artifacts in `evals/runs/`.
 

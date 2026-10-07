@@ -5,8 +5,9 @@ One round:
  2. failure analysis: cluster failing trials by root cause → learnings memory
  3. optimizer: 3 candidate prompts targeting the top clusters → prompt registry (candidate)
  4. evaluate every candidate on the same suite, same seeds, same learnings snapshot
- 5. promote the best candidate only if it beats ACTIVE on grounded-and-passing rate AND passes the
-    regression gates (cost +15% max, judge mean −0.2 max)
+ 5. promote the best candidate only if it beats ACTIVE on grounded-and-passing rate with a paired
+    bootstrap 95% CI that excludes 0, AND passes the regression gates (cost +15% max, judge mean
+    −0.2 max, grounded-claim rate −0.02 max)
  6. append the changelog row (diff, metrics before/after, gates, decision) + raw run artifacts
 """
 
@@ -28,6 +29,7 @@ from pydantic import BaseModel, Field
 from sqlalchemy import func, select
 
 from prospectpilot.config import get_settings
+from prospectpilot.evals.stats import paired_bootstrap_ci, trial_successes
 from prospectpilot.evals.suite import run_suite
 from prospectpilot.llm.base import LLMError, LLMRequest
 from prospectpilot.llm.client import LLM, get_llm
@@ -277,6 +279,34 @@ def promotion_gates(
     out.append({"gate": "judge_mean", "source": "local", "passed": cm["judge_mean"] >= floor,
                 "actual": cm["judge_mean"], "threshold": f">= {floor:.3f} (-0.2)",
                 "baseline": am["judge_mean"]})  # fmt: skip
+
+    # The gain must be distinguishable from sampling noise: "strictly better" alone promoted
+    # +1-of-80-trial differences in the first real rounds (see RESULTS.md).
+    settings = get_settings()
+    try:
+        ci = paired_bootstrap_ci(
+            trial_successes(active.results),
+            trial_successes(cand.results),
+            samples=settings.improve_bootstrap_samples,
+            level=settings.improve_ci_level,
+        )
+        out.append({"gate": "pass_rate_gain_significant", "source": "local",
+                    "passed": ci.lower > 0, "actual": ci.delta,
+                    "threshold": f"{settings.improve_ci_level:.0%} CI lower bound > 0 "
+                                 f"(CI [{ci.lower:+.3f}, {ci.upper:+.3f}], "
+                                 f"{ci.gained_trials:+d} of {ci.pairs} trials)",
+                    "baseline": 0.0, "ci": [ci.lower, ci.upper]})  # fmt: skip
+    except ValueError as exc:  # no paired trials: nothing to compare, so no promotion
+        out.append({"gate": "pass_rate_gain_significant", "source": "local", "passed": False,
+                    "actual": 0.0, "threshold": f"not computable: {exc}", "baseline": 0.0})  # fmt: skip
+
+    # Grounding is the product's core guarantee; a prompt may not buy pass rate with it.
+    g_floor = am["grounded_claim_rate"] - settings.improve_grounding_max_drop
+    out.append({"gate": "grounded_claim_rate", "source": "local",
+                "passed": cm["grounded_claim_rate"] >= g_floor,
+                "actual": cm["grounded_claim_rate"],
+                "threshold": f">= {g_floor:.3f} (-{settings.improve_grounding_max_drop})",
+                "baseline": am["grounded_claim_rate"]})  # fmt: skip
     return out
 
 
